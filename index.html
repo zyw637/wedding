@@ -29,8 +29,11 @@
   <div class="film-vignette" aria-hidden="true"></div>
 
   <div id="app">
-    <!-- Top-left Theme Switcher Pill -->
-    <a href="./french.html" class="theme-switch-pill" id="themeSwitchPill">🍾 切换为法式风</a>
+    <!-- Top-left Theme Switcher Pills -->
+    <div style="position: fixed; top: calc(var(--safe-area-top) + 14px); left: 14px; z-index: 100; display: flex; gap: 6px;">
+      <a href="./french.html" class="theme-switch-pill" style="position: static;">🍾 法式风</a>
+      <a href="./chinese.html" class="theme-switch-pill" style="position: static;">🎋 中式风</a>
+    </div>
 
     <!-- Top-right Vintage Vinyl Music Player -->
     <header class="music-controller hidden" id="musicController" role="button" aria-label="Music Controller">

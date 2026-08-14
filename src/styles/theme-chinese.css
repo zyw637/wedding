@@ -1,0 +1,1016 @@
+/* Neo-Chinese Creative Palace & Fan Exhibition Theme - 故宫折扇·月洞门·金石画境 */
+@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;600;700;900&family=ZCOOL+XiaoWei&display=swap');
+
+:root {
+  /* Imperial Red & Gold Brocade Palette */
+  --ch-bg-deep: #1A0A0C;
+  --ch-bg-crimson: #360B0E;
+  --ch-bg-decree: #66151A;
+  --ch-bg-decree-inner: #7B1A20;
+
+  --ch-gold-pure: #E6C27A;
+  --ch-gold-bright: #FCE8BE;
+  --ch-gold-deep: #B5883C;
+  --ch-gold-glow: rgba(230, 194, 122, 0.4);
+
+  --ch-text-ivory: #FFF9F0;
+  --ch-text-gold: #FCE8BE;
+  --ch-text-muted: #E2C0AF;
+  --ch-text-subtle: #A88176;
+
+  --ch-cinnabar: #A31E24;
+  --ch-cinnabar-dark: #630C11;
+  --ch-cinnabar-glow: rgba(163, 30, 36, 0.55);
+
+  --ch-border-gold: rgba(230, 194, 122, 0.5);
+  --ch-border-gold-subtle: rgba(230, 194, 122, 0.25);
+
+  /* Typography */
+  --font-calligraphy: "Ma Shan Zheng", cursive, "Noto Serif SC", serif;
+  --font-xiaowei: "ZCOOL XiaoWei", "Noto Serif SC", serif;
+  --font-serif-cn: "Noto Serif SC", "Songti SC", "SimSun", serif;
+
+  /* Shadows */
+  --shadow-scroll: 0 30px 80px rgba(0, 0, 0, 0.8), 0 10px 30px rgba(60, 13, 17, 0.6);
+  --shadow-decree: 0 16px 50px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(0, 0, 0, 0.3);
+  --shadow-art: 0 14px 45px rgba(0, 0, 0, 0.7);
+
+  /* Viewport Safe Areas */
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+}
+
+/* Reset & Hardware Acceleration */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  background-color: var(--ch-bg-deep);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body.chinese-theme {
+  background-color: var(--ch-bg-deep);
+  color: var(--ch-text-ivory);
+  font-family: var(--font-serif-cn);
+  line-height: 1.85;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: 
+    radial-gradient(circle at 50% 0%, #521316 0%, transparent 60%),
+    radial-gradient(circle at 10% 40%, rgba(181, 136, 60, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(99, 20, 25, 0.35) 0%, transparent 60%),
+    linear-gradient(180deg, #1A0A0C 0%, #300A0E 50%, #120507 100%);
+  background-attachment: fixed;
+}
+
+body.chinese-locked {
+  overflow: hidden !important;
+  height: 100vh !important;
+  touch-action: none;
+}
+
+/* ===================================================
+   00. 3D SILK SCROLL OPENING CEREMONY (3D 锦缎画轴展开)
+   =================================================== */
+.scroll-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: #2D0E11;
+  background-image: radial-gradient(circle at center, #52151A 0%, #200B0D 100%);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.9s ease;
+  perspective: 1400px;
+}
+
+.scroll-overlay.opened {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.scroll-header-intro {
+  text-align: center;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 5;
+}
+
+.scroll-calligraphy-title {
+  font-family: var(--font-calligraphy);
+  font-size: clamp(3rem, 9vw, 3.8rem);
+  color: var(--ch-gold-bright);
+  line-height: 1;
+  text-shadow: 0 0 25px var(--ch-gold-glow), 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.scroll-subtitle {
+  font-family: var(--font-xiaowei);
+  font-size: 0.92rem;
+  letter-spacing: 0.35em;
+  color: var(--ch-text-gold);
+  margin-top: 6px;
+}
+
+/* 3D Scroll Rollers Container */
+.scroll-wrapper {
+  position: relative;
+  width: 90vw;
+  max-width: 360px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transform-style: preserve-3d;
+}
+
+/* Middle Xuan Paper */
+.scroll-paper-body {
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  background: #FFFDF9;
+  border-top: 2px solid var(--ch-gold-pure);
+  border-bottom: 2px solid var(--ch-gold-pure);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 16px 20px;
+  transition: width 1.1s cubic-bezier(0.4, 0, 0.1, 1);
+  z-index: 2;
+}
+
+.scroll-wrapper.opening .scroll-paper-body {
+  width: calc(100% - 40px);
+}
+
+.scroll-poem-line {
+  font-family: var(--font-calligraphy);
+  font-size: 1.45rem;
+  color: var(--ch-cinnabar);
+  letter-spacing: 0.15em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.scroll-poem-sub {
+  font-size: 0.82rem;
+  letter-spacing: 0.25em;
+  color: var(--ch-gold-deep);
+  margin-top: 8px;
+  white-space: nowrap;
+}
+
+/* Left & Right Wooden Rollers */
+.scroll-roller-left, .scroll-roller-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  background: linear-gradient(90deg, #3D1208 0%, #702613 40%, #993B1E 60%, #380F06 100%);
+  border-radius: 6px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  transition: transform 1.1s cubic-bezier(0.4, 0, 0.1, 1);
+  z-index: 5;
+}
+
+.scroll-roller-left {
+  left: calc(50% - 30px);
+}
+
+.scroll-roller-right {
+  right: calc(50% - 30px);
+}
+
+.scroll-wrapper.opening .scroll-roller-left {
+  transform: translateX(-145px);
+}
+
+.scroll-wrapper.opening .scroll-roller-right {
+  transform: translateX(145px);
+}
+
+/* Wooden Roller End Caps */
+.scroll-roller-left::before, .scroll-roller-left::after,
+.scroll-roller-right::before, .scroll-roller-right::after {
+  content: "";
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  height: 10px;
+  background: linear-gradient(90deg, #9C7235 0%, #E6C27A 50%, #9C7235 100%);
+  border-radius: 2px;
+}
+
+.scroll-roller-left::before, .scroll-roller-right::before {
+  top: -6px;
+}
+
+.scroll-roller-left::after, .scroll-roller-right::after {
+  bottom: -6px;
+}
+
+/* Red Cinnabar Seal in Center */
+.scroll-seal-stamp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 68px;
+  height: 68px;
+  border-radius: 8px;
+  background: radial-gradient(circle at 35% 35%, #C92A31 0%, var(--ch-cinnabar) 60%, var(--ch-cinnabar-dark) 100%);
+  box-shadow: 0 10px 25px var(--ch-cinnabar-glow);
+  border: 2px solid rgba(255, 220, 180, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFF2F4;
+  font-family: var(--font-calligraphy);
+  font-size: 2rem;
+  font-weight: 700;
+  z-index: 10;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  animation: sealFloat 2.6s infinite ease-in-out;
+}
+
+@keyframes sealFloat {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.06); }
+}
+
+.scroll-wrapper.opening .scroll-seal-stamp {
+  transform: translate(-50%, -50%) scale(1.3);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scroll-hint-bar {
+  margin-top: 34px;
+  font-size: 0.88rem;
+  letter-spacing: 0.25em;
+  color: var(--ch-text-gold);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: hintDrift 2.4s infinite ease-in-out;
+}
+
+@keyframes hintDrift {
+  0%, 100% { transform: translateY(0); opacity: 0.8; }
+  50% { transform: translateY(4px); opacity: 1; }
+}
+
+/* ===================================================
+   TOP NAVIGATION BAR
+   =================================================== */
+.chinese-nav-bar {
+  position: fixed;
+  top: calc(var(--sat) + 14px);
+  left: 14px;
+  right: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.chinese-nav-pill, .chinese-music-btn {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(55, 14, 18, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--ch-border-gold);
+  padding: 7px 14px;
+  border-radius: 24px;
+  font-size: 0.76rem;
+  font-family: var(--font-serif-cn);
+  font-weight: 600;
+  color: var(--ch-text-gold);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.chinese-nav-pill:active, .chinese-music-btn:active {
+  transform: scale(0.96);
+  background: rgba(80, 20, 26, 0.95);
+}
+
+.chinese-music-btn .music-icon {
+  color: var(--ch-gold-bright);
+  font-size: 0.9rem;
+}
+
+.chinese-music-btn.playing .music-icon {
+  animation: spinMusic 3s linear infinite;
+}
+
+@keyframes spinMusic {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ===================================================
+   MAIN CONTAINER (画境长卷)
+   =================================================== */
+.palace-art-container {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: calc(var(--sat) + 65px) 14px calc(var(--sab) + 50px);
+  display: flex;
+  flex-direction: column;
+  gap: 46px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Imperial Red Brocade Card */
+.palace-card {
+  position: relative;
+  background: linear-gradient(135deg, #7A1A20 0%, #591216 100%);
+  border-radius: 4px;
+  border: 2px solid var(--ch-gold-pure);
+  box-shadow: var(--shadow-decree);
+  padding: 38px 20px 32px;
+  text-align: center;
+}
+
+.palace-card::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  border: 1px solid var(--ch-border-gold-subtle);
+  pointer-events: none;
+}
+
+/* Fretwork Corner Inlays */
+.fret-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-style: solid;
+  border-color: var(--ch-gold-bright);
+  pointer-events: none;
+}
+
+.fret-tl { top: 10px; left: 10px; border-width: 2px 0 0 2px; }
+.fret-tr { top: 10px; right: 10px; border-width: 2px 2px 0 0; }
+.fret-bl { bottom: 10px; left: 10px; border-width: 0 0 2px 2px; }
+.fret-br { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; }
+
+/* 01. IMPERIAL DECREE (大喜婚书名帖) */
+.palace-stamp-emblem {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 16px;
+  background: radial-gradient(circle at 35% 35%, #D42E35 0%, var(--ch-cinnabar) 100%);
+  border-radius: 8px;
+  border: 1.5px solid var(--ch-gold-bright);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFF;
+  font-family: var(--font-calligraphy);
+  font-size: 2.1rem;
+  font-weight: 700;
+  box-shadow: 0 0 20px var(--ch-cinnabar-glow);
+}
+
+.palace-lead-title {
+  font-family: var(--font-xiaowei);
+  font-size: 0.9rem;
+  letter-spacing: 0.35em;
+  color: var(--ch-gold-pure);
+  margin-bottom: 12px;
+}
+
+.palace-couple-names {
+  font-size: clamp(1.65rem, 6.8vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--ch-gold-bright);
+  text-shadow: 0 0 25px var(--ch-gold-glow);
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+
+.palace-couple-en {
+  font-family: var(--font-xiaowei);
+  font-size: clamp(0.82rem, 3.5vw, 0.95rem);
+  letter-spacing: 0.25em;
+  color: var(--ch-text-muted);
+  margin-bottom: 22px;
+  white-space: nowrap;
+}
+
+.palace-gold-ruler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 16px auto 22px;
+  color: var(--ch-gold-pure);
+}
+
+.palace-gold-ruler::before, .palace-gold-ruler::after {
+  content: "";
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ch-gold-pure), transparent);
+}
+
+.palace-classical-vow {
+  font-family: var(--font-xiaowei);
+  font-size: 1.08rem;
+  line-height: 2.3;
+  color: var(--ch-text-ivory);
+  letter-spacing: 0.18em;
+}
+
+/* ===================================================
+   02. CELESTIAL COMPASS & COUNTDOWN (十二时辰罗盘)
+   =================================================== */
+.compass-section {
+  padding: 34px 16px;
+}
+
+.compass-tag {
+  font-family: var(--font-xiaowei);
+  font-size: 0.85rem;
+  letter-spacing: 0.35em;
+  color: var(--ch-gold-pure);
+  margin-bottom: 6px;
+}
+
+.compass-title {
+  font-family: var(--font-calligraphy);
+  font-size: 1.8rem;
+  letter-spacing: 0.15em;
+  color: var(--ch-gold-bright);
+  text-shadow: 0 0 18px var(--ch-gold-glow);
+  margin-bottom: 26px;
+}
+
+.compass-dial-box {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.compass-orbit-branches {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px dashed var(--ch-gold-pure);
+  animation: rotateBranches 45s linear infinite;
+}
+
+.compass-orbit-inner {
+  position: absolute;
+  inset: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--ch-border-gold);
+  animation: rotateBranchesRev 35s linear infinite;
+}
+
+.compass-orbit-inner::before {
+  content: "✦ 乾 坤 ✦";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ch-bg-decree);
+  padding: 0 4px;
+  font-size: 0.65rem;
+  color: var(--ch-gold-bright);
+}
+
+@keyframes rotateBranches {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotateBranchesRev {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.compass-core-info {
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+
+.compass-solar-date {
+  font-family: var(--font-calligraphy);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--ch-gold-bright);
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 15px var(--ch-gold-glow);
+}
+
+.compass-lunar-date {
+  font-family: var(--font-xiaowei);
+  font-size: 0.82rem;
+  letter-spacing: 0.2em;
+  color: var(--ch-text-gold);
+  margin-top: 4px;
+}
+
+.compass-countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.compass-box {
+  background: rgba(35, 8, 11, 0.85);
+  border: 1px solid var(--ch-border-gold);
+  border-radius: 6px;
+  padding: 12px 2px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.compass-num {
+  font-family: var(--font-xiaowei);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ch-gold-bright);
+  line-height: 1.1;
+  text-shadow: 0 0 12px var(--ch-gold-glow);
+}
+
+.compass-unit {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--ch-text-gold);
+  margin-top: 3px;
+  font-weight: 600;
+}
+
+/* ===================================================
+   03. CREATIVE ORIENTAL PHOTO EXHIBITION (4套顶级创意形制)
+   =================================================== */
+.palace-gallery-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.gallery-section-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.gallery-section-tag {
+  font-family: var(--font-xiaowei);
+  font-size: 0.8rem;
+  letter-spacing: 0.35em;
+  color: var(--ch-gold-pure);
+  font-weight: 600;
+}
+
+.gallery-section-title {
+  font-family: var(--font-calligraphy);
+  font-size: 1.9rem;
+  letter-spacing: 0.15em;
+  color: var(--ch-gold-bright);
+  text-shadow: 0 0 18px var(--ch-gold-glow);
+  margin-top: 2px;
+}
+
+.gallery-section-quote {
+  font-family: var(--font-xiaowei);
+  font-size: 0.92rem;
+  letter-spacing: 0.15em;
+  color: var(--ch-text-muted);
+  line-height: 1.8;
+  margin-top: 6px;
+  padding: 0 12px;
+}
+
+/* --- 创意形制 1：故宫三交六椀菱花金窗主画 --- */
+.lattice-window-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 3px solid var(--ch-gold-pure);
+  box-shadow: var(--shadow-art), inset 0 0 25px rgba(0, 0, 0, 0.6);
+  background: #3A0C10;
+}
+
+.lattice-window-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lattice-overlay-fret {
+  position: absolute;
+  inset: 8px;
+  border: 1px dashed var(--ch-gold-pure);
+  pointer-events: none;
+}
+
+/* --- 创意形制 2：宋代泥金折扇画 (Song Dynasty Folding Fan) --- */
+.fan-exhibition-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fan-frame-arch {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/10;
+  border-radius: 180px 180px 30px 30px;
+  overflow: hidden;
+  border: 2.5px solid var(--ch-gold-pure);
+  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.7);
+  background: #3A0C10;
+}
+
+.fan-frame-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fan-tassel-hanger {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fan-tassel-bead {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--ch-cinnabar);
+  border: 1.5px solid var(--ch-gold-bright);
+}
+
+.fan-tassel-line {
+  width: 2px;
+  height: 16px;
+  background: var(--ch-gold-pure);
+}
+
+/* --- 创意形制 3：江南园林 · 海棠景窗与圆月洞门对景 --- */
+.garden-duo-gates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* 圆月洞门 (Moon Gate) */
+.moon-gate-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--ch-gold-pure);
+  box-shadow: var(--shadow-art);
+  background: #3A0C10;
+}
+
+.moon-gate-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 八角海棠景窗 (Begonia Gate) */
+.begonia-gate-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid var(--ch-gold-pure);
+  box-shadow: var(--shadow-art);
+  background: #3A0C10;
+  transform: rotate(45deg);
+  margin: 10px 0;
+}
+
+.begonia-gate-inner {
+  width: 140%;
+  height: 140%;
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  transform: rotate(-45deg);
+}
+
+.begonia-gate-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- 创意形制 4：岁岁长情 · 龙凤呈祥双联立轴挂卷 (Twin Silk Brocades) --- */
+.twin-scrolls-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.twin-scroll-item {
+  position: relative;
+  background: linear-gradient(135deg, #7A1A20 0%, #541115 100%);
+  border: 1.5px solid var(--ch-gold-pure);
+  border-radius: 4px;
+  padding: 10px 8px 16px;
+  box-shadow: var(--shadow-art);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.twin-scroll-photo-box {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid var(--ch-border-gold);
+}
+
+.twin-scroll-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.twin-scroll-caption {
+  font-family: var(--font-xiaowei);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--ch-text-gold);
+  margin-top: 8px;
+  white-space: nowrap;
+}
+
+/* ===================================================
+   04. CEREMONY TIMETABLE (华堂六礼 · 古时辰时序)
+   =================================================== */
+.ancient-hour-track {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  margin-top: 28px;
+  position: relative;
+  padding-left: 28px;
+  text-align: left;
+}
+
+.ancient-hour-track::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 8px;
+  width: 1.5px;
+  background: linear-gradient(180deg, var(--ch-gold-bright), var(--ch-gold-deep), var(--ch-border-gold-subtle));
+}
+
+.ancient-hour-node {
+  position: relative;
+}
+
+.ancient-hour-node::before {
+  content: "囍";
+  position: absolute;
+  left: -28px;
+  top: 2px;
+  width: 18px;
+  height: 18px;
+  color: var(--ch-gold-bright);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-shadow: 0 0 8px var(--ch-gold-bright);
+}
+
+.ancient-hour-time {
+  font-family: var(--font-xiaowei);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ch-gold-bright);
+  letter-spacing: 0.1em;
+}
+
+.ancient-hour-name {
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--ch-text-ivory);
+  margin-top: 2px;
+}
+
+.ancient-hour-desc {
+  font-size: 0.82rem;
+  color: var(--ch-text-muted);
+  margin-top: 2px;
+  line-height: 1.6;
+}
+
+/* ===================================================
+   05. BANQUET DETAILS (盛筵席设与引路)
+   =================================================== */
+.banquet-info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 24px 0 28px;
+}
+
+.banquet-info-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.banquet-info-label {
+  font-family: var(--font-xiaowei);
+  font-size: 0.78rem;
+  letter-spacing: 0.25em;
+  color: var(--ch-gold-pure);
+  font-weight: 600;
+}
+
+.banquet-info-value {
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  color: var(--ch-gold-bright);
+  font-weight: 600;
+}
+
+.banquet-info-sub {
+  font-size: 0.82rem;
+  color: var(--ch-text-muted);
+}
+
+.banquet-btn-row {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.btn-palace-gold {
+  flex: 1;
+  padding: 13px 10px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  font-family: var(--font-serif-cn);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.btn-palace-primary {
+  background: linear-gradient(135deg, #FCE8BE 0%, #E6C27A 50%, #B5883C 100%);
+  color: #1A0A0C;
+  border: 1px solid var(--ch-gold-bright);
+  box-shadow: 0 4px 16px var(--ch-gold-glow);
+}
+
+.btn-palace-secondary {
+  background: rgba(35, 8, 11, 0.7);
+  color: var(--ch-text-ivory);
+  border: 1px solid var(--ch-border-gold);
+}
+
+.btn-palace-gold:active {
+  transform: scale(0.97);
+}
+
+/* ===================================================
+   06. CLOSING & WISHES (尾声与回顶)
+   =================================================== */
+.palace-closing-footer {
+  text-align: center;
+  padding: 20px 10px 40px;
+}
+
+.footer-dragon-phoenix {
+  font-family: var(--font-calligraphy);
+  font-size: 3.5rem;
+  color: var(--ch-gold-bright);
+  line-height: 1;
+  text-shadow: 0 0 25px var(--ch-gold-glow);
+  margin-bottom: 8px;
+}
+
+.footer-auspicious-wish {
+  font-family: var(--font-xiaowei);
+  font-size: 0.98rem;
+  letter-spacing: 0.2em;
+  color: var(--ch-text-muted);
+  margin-bottom: 24px;
+}
+
+.footer-couple-seal-sign {
+  font-size: clamp(1.15rem, 4.5vw, 1.38rem);
+  letter-spacing: 0.3em;
+  color: var(--ch-gold-bright);
+  font-weight: 600;
+  margin-bottom: 30px;
+  white-space: nowrap;
+}
+
+.btn-scroll-head {
+  background: transparent;
+  border: 1px solid var(--ch-border-gold);
+  color: var(--ch-text-gold);
+  padding: 10px 28px;
+  border-radius: 24px;
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-scroll-head:active {
+  background: rgba(230, 194, 122, 0.15);
+}
+
+/* Toast */
+.chinese-toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: rgba(35, 8, 11, 0.95);
+  border: 1px solid var(--ch-gold-bright);
+  color: var(--ch-gold-bright);
+  padding: 13px 26px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  letter-spacing: 0.15em;
+  box-shadow: 0 0 30px var(--ch-gold-glow);
+  z-index: 100000;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.chinese-toast.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+  <title data-i18n="meta.title">婚礼邀请函 · 万卓洋 ＆ 张佳敏</title>
+
+  <!-- Preload Essential Hero Images -->
+  <link rel="preload" as="image" href="./src/assets/images/indoor/1.png">
+  <link rel="preload" as="image" href="./src/assets/images/golf/1.png">
+  <link rel="preload" as="image" href="./src/assets/images/golf/2.png">
+  <link rel="preload" as="image" href="./src/assets/images/pavilion/2.png">
+
+  <!-- Neo-Chinese Creative Palace & Fan Stylesheet -->
+  <link rel="stylesheet" href="./src/styles/theme-chinese.css">
+</head>
+<body class="chinese-theme chinese-locked">
+
+  <!-- Fullscreen "天降吉囍" Falling Character Physics Canvas -->
+  <canvas id="xiCanvas" style="position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999;" aria-hidden="true"></canvas>
+
+  <!-- Top Floating Nav Controls -->
+  <nav class="chinese-nav-bar" aria-label="Quick Controls">
+    <div style="display: flex; gap: 6px;">
+      <a href="./french.html" class="chinese-nav-pill" data-i18n="nav.switchFrench">🍾 法式风</a>
+      <a href="./index.html" class="chinese-nav-pill" data-i18n="nav.switchFilm">🎞️ 电影风</a>
+    </div>
+    <button class="chinese-music-btn" id="chineseMusicBtn" aria-label="Music Toggle">
+      <span class="music-icon">🎋</span>
+      <span data-i18n="nav.music">古韵雅乐</span>
+    </button>
+  </nav>
+
+  <!-- 00. 3D SILK SCROLL OPENING CEREMONY (3D 锦缎画轴展开) -->
+  <div class="scroll-overlay" id="scrollOverlay">
+    <header class="scroll-header-intro">
+      <div class="scroll-calligraphy-title" data-i18n="scroll.calligraphyTitle"></div>
+      <div class="scroll-subtitle" data-i18n="scroll.subtitle"></div>
+    </header>
+
+    <!-- 3D Scroll Rollers Frame -->
+    <div class="scroll-wrapper" id="scrollWrapper" role="button" aria-label="Touch Seal to Unroll Silk Scroll">
+      <!-- Middle Xuan Paper Unrolled -->
+      <div class="scroll-paper-body">
+        <div class="scroll-poem-line" data-i18n="scroll.poemLine"></div>
+        <div class="scroll-poem-sub" data-i18n="scroll.poemSub"></div>
+      </div>
+
+      <!-- Left & Right Wooden Rollers -->
+      <div class="scroll-roller-left"></div>
+      <div class="scroll-roller-right"></div>
+
+      <!-- Red Cinnabar Seal in Center -->
+      <div class="scroll-seal-stamp" data-i18n="scroll.sealText">囍</div>
+    </div>
+
+    <div class="scroll-hint-bar" data-i18n="scroll.hint"></div>
+  </div>
+
+  <!-- MAIN SCROLLABLE CONTENT (殿堂级金石画境长卷) -->
+  <main class="palace-art-container">
+
+    <!-- 01. IMPERIAL MARRIAGE DECREE (大喜婚书名帖) -->
+    <section class="palace-card">
+      <div class="fret-corner fret-tl"></div>
+      <div class="fret-corner fret-tr"></div>
+      <div class="fret-corner fret-bl"></div>
+      <div class="fret-corner fret-br"></div>
+
+      <div class="palace-stamp-emblem">囍</div>
+      <div class="palace-lead-title" data-i18n="decree.leadTitle"></div>
+      <h1 class="palace-couple-names" data-i18n="decree.names"></h1>
+      <div class="palace-couple-en" data-i18n="decree.namesEn"></div>
+
+      <div class="palace-gold-ruler">✦</div>
+
+      <p class="palace-classical-vow" data-i18n="decree.vow" style="white-space: pre-line;"></p>
+    </section>
+
+    <!-- 02. CELESTIAL EARTHLY BRANCHES COMPASS (十二时辰吉时乾坤天象罗盘) -->
+    <section class="palace-card compass-section">
+      <div class="fret-corner fret-tl"></div>
+      <div class="fret-corner fret-tr"></div>
+      <div class="fret-corner fret-bl"></div>
+      <div class="fret-corner fret-br"></div>
+
+      <div class="compass-tag" data-i18n="compass.tag"></div>
+      <h2 class="compass-title" data-i18n="compass.title"></h2>
+
+      <!-- Concentric Spinning Heavenly Compass -->
+      <div class="compass-dial-box" id="compassDial">
+        <div class="compass-orbit-branches"></div>
+        <div class="compass-orbit-inner"></div>
+        <div class="compass-core-info">
+          <div class="compass-solar-date" data-i18n="compass.solarDate"></div>
+          <div class="compass-lunar-date" data-i18n="compass.lunarDate"></div>
+        </div>
+      </div>
+
+      <!-- 4 Palace Lantern Countdown Blocks -->
+      <div class="compass-countdown-grid">
+        <div class="compass-box">
+          <span class="compass-num" id="compassDays">00</span>
+          <span class="compass-unit" data-i18n="compass.days"></span>
+        </div>
+        <div class="compass-box">
+          <span class="compass-num" id="compassHours">00</span>
+          <span class="compass-unit" data-i18n="compass.hours"></span>
+        </div>
+        <div class="compass-box">
+          <span class="compass-num" id="compassMins">00</span>
+          <span class="compass-unit" data-i18n="compass.minutes"></span>
+        </div>
+        <div class="compass-box">
+          <span class="compass-num" id="compassSecs">00</span>
+          <span class="compass-unit" data-i18n="compass.seconds"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03. CREATIVE ORIENTAL PHOTO EXHIBITION (3 大精选殿堂级画境) -->
+    <section class="palace-gallery-flow">
+
+      <!-- 01. 故宫三交六椀菱花金窗主画 -->
+      <article class="palace-card" style="padding: 24px 14px 28px;">
+        <div class="fret-corner fret-tl"></div>
+        <div class="fret-corner fret-tr"></div>
+
+        <header class="gallery-section-header">
+          <div class="gallery-section-tag" data-i18n="gallery.sec1Tag"></div>
+          <h2 class="gallery-section-title" data-i18n="gallery.sec1Title"></h2>
+          <p class="gallery-section-quote" data-i18n="gallery.sec1Quote"></p>
+        </header>
+
+        <div class="lattice-window-frame">
+          <img class="lattice-window-img" src="./src/assets/images/indoor/1.png" alt="Grand Palace Lattice" loading="lazy" />
+          <div class="lattice-overlay-fret"></div>
+        </div>
+      </article>
+
+      <!-- 02. 江南园林 · 海棠景窗与圆月洞门对景 (同风格绿茵外景) -->
+      <article class="palace-card" style="padding: 24px 14px 28px;">
+        <div class="fret-corner fret-tl"></div>
+        <div class="fret-corner fret-tr"></div>
+
+        <header class="gallery-section-header">
+          <div class="gallery-section-tag" data-i18n="gallery.sec2Tag"></div>
+          <h2 class="gallery-section-title" data-i18n="gallery.sec2Title"></h2>
+          <p class="gallery-section-quote" data-i18n="gallery.sec2Quote"></p>
+        </header>
+
+        <div class="garden-duo-gates">
+          <!-- 圆月洞门 (Lawn Series 1) -->
+          <div class="moon-gate-card">
+            <img class="moon-gate-img" src="./src/assets/images/golf/1.png" alt="Moon Gate Garden View 1" loading="lazy" />
+          </div>
+
+          <!-- 八角海棠门 (Lawn Series 2) -->
+          <div class="begonia-gate-card">
+            <div class="begonia-gate-inner">
+              <img class="begonia-gate-img" src="./src/assets/images/golf/2.png" alt="Begonia Gate Garden View 2" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03. 宋代泥金折扇画 (水榭亭台大片) -->
+      <article class="palace-card" style="padding: 24px 14px 28px;">
+        <div class="fret-corner fret-tl"></div>
+        <div class="fret-corner fret-tr"></div>
+
+        <header class="gallery-section-header">
+          <div class="gallery-section-tag" data-i18n="gallery.sec3Tag"></div>
+          <h2 class="gallery-section-title" data-i18n="gallery.sec3Title"></h2>
+          <p class="gallery-section-quote" data-i18n="gallery.sec3Quote"></p>
+        </header>
+
+        <div class="fan-exhibition-wrapper">
+          <div class="fan-frame-arch">
+            <img class="fan-frame-img" src="./src/assets/images/pavilion/2.png" alt="Song Dynasty Fan Pavilion" style="object-position: center 76%; transform: scale(1.12);" loading="lazy" />
+          </div>
+          <div class="fan-tassel-hanger">
+            <div class="fan-tassel-bead"></div>
+            <div class="fan-tassel-line"></div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- 04. CEREMONY TIMETABLE (华堂六礼 · 古时辰时序) -->
+    <section class="palace-card">
+      <div class="fret-corner fret-tl"></div>
+      <div class="fret-corner fret-tr"></div>
+      <div class="fret-corner fret-bl"></div>
+      <div class="fret-corner fret-br"></div>
+
+      <h2 class="compass-title" style="margin-bottom: 0;" data-i18n="ceremony.title"></h2>
+
+      <div class="ancient-hour-track">
+        <div class="ancient-hour-node">
+          <div class="ancient-hour-time" data-i18n="ceremony.t1Time"></div>
+          <div class="ancient-hour-name" data-i18n="ceremony.t1Name"></div>
+          <div class="ancient-hour-desc" data-i18n="ceremony.t1Desc"></div>
+        </div>
+
+        <div class="ancient-hour-node">
+          <div class="ancient-hour-time" data-i18n="ceremony.t2Time"></div>
+          <div class="ancient-hour-name" data-i18n="ceremony.t2Name"></div>
+          <div class="ancient-hour-desc" data-i18n="ceremony.t2Desc"></div>
+        </div>
+
+        <div class="ancient-hour-node">
+          <div class="ancient-hour-time" data-i18n="ceremony.t3Time"></div>
+          <div class="ancient-hour-name" data-i18n="ceremony.t3Name"></div>
+          <div class="ancient-hour-desc" data-i18n="ceremony.t3Desc"></div>
+        </div>
+
+        <div class="ancient-hour-node">
+          <div class="ancient-hour-time" data-i18n="ceremony.t4Time"></div>
+          <div class="ancient-hour-name" data-i18n="ceremony.t4Name"></div>
+          <div class="ancient-hour-desc" data-i18n="ceremony.t4Desc"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. BANQUET LOCATION DETAILS (盛筵席设与引路) -->
+    <section class="palace-card">
+      <div class="fret-corner fret-tl"></div>
+      <div class="fret-corner fret-tr"></div>
+      <div class="fret-corner fret-bl"></div>
+      <div class="fret-corner fret-br"></div>
+
+      <h2 class="compass-title" style="font-size: 1.6rem;" data-i18n="banquet.title"></h2>
+
+      <div class="banquet-info-grid">
+        <div class="banquet-info-row">
+          <span class="banquet-info-label" data-i18n="banquet.dateLabel"></span>
+          <span class="banquet-info-value" data-i18n="meta.dateFormatted"></span>
+          <span class="banquet-info-sub" data-i18n="meta.lunarDate"></span>
+        </div>
+
+        <div class="banquet-info-row">
+          <span class="banquet-info-label" data-i18n="banquet.timeLabel"></span>
+          <span class="banquet-info-value" data-i18n="meta.timeFormatted"></span>
+        </div>
+
+        <div class="banquet-info-row">
+          <span class="banquet-info-label" data-i18n="banquet.venueLabel"></span>
+          <span class="banquet-info-value" data-i18n="meta.venueName"></span>
+        </div>
+
+        <div class="banquet-info-row">
+          <span class="banquet-info-label" data-i18n="banquet.addressLabel"></span>
+          <span class="banquet-info-value" data-i18n="meta.address"></span>
+        </div>
+      </div>
+
+      <div class="banquet-btn-row">
+        <button class="btn-palace-gold btn-palace-primary" id="btnChineseNav" data-i18n="banquet.navBtn"></button>
+        <button class="btn-palace-gold btn-palace-secondary" id="btnChineseCopy" data-i18n="banquet.copyBtn"></button>
+      </div>
+
+      <div style="font-size: 0.76rem; color: var(--ch-text-subtle); margin-top: 16px;" data-i18n="banquet.tip"></div>
+    </section>
+
+    <!-- 06. CLOSING & WISHES (尾声与回顶) -->
+    <footer class="palace-closing-footer">
+      <div class="footer-dragon-phoenix" data-i18n="footer.dragonPhoenix"></div>
+      <p class="footer-auspicious-wish" data-i18n="footer.blessing"></p>
+      <div class="footer-couple-seal-sign" data-i18n="footer.sign"></div>
+
+      <button class="btn-scroll-head" id="btnChineseTop" data-i18n="footer.scrollTop"></button>
+    </footer>
+
+  </main>
+
+  <!-- Lightweight Neo-Chinese JavaScript Bundle -->
+  <script src="./src/scripts/chinese-bundle.js"></script>
+</body>
+</html>
