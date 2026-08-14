@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no, email=no">
+  <meta name="x5-fullscreen" content="true">
+  <meta name="x5-orientation" content="portrait">
+  <meta name="full-screen" content="yes">
+  <meta name="browsermode" content="application">
+  <title data-i18n="meta.title">婚礼邀请函 · Wedding Invitation</title>
+
+  <!-- Preload Essential Hero Images for Instant Mobile Display -->
+  <link rel="preload" as="image" href="./src/assets/images/indoor/1.png">
+  <link rel="preload" as="image" href="./src/assets/images/indoor/2.png">
+
+  <!-- Google Fonts for Classic Film Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+SC:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./src/styles/main.css">
+</head>
+<body>
+  <!-- Film Grain & Vignette Texture Overlays -->
+  <div class="film-grain" aria-hidden="true"></div>
+  <div class="film-vignette" aria-hidden="true"></div>
+
+  <div id="app">
+    <!-- Top-left Theme Switcher Pill -->
+    <a href="./french.html" class="theme-switch-pill" id="themeSwitchPill">🍾 切换为法式风</a>
+
+    <!-- Top-right Vintage Vinyl Music Player -->
+    <header class="music-controller hidden" id="musicController" role="button" aria-label="Music Controller">
+      <div class="music-vinyl"></div>
+      <div class="music-bars" aria-hidden="true">
+        <span class="music-bar"></span>
+        <span class="music-bar"></span>
+        <span class="music-bar"></span>
+      </div>
+    </header>
+
+    <!-- Bottom Scene / Chapter Indicator Badge -->
+    <aside class="page-badge hidden" id="pageBadge" aria-live="polite">
+      <span id="badgeText">SCENE 01</span>
+    </aside>
+
+    <!-- Fullscreen Film Slides -->
+    <main class="slides-wrapper" id="slidesWrapper">
+
+      <!-- 00. CURTAIN RAISER (入场幕) -->
+      <section class="slide slide-curtain active" id="slideCurtain" data-chapter="CURTAIN">
+        <div class="slide-content">
+          <div class="curtain-box">
+            <div class="curtain-header" data-i18n="curtain.filmPresents"></div>
+            <div class="curtain-invite-text" data-i18n="curtain.titlePrefix"></div>
+            <h1 class="curtain-names" data-i18n="curtain.titleNames"></h1>
+            <div class="curtain-subtitle" data-i18n="curtain.subtitle"></div>
+            <button class="btn-open-film" id="btnOpenFilm" data-i18n="curtain.enterButton"></button>
+            <div class="curtain-music-hint" data-i18n="curtain.musicHint"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 01. PROLOGUE (序幕 / 放映定档) -->
+      <section class="slide" id="slidePrologue" data-chapter="PROLOGUE">
+        <div class="slide-bg ken-burns" style="background-image: url('./src/assets/images/indoor/1.png');"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <div class="prologue-header" data-i18n="prologue.sceneLabel"></div>
+          <h2 class="prologue-title" data-i18n="prologue.title"></h2>
+          <div class="prologue-divider"></div>
+          <p class="prologue-quote" data-i18n="prologue.quote"></p>
+          <div class="prologue-card">
+            <div class="prologue-names" data-i18n="prologue.coupleNames"></div>
+            <div class="prologue-date" data-i18n="meta.dateEn"></div>
+          </div>
+        </div>
+        <div class="swipe-hint-container">
+          <span class="swipe-hint-text" data-i18n="prologue.swipeHint"></span>
+          <div class="swipe-arrow" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <!-- 02. ACT I · 心动 (室内油画) -->
+      <section class="slide" id="act1" data-chapter="ACT I">
+        <div class="slide-bg" style="background-image: url('./src/assets/images/indoor/2.png');"></div>
+        <div class="slide-overlay"></div>
+        <div class="light-leak"></div>
+        <div class="slide-content">
+          <header class="act-header">
+            <span class="act-tag" data-i18n="act1.actNumber"></span>
+            <h2 class="act-title" data-i18n="act1.actTitle"></h2>
+          </header>
+          <div class="cinema-card photo-strip">
+            <img class="gallery-photo ken-burns"
+                 src="./src/assets/images/indoor/1.png"
+                 data-caption="初见心动，眼底藏不住的温柔"
+                 alt="Indoor photo 1" />
+            <img class="gallery-photo"
+                 src="./src/assets/images/indoor/2.png"
+                 data-caption="晨光熹微，油画般的静谧定格"
+                 alt="Indoor photo 2"
+                 style="display: none;" />
+            <img class="gallery-photo"
+                 src="./src/assets/images/indoor/3.png"
+                 data-caption="岁月从容，与你共度的每一个清晨"
+                 alt="Indoor photo 3"
+                 style="display: none;" />
+          </div>
+          <div class="gallery-dots">
+            <span class="gallery-dot active"></span>
+            <span class="gallery-dot"></span>
+            <span class="gallery-dot"></span>
+          </div>
+          <div class="act-quote-box">
+            <div class="film-subtitle-bar" data-i18n="act1.quote"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03. ACT II · 相爱 (绿茵光影) -->
+      <section class="slide" id="act2" data-chapter="ACT II">
+        <div class="slide-bg" style="background-image: url('./src/assets/images/golf/2.png');"></div>
+        <div class="slide-overlay"></div>
+        <div class="light-leak"></div>
+        <div class="slide-content">
+          <header class="act-header">
+            <span class="act-tag" data-i18n="act2.actNumber"></span>
+            <h2 class="act-title" data-i18n="act2.actTitle"></h2>
+          </header>
+          <div class="cinema-card photo-strip">
+            <img class="gallery-photo ken-burns"
+                 src="./src/assets/images/golf/1.png"
+                 data-caption="微风与晴空，奔赴彼此的明朗世界"
+                 alt="Golf photo 1" />
+            <img class="gallery-photo"
+                 src="./src/assets/images/golf/2.png"
+                 data-caption="并肩前行，丈量属于未来的风景"
+                 alt="Golf photo 2"
+                 style="display: none;" />
+            <img class="gallery-photo"
+                 src="./src/assets/images/golf/3.png"
+                 data-caption="笑意蔓延，心之所向皆是欢喜"
+                 alt="Golf photo 3"
+                 style="display: none;" />
+          </div>
+          <div class="gallery-dots">
+            <span class="gallery-dot active"></span>
+            <span class="gallery-dot"></span>
+            <span class="gallery-dot"></span>
+          </div>
+          <div class="act-quote-box">
+            <div class="film-subtitle-bar" data-i18n="act2.quote"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04. ACT III · 余生 (庭阁之间) -->
+      <section class="slide" id="act3" data-chapter="ACT III">
+        <div class="slide-bg" style="background-image: url('./src/assets/images/pavilion/1.png');"></div>
+        <div class="slide-overlay"></div>
+        <div class="light-leak"></div>
+        <div class="slide-content">
+          <header class="act-header">
+            <span class="act-tag" data-i18n="act3.actNumber"></span>
+            <h2 class="act-title" data-i18n="act3.actTitle"></h2>
+          </header>
+          <div class="cinema-card photo-strip">
+            <img class="gallery-photo ken-burns"
+                 src="./src/assets/images/pavilion/1.png"
+                 data-caption="庭阁深处，时光缓缓流淌"
+                 alt="Pavilion photo 1" />
+            <img class="gallery-photo"
+                 src="./src/assets/images/pavilion/2.png"
+                 data-caption="执子之手，定格一生长情"
+                 alt="Pavilion photo 2"
+                 style="display: none;" />
+            <img class="gallery-photo"
+                 src="./src/assets/images/pavilion/3.png"
+                 data-caption="一席盛宴，静候挚友亲朋"
+                 alt="Pavilion photo 3"
+                 style="display: none;" />
+          </div>
+          <div class="gallery-dots">
+            <span class="gallery-dot active"></span>
+            <span class="gallery-dot"></span>
+            <span class="gallery-dot"></span>
+          </div>
+          <div class="act-quote-box">
+            <div class="film-subtitle-bar" data-i18n="act3.quote"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05. CREDITS & DETAILS (放映信息 / 地图导航) -->
+      <section class="slide" id="slideDetails" data-chapter="DETAILS">
+        <div class="slide-bg" style="background-image: url('./src/assets/images/indoor/2.png');"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <div class="credits-card">
+            <h2 class="credits-title" data-i18n="details.title"></h2>
+            <div class="credits-subtitle" data-i18n="details.subtitle"></div>
+
+            <div class="credits-list">
+              <div class="credit-item">
+                <span class="credit-label" data-i18n="details.dateLabel"></span>
+                <span class="credit-value" data-i18n="meta.dateFormatted"></span>
+                <span class="credit-subvalue" data-i18n="meta.lunarDate"></span>
+              </div>
+
+              <div class="credit-item">
+                <span class="credit-label" data-i18n="details.timeLabel"></span>
+                <span class="credit-value" data-i18n="meta.timeFormatted"></span>
+              </div>
+
+              <div class="credit-item">
+                <span class="credit-label" data-i18n="details.venueLabel"></span>
+                <span class="credit-value" data-i18n="meta.venueName"></span>
+              </div>
+
+              <div class="credit-item">
+                <span class="credit-label" data-i18n="details.addressLabel"></span>
+                <span class="credit-value" data-i18n="meta.address"></span>
+              </div>
+            </div>
+
+            <div class="action-buttons-group">
+              <button class="btn-action btn-primary" id="btnNavigate" data-i18n="details.navigationButton"></button>
+              <button class="btn-action" id="btnCopyAddress" data-i18n="details.copyAddressButton"></button>
+            </div>
+
+            <div class="credits-tip" data-i18n="details.tip"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06. EPILOGUE (电影片尾 / THE END) -->
+      <section class="slide" id="slideEpilogue" data-chapter="THE END">
+        <div class="slide-bg ken-burns" style="background-image: url('./src/assets/images/pavilion/2.png');"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <div class="epilogue-fin" data-i18n="epilogue.fin"></div>
+          <h2 class="epilogue-title" data-i18n="epilogue.title"></h2>
+          <p class="epilogue-quote" data-i18n="epilogue.quote"></p>
+          <p class="epilogue-blessing" data-i18n="epilogue.blessing"></p>
+          <div class="epilogue-sign" data-i18n="epilogue.signature"></div>
+
+          <button class="btn-replay" id="btnReplay" data-i18n="epilogue.replayButton"></button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Direct static & web compatible bundle script -->
+  <script src="./src/scripts/bundle.js"></script>
+</body>
+</html>

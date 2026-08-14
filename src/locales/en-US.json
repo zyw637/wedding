@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "title": "Wedding Invitation · Zhuoyang & Jiamin",
+    "description": "Cinematic Retro Film Wedding Invitation",
+    "groom": "Zhuoyang Wan",
+    "bride": "Jiamin Zhang",
+    "groomEn": "Zhuoyang Wan",
+    "brideEn": "Jiamin Zhang",
+    "date": "2026.10.18",
+    "dateFormatted": "Sunday, October 18, 2026",
+    "dateEn": "OCTOBER 18, 2026",
+    "lunarDate": "An auspicious autumn day of love",
+    "time": "11:58",
+    "timeFormatted": "11:58 AM Reception & Ceremony",
+    "venueName": "The Grand Cloud Estate · Mountain View Art Hall",
+    "venueEn": "The Grand Cloud Estate",
+    "address": "No. 8 Fangcaodi Art Center, Chaoyang District, Beijing",
+    "addressDetail": "No. 9 Dongdaqiao Road, Chaoyang District, Beijing",
+    "latitude": 39.9199,
+    "longitude": 116.4475
+  },
+  "curtain": {
+    "filmPresents": "A LOVE STORY PRODUCTION",
+    "titlePrefix": "CORDIALLY INVITES YOU",
+    "titleNames": "Zhuoyang & Jiamin",
+    "subtitle": "A Three-Act Film Wedding Experience",
+    "enterButton": "BEGIN FILM",
+    "musicHint": "Sound on for the best experience"
+  },
+  "prologue": {
+    "sceneLabel": "PROLOGUE",
+    "title": "THE PREMIERE",
+    "quote": "Some love stories are written the moment eyes meet.",
+    "coupleNames": "Zhuoyang Wan & Jiamin Zhang",
+    "invitation": "Cordially invite you to witness our wedding premiere",
+    "swipeHint": "Swipe Up to Play"
+  },
+  "act1": {
+    "actNumber": "ACT I",
+    "actTitle": "First Spark · Oil Painting",
+    "quote": "Some encounters are like starlight falling into everyday life.",
+    "photo1Caption": "In your gentle gaze, quiet perfection",
+    "photo2Caption": "Morning warmth, frozen in painterly stillness",
+    "photo3Caption": "Serenity shared across passing time"
+  },
+  "act2": {
+    "actNumber": "ACT II",
+    "actTitle": "Falling in Love · Sunlight & Breeze",
+    "quote": "Looking into each other's eyes, we found our shared horizon.",
+    "photo1Caption": "Sunlit skies, running toward each other",
+    "photo2Caption": "Side by side into the future",
+    "photo3Caption": "Joy overflowing, our true direction"
+  },
+  "act3": {
+    "actNumber": "ACT III",
+    "actTitle": "Everlasting · In the Courtyard",
+    "quote": "From dawn to dusk, for the rest of our days.",
+    "photo1Caption": "Deep inside the pavilion, quiet serenity",
+    "photo2Caption": "Hand in hand, promise of a lifetime",
+    "photo3Caption": "A feast prepared for our dearest family & friends"
+  },
+  "details": {
+    "actNumber": "CREDITS",
+    "title": "Screening Details",
+    "subtitle": "WEDDING CEREMONY & BANQUET",
+    "dateLabel": "Premiere Date",
+    "timeLabel": "Ceremony Time",
+    "venueLabel": "Venue",
+    "addressLabel": "Address",
+    "navigationButton": "Open Navigation",
+    "copyAddressButton": "Copy Address",
+    "copySuccess": "Address copied to clipboard",
+    "tip": "Indoor ballroom reception. Underground parking available on site."
+  },
+  "epilogue": {
+    "fin": "THE END",
+    "title": "Our Story · To Be Continued",
+    "quote": "May every year ahead be filled with light and love.",
+    "blessing": "We look forward to celebrating this special day with you.",
+    "signature": "Zhuoyang Wan & Jiamin Zhang",
+    "shareHint": "Tap top-right to share with friends",
+    "replayButton": "Replay Film"
+  },
+  "controls": {
+    "musicPlay": "Play Music",
+    "musicPause": "Pause Music",
+    "pageIndicator": "Scene {current} / {total}"
+  }
+}

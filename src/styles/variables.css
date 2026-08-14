@@ -1,0 +1,38 @@
+/* Design Tokens & Theme Variables for Film Wedding Invitation */
+:root {
+  /* Core Cinematic Palette */
+  --color-cinema-black: #0C0B0A;
+  --color-cinema-dark: #141211;
+  --color-cinema-surface: #1C1917;
+  --color-ivory-white: #F4EFE5;
+  --color-ivory-muted: rgba(244, 239, 229, 0.72);
+  --color-ivory-subtle: rgba(244, 239, 229, 0.4);
+  --color-wine-red: #701F2B;
+  --color-wine-red-hover: #8B2635;
+  --color-wine-red-glow: rgba(112, 31, 43, 0.35);
+  --color-vintage-gold: #B39A6A;
+  --color-vintage-gold-light: #D4C3A3;
+  --color-vintage-gold-dim: rgba(179, 154, 106, 0.3);
+
+  /* Typography */
+  --font-serif-cn: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "SimSun", serif;
+  --font-serif-en: "Cinzel", "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+
+  /* Elevation & Shadows */
+  --shadow-film: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 100px rgba(0, 0, 0, 0.5);
+  --shadow-gold: 0 4px 20px rgba(179, 154, 106, 0.25);
+  --shadow-wine: 0 8px 30px rgba(112, 31, 43, 0.4);
+
+  /* Timing & Motion */
+  --ease-film: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fade: 0.8s;
+  --duration-scene: 1.2s;
+
+  /* Viewport Safe Areas */
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+}

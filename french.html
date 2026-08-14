@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+  <title data-i18n="meta.title">婚礼邀请函 · 万卓洋 ＆ 张佳敏</title>
+
+  <!-- Preload Essential Hero Images -->
+  <link rel="preload" as="image" href="./src/assets/images/indoor/1.png">
+  <link rel="preload" as="image" href="./src/assets/images/golf/1.png">
+
+  <!-- French Provence Chateau Stylesheet -->
+  <link rel="stylesheet" href="./src/styles/theme-french.css">
+</head>
+<body class="french-chateau-theme french-locked">
+
+  <!-- Interactive Canvas for Rose Petal Physics -->
+  <canvas id="petalCanvas" aria-hidden="true"></canvas>
+
+  <!-- Top Floating Nav Controls -->
+  <nav class="french-nav-bar" aria-label="Quick Controls">
+    <a href="./index.html" class="french-nav-btn" data-i18n="nav.switchTheme">🎞️ 切换为电影风</a>
+    <button class="french-nav-btn" id="frenchMusicBtn" aria-label="Music Toggle">
+      <span class="music-note">♪</span>
+      <span data-i18n="nav.music">背景音乐</span>
+    </button>
+  </nav>
+
+  <!-- 00. 3D FRENCH CHATEAU DOUBLE DOORS (法式双开大门启幕) -->
+  <div class="chateau-gate-overlay" id="chateauGateOverlay">
+    <header class="chateau-gate-header">
+      <div class="gate-script-title" data-i18n="gate.script"></div>
+    </header>
+
+    <!-- 3D Double French Doors Frame -->
+    <div class="chateau-gate-frame" id="chateauGateFrame" role="button" aria-label="Touch Wax Seal to Open Chateau Gate">
+      <!-- Interior Invitation Preview behind the doors -->
+      <div class="chateau-gate-interior">
+        <div class="interior-script" data-i18n="gate.script"></div>
+        <div class="interior-names" data-i18n="gate.names"></div>
+        <div class="interior-date" data-i18n="meta.dateEn"></div>
+      </div>
+
+      <!-- Left & Right 3D French Doors -->
+      <div class="gate-door-left"></div>
+      <div class="gate-door-right"></div>
+
+      <!-- 3D Wax Seal Stamp in Center -->
+      <div class="chateau-wax-seal" data-i18n="gate.sealText">囍</div>
+    </div>
+
+    <div class="chateau-gate-hint" data-i18n="gate.hint"></div>
+  </div>
+
+  <!-- MAIN SCROLLABLE CONTENT (法式晨曦白金画卷) -->
+  <main class="french-main-container">
+
+    <!-- 01. HERO CARD -->
+    <section class="french-paper-card">
+      <div class="hero-script-lead" data-i18n="hero.script"></div>
+      <div class="hero-subtitle-en" data-i18n="hero.subtitleEn"></div>
+      <h1 class="hero-names-primary" data-i18n="hero.names"></h1>
+      <div class="hero-names-secondary" data-i18n="hero.namesEn"></div>
+
+      <div class="french-gold-divider">✦</div>
+
+      <p class="hero-poem-text" data-i18n="hero.poem" style="white-space: pre-line;"></p>
+    </section>
+
+    <!-- 02. VINTAGE FRENCH CALENDAR & COUNTDOWN (手撕日历与倒计时) -->
+    <section class="french-paper-card calendar-card">
+      <!-- Roman Arch Calendar Window -->
+      <div class="calendar-arch-window">
+        <div class="calendar-year" data-i18n="calendar.year"></div>
+        <div class="calendar-big-date" data-i18n="meta.date"></div>
+        <div class="calendar-lunar" data-i18n="meta.lunarDate"></div>
+      </div>
+
+      <!-- 4 Numerical Countdown Blocks -->
+      <div class="french-countdown-grid">
+        <div class="french-countdown-box">
+          <span class="french-countdown-num" id="cntDays">00</span>
+          <span class="french-countdown-unit" data-i18n="calendar.days"></span>
+        </div>
+        <div class="french-countdown-box">
+          <span class="french-countdown-num" id="cntHours">00</span>
+          <span class="french-countdown-unit" data-i18n="calendar.hours"></span>
+        </div>
+        <div class="french-countdown-box">
+          <span class="french-countdown-num" id="cntMins">00</span>
+          <span class="french-countdown-unit" data-i18n="calendar.minutes"></span>
+        </div>
+        <div class="french-countdown-box">
+          <span class="french-countdown-num" id="cntSecs">00</span>
+          <span class="french-countdown-unit" data-i18n="calendar.seconds"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03. HAUTE COUTURE PHOTO SHOWCASES (画报画廊) -->
+    <section class="chateau-gallery-section">
+
+      <!-- Showcase 1: Act I · 晨曦油画 -->
+      <article class="chateau-showcase-card" id="showcase1">
+        <header class="chateau-showcase-header">
+          <span class="showcase-tag" data-i18n="gallery.act1Tag"></span>
+          <h2 class="showcase-title" data-i18n="gallery.act1Title"></h2>
+        </header>
+
+        <div class="showcase-photo-frame">
+          <img class="showcase-photo" src="./src/assets/images/indoor/1.png" alt="Indoor Photo 1" />
+          <img class="showcase-photo" src="./src/assets/images/indoor/2.png" alt="Indoor Photo 2" style="display: none;" />
+          <img class="showcase-photo" src="./src/assets/images/indoor/3.png" alt="Indoor Photo 3" style="display: none;" />
+        </div>
+
+        <div class="showcase-dots">
+          <span class="showcase-dot active"></span>
+          <span class="showcase-dot"></span>
+          <span class="showcase-dot"></span>
+        </div>
+
+        <div class="showcase-quote" data-i18n="gallery.act1Quote"></div>
+        <div class="showcase-swipe-hint" data-i18n="gallery.swipeHint"></div>
+      </article>
+
+      <!-- Showcase 2: Act II · 绿茵光影 -->
+      <article class="chateau-showcase-card" id="showcase2">
+        <header class="chateau-showcase-header">
+          <span class="showcase-tag" data-i18n="gallery.act2Tag"></span>
+          <h2 class="showcase-title" data-i18n="gallery.act2Title"></h2>
+        </header>
+
+        <div class="showcase-photo-frame">
+          <img class="showcase-photo" src="./src/assets/images/golf/1.png" alt="Golf Photo 1" />
+          <img class="showcase-photo" src="./src/assets/images/golf/2.png" alt="Golf Photo 2" style="display: none;" />
+          <img class="showcase-photo" src="./src/assets/images/golf/3.png" alt="Golf Photo 3" style="display: none;" />
+        </div>
+
+        <div class="showcase-dots">
+          <span class="showcase-dot active"></span>
+          <span class="showcase-dot"></span>
+          <span class="showcase-dot"></span>
+        </div>
+
+        <div class="showcase-quote" data-i18n="gallery.act2Quote"></div>
+        <div class="showcase-swipe-hint" data-i18n="gallery.swipeHint"></div>
+      </article>
+
+      <!-- Showcase 3: Act III · 庭阁长情 -->
+      <article class="chateau-showcase-card" id="showcase3">
+        <header class="chateau-showcase-header">
+          <span class="showcase-tag" data-i18n="gallery.act3Tag"></span>
+          <h2 class="showcase-title" data-i18n="gallery.act3Title"></h2>
+        </header>
+
+        <div class="showcase-photo-frame">
+          <img class="showcase-photo" src="./src/assets/images/pavilion/1.png" alt="Pavilion Photo 1" />
+          <img class="showcase-photo" src="./src/assets/images/pavilion/2.png" alt="Pavilion Photo 2" style="display: none;" />
+          <img class="showcase-photo" src="./src/assets/images/pavilion/3.png" alt="Pavilion Photo 3" style="display: none;" />
+        </div>
+
+        <div class="showcase-dots">
+          <span class="showcase-dot active"></span>
+          <span class="showcase-dot"></span>
+          <span class="showcase-dot"></span>
+        </div>
+
+        <div class="showcase-quote" data-i18n="gallery.act3Quote"></div>
+        <div class="showcase-swipe-hint" data-i18n="gallery.swipeHint"></div>
+      </article>
+
+    </section>
+
+    <!-- 04. PROVENCE BOTANICAL ITINERARY (婚礼当日流程) -->
+    <section class="french-paper-card itinerary-card">
+      <div class="hero-subtitle-en" data-i18n="itinerary.tag"></div>
+      <h2 class="hero-names-primary" style="font-size: 1.45rem; margin-bottom: 0;" data-i18n="itinerary.title"></h2>
+
+      <div class="itinerary-track">
+        <div class="itinerary-node">
+          <div class="itinerary-time" data-i18n="itinerary.t1Time"></div>
+          <div class="itinerary-name" data-i18n="itinerary.t1Name"></div>
+          <div class="itinerary-desc" data-i18n="itinerary.t1Desc"></div>
+        </div>
+
+        <div class="itinerary-node">
+          <div class="itinerary-time" data-i18n="itinerary.t2Time"></div>
+          <div class="itinerary-name" data-i18n="itinerary.t2Name"></div>
+          <div class="itinerary-desc" data-i18n="itinerary.t2Desc"></div>
+        </div>
+
+        <div class="itinerary-node">
+          <div class="itinerary-time" data-i18n="itinerary.t3Time"></div>
+          <div class="itinerary-name" data-i18n="itinerary.t3Name"></div>
+          <div class="itinerary-desc" data-i18n="itinerary.t3Desc"></div>
+        </div>
+
+        <div class="itinerary-node">
+          <div class="itinerary-time" data-i18n="itinerary.t4Time"></div>
+          <div class="itinerary-name" data-i18n="itinerary.t4Name"></div>
+          <div class="itinerary-desc" data-i18n="itinerary.t4Desc"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. LOCATION & RECEPTION (盛宴席设与地图) -->
+    <section class="french-paper-card location-card">
+      <div class="hero-subtitle-en" data-i18n="location.tag"></div>
+      <h2 class="hero-names-primary" style="font-size: 1.45rem;" data-i18n="location.title"></h2>
+
+      <div class="location-grid">
+        <div class="location-row">
+          <span class="location-label" data-i18n="location.dateLabel"></span>
+          <span class="location-value" data-i18n="meta.dateFormatted"></span>
+          <span class="location-sub" data-i18n="meta.lunarDate"></span>
+        </div>
+
+        <div class="location-row">
+          <span class="location-label" data-i18n="location.timeLabel"></span>
+          <span class="location-value" data-i18n="meta.timeFormatted"></span>
+        </div>
+
+        <div class="location-row">
+          <span class="location-label" data-i18n="location.venueLabel"></span>
+          <span class="location-value" data-i18n="meta.venueName"></span>
+        </div>
+
+        <div class="location-row">
+          <span class="location-label" data-i18n="location.addressLabel"></span>
+          <span class="location-value" data-i18n="meta.address"></span>
+        </div>
+      </div>
+
+      <div class="location-btn-group">
+        <button class="btn-french btn-french-primary" id="btnFrenchNav" data-i18n="location.navBtn"></button>
+        <button class="btn-french btn-french-secondary" id="btnFrenchCopy" data-i18n="location.copyBtn"></button>
+      </div>
+
+      <div style="font-size: 0.76rem; color: var(--french-text-muted); margin-top: 16px;" data-i18n="location.tip"></div>
+    </section>
+
+    <!-- 06. CLOSING & BLESSINGS -->
+    <footer class="chateau-footer">
+      <div class="footer-script-lead" data-i18n="footer.script"></div>
+      <p class="footer-blessing-text" data-i18n="footer.blessing"></p>
+      <div class="footer-couple-sign" data-i18n="footer.sign"></div>
+
+      <button class="btn-scroll-top" id="btnScrollTop" data-i18n="footer.scrollTop"></button>
+    </footer>
+
+  </main>
+
+  <!-- Self-contained French Provence JavaScript Bundle -->
+  <script src="./src/scripts/french-bundle.js"></script>
+</body>
+</html>
