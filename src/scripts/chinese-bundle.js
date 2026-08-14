@@ -96,6 +96,7 @@
     nav: {
       switchFrench: "🍾 法式风",
       switchFilm: "🎞️ 电影风",
+      switchMagazine: "📰 杂志风",
       music: "古韵雅乐"
     }
   };

@@ -85,5 +85,149 @@
     "musicPlay": "Play Music",
     "musicPause": "Pause Music",
     "pageIndicator": "Scene {current} / {total}"
+  },
+  "nav": {
+    "switchFilm": "🎞️ Film Style",
+    "switchFrench": "🍾 French Style",
+    "switchChinese": "🎋 Chinese Style",
+    "switchMagazine": "📰 Magazine Style",
+    "music": "Music"
+  },
+  "magazine": {
+    "meta": {
+      "title": "VOWS · Zhuoyang Wan & Jiamin Zhang Wedding Issue",
+      "edition": "AUTUMN 2026 SPECIAL EDITION",
+      "issueNo": "NO. 10.18 · VOL. 26",
+      "price": "PRICELESS / SPECIAL COLLECTOR'S ISSUE"
+    },
+    "flipbook": {
+      "prev": "◀ PREV",
+      "next": "NEXT ▶",
+      "indicator": "PAGE {current} / {total}",
+      "coverHint": "← Swipe left or tap to open magazine →",
+      "pageHint": "← Swipe left / right to turn page →",
+      "openPrompt": "OPEN ISSUE"
+    },
+    "cover": {
+      "masthead": "VOWS",
+      "subtitle": "THE WEDDING ISSUE · SPECIAL EDITION",
+      "volume": "VOL. 26 · ISSUE 10",
+      "headline": "TWO HEARTS · ONE HORIZON",
+      "subheadline": "Zhuoyang Wan & Jiamin Zhang · Exclusive Wedding Issue",
+      "leadStory": "EXCLUSIVE STORY: LOVE, DEVOTION AND WALKING HAND IN HAND",
+      "barcodeText": "WEDDING-2026-1018-VOWS",
+      "openHint": "← Swipe left or tap to turn page →",
+      "openBtn": "OPEN ISSUE"
+    },
+    "editorial": {
+      "tag": "EDITOR'S LETTER",
+      "title": "Written in Love & Radiance",
+      "subtitle": "AN EXCLUSIVE INTERVIEW & LETTER",
+      "dropCap": "I",
+      "body1": "n the vast and bustling world, finding someone who brings peace, warmth, and quiet strength to your soul is life's most exquisite wonder. From the very first spark to walking side by side through sunrise and twilight, we found our shared harmony.",
+      "body2": "On October 18, 2026, surrounded by our dearest family and closest friends, we will turn the page to begin our brand-new chapter together. We cordially invite you to be the most treasured witness of our love story.",
+      "quote": "“Love is not just looking at each other, it's looking in the same direction together.”",
+      "quoteAuthor": "—— WAN ZHUOYANG & ZHANG JIAMIN"
+    },
+    "countdown": {
+      "tag": "TIME & METRICS",
+      "title": "Count Every Precious Second",
+      "days": "DAYS",
+      "hours": "HOURS",
+      "minutes": "MINUTES",
+      "seconds": "SECONDS",
+      "stat1Label": "LOVED DAYS",
+      "stat1Val": "1,314+",
+      "stat2Label": "ISSUE DATE",
+      "stat2Val": "OCT 18",
+      "stat3Label": "CEREMONY",
+      "stat3Val": "11:58"
+    },
+    "lookbook": {
+      "tag": "EDITORIAL SPREAD · LOOKBOOK",
+      "title": "Haute Couture Visual Special",
+      "spread1Tag": "LOOK 01 · MORNING SERENITY",
+      "spread1Title": "Oil Painting Serenity",
+      "spread1Quote": "Bathed in painterly light, capturing our first spark and timeless tenderness.",
+      "spread2Tag": "LOOK 02 · SUNLIT FAIRWAY",
+      "spread2Title": "Green Horizon & Breeze",
+      "spread2Quote": "Under the golden sun and open sky, joy blossoms towards our shared future.",
+      "spread3Tag": "LOOK 03 · TIMELESS COURTYARD",
+      "spread3Title": "Deep Pavilion Eternity",
+      "spread3Quote": "Hand in hand, holding onto everlasting love through all seasons of life.",
+      "swipeHint": "← SWIPE TO BROWSE SPREAD →",
+      "pagePrefix": "SPREAD"
+    },
+    "runway": {
+      "tag": "RUNWAY SCHEDULE",
+      "title": "Wedding Order of Events",
+      "t1Time": "11:00",
+      "t1Name": "PRE-SHOW · Welcome Reception",
+      "t1Desc": "Guest arrival, signature drinks, and champagne cocktails at the reception lounge",
+      "t2Time": "11:58",
+      "t2Name": "MAIN CEREMONY · Exchange of Vows",
+      "t2Desc": "Witness the couple's procession and sacred vows inside Mountain View Art Hall",
+      "t3Time": "12:30",
+      "t3Name": "GRAND BANQUET · Haute Cuisine",
+      "t3Desc": "Savor bespoke culinary courses and raise a toast to eternal joy",
+      "t4Time": "14:00",
+      "t4Name": "AFTER PARTY · Group Photos",
+      "t4Desc": "Capture timeless memories in the estate gardens with loved ones"
+    },
+    "vipPass": {
+      "tag": "VIP ACCESS PASS",
+      "title": "Venue & Seat Pass",
+      "passNo": "PASS N° 20261018",
+      "seat": "ROW A · FRONT SEAT",
+      "dateLabel": "CEREMONY DATE",
+      "timeLabel": "RECEPTION TIME",
+      "venueLabel": "FASHION VENUE",
+      "addressLabel": "OFFICIAL ADDRESS",
+      "navBtn": "Open Navigation",
+      "copyBtn": "Copy Venue Address",
+      "copySuccess": "✨ Venue address copied to clipboard",
+      "note": "★ VIP entrance pass. Complimentary valet & underground parking available."
+    },
+    "colophon": {
+      "tag": "COLOPHON & CREDITS",
+      "title": "Issue Credits",
+      "masthead": "VOWS MAGAZINE · WEDDING ISSUE",
+      "editorInChief": "Editor-in-Chief / Zhuoyang Wan & Jiamin Zhang",
+      "photo": "Photography / The Grand Cloud Estate",
+      "date": "Issue Date / October 18, 2026",
+      "blessing": "With deepest gratitude to everyone in our lives. We cannot wait to celebrate with you.",
+      "signature": "WAN ZHUOYANG & ZHANG JIAMIN",
+      "replayBtn": "✦ REPLAY ISSUE ✦",
+      "scrollTopBtn": "↑ BACK TO TOP"
+    },
+    "hud": {
+      "title": "Flip Dynamics Lab",
+      "toggleBtn": "⚙️ Physics HUD",
+      "presetLabel": "Curated Presets",
+      "presets": {
+        "diagonalBend": "📰 Editorial Corner Bend",
+        "origamiFold": "📐 Origami Geometric Fold",
+        "verticalRoll": "📜 Vertical Calendar Roll",
+        "softWave": "🌊 Ultra-Soft Paper Wave"
+      },
+      "directionLabel": "Flip Direction",
+      "directions": {
+        "rtl": "Right-to-Left",
+        "ltr": "Left-to-Right",
+        "btt": "Bottom-to-Top",
+        "ttb": "Top-to-Bottom"
+      },
+      "modeLabel": "Deformation Mode",
+      "modes": {
+        "bend": "Flexible Bend",
+        "fold": "Origami Fold"
+      },
+      "subdivisionsLabel": "Mesh Subdivisions (N)",
+      "overlapLabel": "Overlap Clearance (px)",
+      "zGapLabel": "Z-Axis Depth Gap (px)",
+      "angleLabel": "Corner Angle (deg)",
+      "falloffLabel": "Wave Falloff Factor",
+      "closeBtn": "Close HUD"
+    }
   }
 }

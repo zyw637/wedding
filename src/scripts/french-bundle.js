@@ -93,7 +93,9 @@
       scrollTop: "✦ 返回顶部 ✦"
     },
     nav: {
-      switchTheme: "🎞️ 切换为电影风",
+      switchFilm: "🎞️ 电影风",
+      switchChinese: "🎋 中式风",
+      switchMagazine: "📰 杂志风",
       music: "背景音乐"
     }
   };

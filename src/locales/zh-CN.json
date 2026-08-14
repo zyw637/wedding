@@ -85,5 +85,149 @@
     "musicPlay": "播放音乐",
     "musicPause": "暂停音乐",
     "pageIndicator": "第 {current} / {total} 幕"
+  },
+  "nav": {
+    "switchFilm": "🎞️ 电影风",
+    "switchFrench": "🍾 法式风",
+    "switchChinese": "🎋 中式风",
+    "switchMagazine": "📰 杂志风",
+    "music": "背景音乐"
+  },
+  "magazine": {
+    "meta": {
+      "title": "VOWS · 万卓洋 & 张佳敏 婚礼特辑",
+      "edition": "AUTUMN 2026 SPECIAL EDITION",
+      "issueNo": "NO. 10.18 · VOL. 26",
+      "price": "PRICELESS / 珍藏版"
+    },
+    "flipbook": {
+      "prev": "◀ PREV",
+      "next": "NEXT ▶",
+      "indicator": "PAGE {current} / {total}",
+      "coverHint": "← 向左滑动或点击 翻阅杂志 →",
+      "pageHint": "← 左右滑动翻页 →",
+      "openPrompt": "OPEN ISSUE / 翻开杂志"
+    },
+    "cover": {
+      "masthead": "VOWS",
+      "subtitle": "THE WEDDING ISSUE · SPECIAL EDITION",
+      "volume": "VOL. 26 · ISSUE 10",
+      "headline": "TWO HEARTS · ONE HORIZON",
+      "subheadline": "万卓洋 ＆ 张佳敏 · 婚礼独家特刊",
+      "leadStory": "独家专访：关于爱、笃定与并肩同行的岁月",
+      "barcodeText": "WEDDING-2026-1018-VOWS",
+      "openHint": "← 向左滑动或轻触 翻开杂志特辑 →",
+      "openBtn": "OPEN ISSUE / 翻开特辑"
+    },
+    "editorial": {
+      "tag": "EDITOR'S LETTER · 卷首寄语",
+      "title": "写在爱意蔓延时",
+      "subtitle": "AN EXCLUSIVE INTERVIEW & LETTER",
+      "dropCap": "在",
+      "body1": "漫长而喧嚣的岁月里，遇见一个能让心神笃定、彼此映照的人，是最温柔的奇迹。从初见的怦然心动，到并肩漫步晨光暮色，我们找到了生命中最契合的音符。",
+      "body2": "2026年10月18日，我们将在一众挚爱亲朋的见证下，共同翻开属于两个人的全新人生篇章。诚挚邀请您，成为这本爱意特辑中最珍贵的见证者。",
+      "quote": "“爱不是彼此凝望，而是一起注视着同一个方向。”",
+      "quoteAuthor": "—— WAN ZHUOYANG & ZHANG JIAMIN"
+    },
+    "countdown": {
+      "tag": "TIME & METRICS · 纪念档案",
+      "title": "倒计时 · 奔赴吉时",
+      "days": "DAYS",
+      "hours": "HOURS",
+      "minutes": "MINUTES",
+      "seconds": "SECONDS",
+      "stat1Label": "LOVED DAYS",
+      "stat1Val": "1,314+",
+      "stat2Label": "ISSUE DATE",
+      "stat2Val": "OCT 18",
+      "stat3Label": "CEREMONY",
+      "stat3Val": "11:58"
+    },
+    "lookbook": {
+      "tag": "EDITORIAL SPREAD · 秀场大片",
+      "title": "高定视觉特辑",
+      "spread1Tag": "LOOK 01 · MORNING SERENITY",
+      "spread1Title": "晨光油画 · 静谧心动",
+      "spread1Quote": "在油画般流淌的光影里，定格初遇的深情与温柔。",
+      "spread2Tag": "LOOK 02 · SUNLIT FAIRWAY",
+      "spread2Title": "绿茵光影 · 奔赴明朗",
+      "spread2Quote": "微风与晴空之下，笑意蔓延，心之所向皆是欢喜。",
+      "spread3Tag": "LOOK 03 · TIMELESS COURTYARD",
+      "spread3Title": "庭阁深处 · 一生长情",
+      "spread3Quote": "执子之手，定格长情，共赴往后每一个四季朝暮。",
+      "swipeHint": "← 左右滑动 翻阅大片 →",
+      "pagePrefix": "SPREAD"
+    },
+    "runway": {
+      "tag": "RUNWAY SCHEDULE · 秀场时刻",
+      "title": "婚礼流程日程",
+      "t1Time": "11:00",
+      "t1Name": "PRE-SHOW · 香槟迎宾",
+      "t1Desc": "签到入场，于迎宾区享用法式冷餐与香槟特调",
+      "t2Time": "11:58",
+      "t2Name": "MAIN CEREMONY · 神圣典礼",
+      "t2Desc": "见山艺术厅内，新郎新娘步入华堂，誓言礼成",
+      "t3Time": "12:30",
+      "t3Name": "GRAND BANQUET · 臻享婚宴",
+      "t3Desc": "品鉴高定婚宴美馔，举杯同庆良辰吉日",
+      "t4Time": "14:00",
+      "t4Name": "AFTER PARTY · 庄园合影",
+      "t4Desc": "与新人合影留念，共度温馨午后时光"
+    },
+    "vipPass": {
+      "tag": "VIP ACCESS PASS · 贵宾席位",
+      "title": "盛宴席设与入场凭证",
+      "passNo": "PASS N° 20261018",
+      "seat": "ROW A · FRONT SEAT",
+      "dateLabel": "CEREMONY DATE",
+      "timeLabel": "RECEPTION TIME",
+      "venueLabel": "FASHION VENUE",
+      "addressLabel": "OFFICIAL ADDRESS",
+      "navBtn": "一键地图导航",
+      "copyBtn": "复制场地地址",
+      "copySuccess": "✨ 场地地址已复制到剪贴板",
+      "note": "★ 凭此 VIP 凭证入场，庄园设有专属 VIP 停车位"
+    },
+    "colophon": {
+      "tag": "COLOPHON & CREDITS · 封底制作群",
+      "title": "制作鸣谢",
+      "masthead": "VOWS MAGAZINE · WEDDING ISSUE",
+      "editorInChief": "主编 / 万卓洋 ＆ 张佳敏",
+      "photo": "视觉影像 / 云境庄园 · 见山艺术厅",
+      "date": "发行日期 / 2026年10月18日",
+      "blessing": "感谢每一位出现在我们生命中的挚友亲朋，期待与您在秋日相见。",
+      "signature": "WAN ZHUOYANG & ZHANG JIAMIN",
+      "replayBtn": "✦ 重新翻阅特辑 ✦",
+      "scrollTopBtn": "↑ 返回封面"
+    },
+    "hud": {
+      "title": "翻页动效实验室",
+      "toggleBtn": "⚙️ 翻页参数",
+      "presetLabel": "精选预设",
+      "presets": {
+        "diagonalBend": "📰 经典右下角卷曲",
+        "origamiFold": "📐 折纸风琴折叠",
+        "verticalRoll": "📜 竖向画册翻卷",
+        "softWave": "🌊 超柔纸张波浪"
+      },
+      "directionLabel": "翻页方向",
+      "directions": {
+        "rtl": "从右到左 (Right-to-Left)",
+        "ltr": "从左到右 (Left-to-Right)",
+        "btt": "从下到上 (Bottom-to-Top)",
+        "ttb": "从上到下 (Top-to-Bottom)"
+      },
+      "modeLabel": "翻页方式",
+      "modes": {
+        "bend": "柔性弯曲 (Bend)",
+        "fold": "几何折叠 (Fold)"
+      },
+      "subdivisionsLabel": "页面细分切片 (N)",
+      "overlapLabel": "细分重叠防撕裂 (px)",
+      "zGapLabel": "Z轴空间间隙 (px)",
+      "angleLabel": "翻转倾角 (deg)",
+      "falloffLabel": "波衰减系数",
+      "closeBtn": "收起面板"
+    }
   }
 }

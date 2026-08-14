@@ -94,6 +94,13 @@
       musicPlay: "播放音乐",
       musicPause: "暂停音乐",
       pageIndicator: "第 {current} / {total} 幕"
+    },
+    nav: {
+      switchFilm: "🎞️ 电影风",
+      switchFrench: "🍾 法式风",
+      switchChinese: "🎋 中式风",
+      switchMagazine: "📰 杂志风",
+      music: "背景音乐"
     }
   };
 

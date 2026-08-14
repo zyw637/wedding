@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <title data-i18n="magazine.meta.title">VOWS · 万卓洋 ＆ 张佳敏 婚礼特辑</title>
+
+  <!-- Preload Essential Hero Images -->
+  <link rel="preload" as="image" href="./src/assets/images/indoor/1.png">
+  <link rel="preload" as="image" href="./src/assets/images/golf/1.png">
+  <link rel="preload" as="image" href="./src/assets/images/pavilion/1.png">
+
+  <!-- Magazine & High-Fashion 3D Flipbook Stylesheet -->
+  <link rel="stylesheet" href="./src/styles/theme-magazine.css">
+</head>
+<body class="magazine-theme">
+
+  <!-- Interactive Canvas for Camera Flash & Starlight Physics -->
+  <canvas id="magCanvas" aria-hidden="true"></canvas>
+
+  <!-- Top Floating Nav Controls -->
+  <nav class="mag-nav-bar" aria-label="Quick Controls">
+    <div class="mag-nav-group">
+      <a href="./french.html" class="mag-nav-pill" data-i18n="nav.switchFrench">🍾 法式风</a>
+      <a href="./chinese.html" class="mag-nav-pill" data-i18n="nav.switchChinese">🎋 中式风</a>
+      <a href="./index.html" class="mag-nav-pill" data-i18n="nav.switchFilm">🎞️ 电影风</a>
+    </div>
+    <button class="mag-music-btn" id="magMusicBtn" aria-label="Music Toggle">
+      <div class="mag-equalizer-bars" aria-hidden="true">
+        <span class="mag-eq-bar"></span>
+        <span class="mag-eq-bar"></span>
+        <span class="mag-eq-bar"></span>
+      </div>
+      <span data-i18n="nav.music">背景音乐</span>
+    </button>
+  </nav>
+
+  <!-- 3D FLIPBOOK STAGE -->
+  <main class="mag-stage" id="magStage">
+    <div class="mag-book" id="magBook">
+
+      <!-- ==========================================
+           PAGE 00: MAGAZINE COVER (大刊封面特辑)
+           ========================================== -->
+      <section class="mag-page active" id="magPage0" data-page="0" style="display:flex;">
+        <div class="mag-page-inner mag-page-cover">
+          <!-- Top Editorial Meta -->
+          <header class="mag-cover-top-meta">
+            <span class="mag-cover-edition-tag" data-i18n="magazine.meta.edition">AUTUMN 2026 SPECIAL EDITION</span>
+            <span class="mag-cover-price-tag" data-i18n="magazine.meta.price">PRICELESS / 珍藏版</span>
+          </header>
+
+          <!-- Bold High-Fashion Masthead -->
+          <div>
+            <h1 class="mag-masthead-title" data-i18n="magazine.cover.masthead">VOWS</h1>
+            <div class="mag-masthead-subtitle" data-i18n="magazine.cover.subtitle">THE WEDDING ISSUE · SPECIAL EDITION</div>
+          </div>
+
+          <!-- Cover Hero Portrait -->
+          <div class="mag-cover-hero-box">
+            <img class="mag-cover-hero-img" src="./src/assets/images/indoor/1.png" alt="Cover Story Portrait" />
+            <div class="mag-cover-hero-grad"></div>
+            <div class="mag-cover-headline-wrap">
+              <span class="mag-page-tag" style="color: var(--mag-gold-light); margin-bottom: 2px;" data-i18n="magazine.cover.volume">VOL. 26 · ISSUE 10</span>
+              <div class="mag-cover-headline-main" data-i18n="magazine.cover.headline">TWO HEARTS · ONE HORIZON</div>
+            </div>
+          </div>
+
+          <!-- Bottom Barcode & Open Action Button -->
+          <footer class="mag-cover-footer-wrap">
+            <div class="mag-barcode-strip" aria-hidden="true"></div>
+            <button class="btn-mag-cover-open" id="btnMagCoverOpen" data-i18n="magazine.cover.openBtn">OPEN ISSUE / 翻开特辑</button>
+          </footer>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           PAGE 01: EDITOR'S LETTER (卷首特稿)
+           ========================================== -->
+      <section class="mag-page" id="magPage1" data-page="1" data-density="soft" style="display:none;">
+        <div class="mag-page-inner">
+          <header class="mag-page-header">
+            <div>
+              <span class="mag-page-tag" data-i18n="magazine.editorial.tag">EDITOR'S LETTER · 卷首寄语</span>
+              <h2 class="mag-page-title" data-i18n="magazine.editorial.title">写在爱意蔓延时</h2>
+            </div>
+            <span class="mag-page-num-top">PAGE 01</span>
+          </header>
+
+          <div class="mag-drop-cap-paragraph">
+            <span class="mag-big-drop-cap" data-i18n="magazine.editorial.dropCap">在</span>
+            <span data-i18n="magazine.editorial.body1">漫长而喧嚣的岁月里，遇见一个能让心神笃定、彼此映照的人，是最温柔的奇迹。从初见的怦然心动，到并肩漫步晨光暮色，我们找到了生命中最契合的音符。</span>
+          </div>
+
+          <p class="mag-drop-cap-paragraph" data-i18n="magazine.editorial.body2">2026年10月18日，我们将在一众挚爱亲朋的见证下，共同翻开属于两个人的全新人生篇章。诚挚邀请您，成为这本爱意特辑中最珍贵的见证者。</p>
+
+          <div class="mag-editorial-quote-card">
+            <div class="mag-editorial-quote-text" data-i18n="magazine.editorial.quote">“爱不是彼此凝望，而是一起注视着同一个方向。”</div>
+            <span class="mag-editorial-author" data-i18n="magazine.editorial.quoteAuthor">—— WAN ZHUOYANG & ZHANG JIAMIN</span>
+          </div>
+
+          <div class="mag-page-curl-hint">✦ 翻页 →</div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           PAGE 02: TIME & METRICS (倒计时与档案)
+           ========================================== -->
+      <section class="mag-page" id="magPage2" data-page="2" data-density="soft" style="display:none;">
+        <div class="mag-page-inner">
+          <header class="mag-page-header">
+            <div>
+              <span class="mag-page-tag" data-i18n="magazine.countdown.tag">TIME & METRICS · 纪念档案</span>
+              <h2 class="mag-page-title" data-i18n="magazine.countdown.title">倒计时 · 奔赴吉时</h2>
+            </div>
+            <span class="mag-page-num-top">PAGE 02</span>
+          </header>
+
+          <!-- 4-Digit Countdown Grid -->
+          <div class="mag-countdown-grid-box">
+            <div class="mag-countdown-cell">
+              <span class="mag-countdown-val" id="cntMagDays">00</span>
+              <span class="mag-countdown-lbl" data-i18n="magazine.countdown.days">DAYS</span>
+            </div>
+            <div class="mag-countdown-cell">
+              <span class="mag-countdown-val" id="cntMagHours">00</span>
+              <span class="mag-countdown-lbl" data-i18n="magazine.countdown.hours">HOURS</span>
+            </div>
+            <div class="mag-countdown-cell">
+              <span class="mag-countdown-val" id="cntMagMins">00</span>
+              <span class="mag-countdown-lbl" data-i18n="magazine.countdown.minutes">MINUTES</span>
+            </div>
+            <div class="mag-countdown-cell">
+              <span class="mag-countdown-val" id="cntMagSecs">00</span>
+              <span class="mag-countdown-lbl" data-i18n="magazine.countdown.seconds">SECONDS</span>
+            </div>
+          </div>
+
+          <!-- Stats Strip -->
+          <div class="mag-metrics-stats-row">
+            <div class="mag-metrics-item">
+              <span class="mag-metrics-item-lbl" data-i18n="magazine.countdown.stat1Label">LOVED DAYS</span>
+              <span class="mag-metrics-item-val" data-i18n="magazine.countdown.stat1Val">1,314+</span>
+            </div>
+            <div class="mag-metrics-item">
+              <span class="mag-metrics-item-lbl" data-i18n="magazine.countdown.stat2Label">ISSUE DATE</span>
+              <span class="mag-metrics-item-val" data-i18n="magazine.countdown.stat2Val">OCT 18</span>
+            </div>
+            <div class="mag-metrics-item">
+              <span class="mag-metrics-item-lbl" data-i18n="magazine.countdown.stat3Label">CEREMONY</span>
+              <span class="mag-metrics-item-val" data-i18n="magazine.countdown.stat3Val">11:58</span>
+            </div>
+          </div>
+
+          <div class="mag-metrics-story-box" data-i18n="magazine.countdown.story">
+            自相遇的那一刻起，每一个寻常日子都因你而熠熠生辉。静候金秋十月，与您一同开启人生崭新盛典。
+          </div>
+
+          <div class="mag-page-curl-hint">✦ 翻页 →</div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           PAGE 03: LOOKBOOK SPREAD 1 (晨光油画)
+           ========================================== -->
+      <section class="mag-page" id="magPage3" data-page="3" data-density="soft" style="display:none;">
+        <div class="mag-page-inner">
+          <header class="mag-page-header">
+            <div>
+              <span class="mag-page-tag" data-i18n="magazine.lookbook.spread1Tag">LOOK 01 · MORNING SERENITY</span>
+              <h2 class="mag-page-title" data-i18n="magazine.lookbook.spread1Title">晨光油画 · 静谧心动</h2>
+            </div>
+            <span class="mag-page-num-top">PAGE 03</span>
+          </header>
+
+          <div class="mag-spread-img-box" id="spreadBox1">
+            <img class="mag-spread-img" src="./src/assets/images/indoor/1.png" alt="Lookbook Photo 1" />
+            <img class="mag-spread-img" src="./src/assets/images/indoor/2.png" alt="Lookbook Photo 2" style="display: none;" />
+            <img class="mag-spread-img" src="./src/assets/images/indoor/3.png" alt="Lookbook Photo 3" style="display: none;" />
+          </div>
+
+          <div class="mag-spread-dots-strip">
+            <span class="mag-spread-dot active"></span>
+            <span class="mag-spread-dot"></span>
+            <span class="mag-spread-dot"></span>
+          </div>
+
+          <p class="mag-spread-caption-quote" data-i18n="magazine.lookbook.spread1Quote">在油画般流淌的光影里，定格初遇的深情与温柔。</p>
+          <div class="mag-spread-tap-hint" data-i18n="magazine.lookbook.tapHint">✦ 轻触大片可切换多图 ✦</div>
+
+          <div class="mag-page-curl-hint">✦ 翻页 →</div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           PAGE 04: LOOKBOOK SPREAD 2 (绿茵光影)
+           ========================================== -->
+      <section class="mag-page" id="magPage4" data-page="4" data-density="soft" style="display:none;">
+        <div class="mag-page-inner">
+          <header class="mag-page-header">
+            <div>
+              <span class="mag-page-tag" data-i18n="magazine.lookbook.spread2Tag">LOOK 02 · SUNLIT FAIRWAY</span>
+              <h2 class="mag-page-title" data-i18n="magazine.lookbook.spread2Title">绿茵光影 · 奔赴明朗</h2>
+            </div>
+            <span class="mag-page-num-top">PAGE 04</span>
+          </header>
+
+          <div class="mag-spread-img-box" id="spreadBox2">
+            <img class="mag-spread-img" src="./src/assets/images/golf/1.png" alt="Lookbook Photo 4" />
+            <img class="mag-spread-img" src="./src/assets/images/golf/2.png" alt="Lookbook Photo 5" style="display: none;" />
+            <img class="mag-spread-img" src="./src/assets/images/golf/3.png" alt="Lookbook Photo 6" style="display: none;" />
+          </div>
+
+          <div class="mag-spread-dots-strip">
+            <span class="mag-spread-dot active"></span>
+            <span class="mag-spread-dot"></span>
+            <span class="mag-spread-dot"></span>
+          </div>
+
+          <p class="mag-spread-caption-quote" data-i18n="magazine.lookbook.spread2Quote">微风与晴空之下，笑意蔓延，心之所向皆是欢喜。</p>
+          <div class="mag-spread-tap-hint" data-i18n="magazine.lookbook.tapHint">✦ 轻触大片可切换多图 ✦</div>
+
+          <div class="mag-page-curl-hint">✦ 翻页 →</div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           PAGE 05: LOOKBOOK SPREAD 3 (庭阁长情)
+           ========================================== -->
+      <section class="mag-page" id="magPage5" data-page="5" data-density="soft" style="display:none;">
+        <div class="mag-page-inner">
+          <header class="mag-page-header">
+            <div>
+              <span class="mag-page-tag" data-i18n="magazine.lookbook.spread3Tag">LOOK 03 · TIMELESS COURTYARD</span>
+              <h2 class="mag-page-title" data-i18n="magazine.lookbook.spread3Title">庭阁深处 · 一生长情</h2>
+            </div>
+            <span class="mag-page-num-top">PAGE 05</span>
+          </header>
+
+          <div class="mag-spread-img-box" id="spreadBox3">
+            <img class="mag-spread-img" src="./src/assets/images/pavilion/1.png" alt="Lookbook Photo 7" />
+            <img class="mag-spread-img" src="./src/assets/images/pavilion/2.png" alt="Lookbook Photo 8" style="display: none;" />
+            <img class="mag-spread-img" src="./src/assets/images/pavilion/3.png" alt="Lookbook Photo 9" style="display: none;" />
+          </div>
+
+          <div class="mag-spread-dots-strip">
+            <span class="mag-spread-dot active"></span>
+            <span class="mag-spread-dot"></span>
+            <span class="mag-spread-dot"></span>
+          </div>
+
+          <p class="mag-spread-caption-quote" data-i18n="magazine.lookbook.spread3Quote">执子之手，定格长情，共赴往后每一个四季朝暮。</p>
+          <div class="mag-spread-tap-hint" data-i18n="magazine.lookbook.tapHint">✦ 轻触大片可切换多图 ✦</div>
+
+          <div class="mag-page-curl-hint">✦ 翻页 →</div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           PAGE 06: RUNWAY SCHEDULE (秀场时刻)
+           ========================================== -->
+      <section class="mag-page" id="magPage6" data-page="6" data-density="soft" style="display:none;">
+        <div class="mag-page-inner">
+          <header class="mag-page-header">
+            <div>
+              <span class="mag-page-tag" data-i18n="magazine.runway.tag">RUNWAY SCHEDULE · 秀场时刻</span>
+              <h2 class="mag-page-title" data-i18n="magazine.runway.title">婚礼流程日程</h2>
+            </div>
+            <span class="mag-page-num-top">PAGE 06</span>
+          </header>
+
+          <div class="mag-runway-timeline">
+            <div class="mag-runway-step">
+              <div class="mag-runway-step-time" data-i18n="magazine.runway.t1Time">11:00</div>
+              <div class="mag-runway-step-title" data-i18n="magazine.runway.t1Name">PRE-SHOW · 香槟迎宾</div>
+              <div class="mag-runway-step-desc" data-i18n="magazine.runway.t1Desc">签到入场，于迎宾区享用法式冷餐与香槟特调</div>
+            </div>
+
+            <div class="mag-runway-step">
+              <div class="mag-runway-step-time" data-i18n="magazine.runway.t2Time">11:58</div>
+              <div class="mag-runway-step-title" data-i18n="magazine.runway.t2Name">MAIN CEREMONY · 神圣典礼</div>
+              <div class="mag-runway-step-desc" data-i18n="magazine.runway.t2Desc">见山艺术厅内，新郎新娘步入华堂，誓言礼成</div>
+            </div>
+
+            <div class="mag-runway-step">
+              <div class="mag-runway-step-time" data-i18n="magazine.runway.t3Time">12:30</div>
+              <div class="mag-runway-step-title" data-i18n="magazine.runway.t3Name">GRAND BANQUET · 臻享婚宴</div>
+              <div class="mag-runway-step-desc" data-i18n="magazine.runway.t3Desc">品鉴高定婚宴美馔，举杯同庆良辰吉日</div>
+            </div>
+
+            <div class="mag-runway-step">
+              <div class="mag-runway-step-time" data-i18n="magazine.runway.t4Time">14:00</div>
+              <div class="mag-runway-step-title" data-i18n="magazine.runway.t4Name">AFTER PARTY · 庄园合影</div>
+              <div class="mag-runway-step-desc" data-i18n="magazine.runway.t4Desc">与新人合影留念，共度温馨午后时光</div>
+            </div>
+          </div>
+
+          <div class="mag-page-curl-hint">✦ 翻页 →</div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           PAGE 07: VIP ACCESS PASS & VENUE (贵宾票根与地图)
+           ========================================== -->
+      <section class="mag-page" id="magPage7" data-page="7" data-density="soft" style="display:none;">
+        <div class="mag-page-inner">
+          <header class="mag-page-header">
+            <div>
+              <span class="mag-page-tag" data-i18n="magazine.vipPass.tag">VIP ACCESS PASS · 贵宾席位</span>
+              <h2 class="mag-page-title" data-i18n="magazine.vipPass.title">盛宴席设与入场凭证</h2>
+            </div>
+            <span class="mag-page-num-top">PAGE 07</span>
+          </header>
+
+          <!-- VIP Ticket Frame -->
+          <div class="mag-vip-ticket-frame">
+            <div class="mag-vip-ticket-head">
+              <span class="mag-vip-pass-label" data-i18n="magazine.vipPass.passNo">PASS N° 20261018</span>
+              <span class="mag-vip-seat-tag" data-i18n="magazine.vipPass.seat">ROW A · FRONT SEAT</span>
+            </div>
+
+            <div class="mag-vip-dash-divider"></div>
+
+            <div class="mag-vip-ticket-content">
+              <div class="mag-vip-ticket-row">
+                <span class="mag-vip-row-label" data-i18n="magazine.vipPass.dateLabel">CEREMONY DATE</span>
+                <span class="mag-vip-row-val" data-i18n="magazine.vipPass.dateVal">2026年10月18日</span>
+                <span class="mag-vip-row-sub" data-i18n="magazine.vipPass.lunarVal">岁在丙午 农历九月初九 宜嫁娶</span>
+              </div>
+
+              <div class="mag-vip-ticket-row">
+                <span class="mag-vip-row-label" data-i18n="magazine.vipPass.timeLabel">RECEPTION TIME</span>
+                <span class="mag-vip-row-val" data-i18n="magazine.vipPass.timeVal">上午 11:58 启幕</span>
+              </div>
+
+              <div class="mag-vip-ticket-row">
+                <span class="mag-vip-row-label" data-i18n="magazine.vipPass.venueLabel">FASHION VENUE</span>
+                <span class="mag-vip-row-val" data-i18n="magazine.vipPass.venueVal">云境庄园 · 见山艺术厅</span>
+              </div>
+
+              <div class="mag-vip-ticket-row">
+                <span class="mag-vip-row-label" data-i18n="magazine.vipPass.addressLabel">OFFICIAL ADDRESS</span>
+                <span class="mag-vip-row-val" style="font-size: 0.8rem;" data-i18n="magazine.vipPass.addressVal">北京市朝阳区芳草地艺术中心8号</span>
+              </div>
+
+              <div class="mag-vip-action-btns">
+                <button class="btn-mag-ticket btn-mag-ticket-primary" id="btnMagNav" data-i18n="magazine.vipPass.navBtn">一键地图导航</button>
+                <button class="btn-mag-ticket btn-mag-ticket-secondary" id="btnMagCopy" data-i18n="magazine.vipPass.copyBtn">复制场地地址</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mag-page-curl-hint">✦ 翻页 →</div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           PAGE 08: COLOPHON & BACK COVER (封底制作群)
+           ========================================== -->
+      <section class="mag-page" id="magPage8" data-page="8" data-density="hard" style="display:none;">
+        <div class="mag-page-inner mag-colophon-body">
+          <header class="mag-page-header" style="width: 100%;">
+            <div>
+              <span class="mag-page-tag" data-i18n="magazine.colophon.tag">COLOPHON · 封底鸣谢</span>
+              <h2 class="mag-page-title" data-i18n="magazine.colophon.title">制作鸣谢</h2>
+            </div>
+            <span class="mag-page-num-top">PAGE 08</span>
+          </header>
+
+          <div class="mag-colophon-header-title" data-i18n="magazine.colophon.masthead">VOWS MAGAZINE · WEDDING ISSUE</div>
+
+          <div class="mag-colophon-credits">
+            <span data-i18n="magazine.colophon.editorInChief">主编 / 万卓洋 ＆ 张佳敏</span>
+            <span data-i18n="magazine.colophon.photo">视觉影像 / 云境庄园 · 见山艺术厅</span>
+            <span data-i18n="magazine.colophon.date">发行日期 / 2026年10月18日</span>
+          </div>
+
+          <p class="mag-colophon-blessing" data-i18n="magazine.colophon.blessing">感谢每一位出现在我们生命中的挚友亲朋，期待与您在秋日相见。</p>
+          <div class="mag-colophon-sign" data-i18n="magazine.colophon.signature">WAN ZHUOYANG & ZHANG JIAMIN</div>
+
+          <button class="btn-mag-flip-replay" id="btnMagFlipReplay" data-i18n="magazine.colophon.replayBtn">✦ 翻回封面重温 ✦</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Self-contained Magazine & Editorial JavaScript Bundle -->
+  <script src="./src/scripts/magazine-bundle.js"></script>
+</body>
+</html>

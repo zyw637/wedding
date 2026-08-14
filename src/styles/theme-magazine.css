@@ -1,0 +1,1164 @@
+/* ==========================================================================
+   MAGAZINE & EDITORIAL HIGH-FASHION THEME (3D FLIPBOOK E-MAGAZINE)
+   Featuring 3D Page-Flip Physics, Spine Crease Shadows, Runway Schedule & VIP Pass
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,600&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@300;400;600;700&display=swap');
+
+:root {
+  /* High-Fashion Palette */
+  --mag-bg: #100F0E;
+  --mag-bg-stage: #181614;
+  --mag-bg-paper: #FCFAF6;
+  --mag-bg-subtle: #F4EFE6;
+  --mag-bg-dark: #141414;
+
+  --mag-text-primary: #181614;
+  --mag-text-secondary: #4A4641;
+  --mag-text-muted: #8C857B;
+  --mag-text-light: #F9F7F2;
+
+  --mag-gold: #C2A566;
+  --mag-gold-dark: #8F7236;
+  --mag-gold-light: #F2E8D3;
+  --mag-gold-glow: rgba(194, 165, 102, 0.35);
+
+  --mag-border: #E8E2D6;
+  --mag-border-dark: #2C2C2C;
+  --mag-border-gold: rgba(194, 165, 102, 0.45);
+
+  /* Typography */
+  --font-mag-masthead: "Bodoni Moda", "Didot", "Cinzel", Georgia, serif;
+  --font-mag-serif: "Bodoni Moda", "Cormorant Garamond", Georgia, serif;
+  --font-mag-sans: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mag-cn: "Noto Serif SC", "Songti SC", "SimSun", serif;
+
+  /* Shadows */
+  --shadow-book: 0 25px 60px rgba(0, 0, 0, 0.6), 0 10px 25px rgba(0, 0, 0, 0.4);
+  --shadow-page: 0 15px 35px rgba(0, 0, 0, 0.12);
+  --shadow-photo: 0 10px 28px rgba(18, 18, 18, 0.14);
+
+  /* Safe Areas */
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--mag-bg);
+  color: var(--mag-text-primary);
+  font-family: var(--font-mag-cn);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.magazine-theme {
+  background-image:
+    radial-gradient(circle at 50% 30%, #221F1B 0%, #100F0E 75%),
+    linear-gradient(180deg, #181614 0%, #0D0C0B 100%);
+  background-attachment: fixed;
+}
+
+/* Interactive Canvas for Camera Flash & Starlight */
+#magCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* ===================================================
+   TOP FLOATING NAV CONTROLS
+   =================================================== */
+.mag-nav-bar {
+  position: fixed;
+  top: calc(var(--sat) + 10px);
+  left: 12px;
+  right: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 900;
+  pointer-events: none;
+}
+
+.mag-nav-group {
+  display: flex;
+  gap: 6px;
+  pointer-events: auto;
+}
+
+.mag-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 11px;
+  background: rgba(30, 28, 26, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  font-family: var(--font-mag-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #E8E2D6;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s ease;
+}
+
+.mag-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.mag-hud-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  background: rgba(30, 27, 24, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 999px;
+  font-family: var(--font-mag-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--mag-gold-light);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s ease;
+}
+
+.mag-hud-toggle-btn:hover {
+  border-color: var(--mag-gold);
+  background: rgba(45, 40, 35, 0.95);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+}
+
+.mag-hud-toggle-btn:active {
+  transform: scale(0.94);
+}
+
+.mag-hud-gear {
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+.mag-hud-toggle-btn:hover .mag-hud-gear {
+  transform: rotate(60deg);
+}
+
+.mag-music-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  background: rgba(20, 20, 20, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--mag-gold);
+  border-radius: 999px;
+  font-family: var(--font-mag-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--mag-gold-light);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  pointer-events: auto;
+  transition: all 0.25s ease;
+}
+
+.mag-music-btn:active {
+  transform: scale(0.94);
+}
+
+.mag-equalizer-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 11px;
+  width: 11px;
+}
+
+.mag-eq-bar {
+  width: 2.5px;
+  background: var(--mag-gold);
+  border-radius: 1px;
+  height: 3px;
+  transition: height 0.2s ease;
+}
+
+.mag-music-btn.playing .mag-eq-bar:nth-child(1) {
+  animation: eqBounce 0.65s ease infinite alternate;
+}
+.mag-music-btn.playing .mag-eq-bar:nth-child(2) {
+  animation: eqBounce 0.85s ease infinite alternate 0.2s;
+}
+.mag-music-btn.playing .mag-eq-bar:nth-child(3) {
+  animation: eqBounce 0.75s ease infinite alternate 0.4s;
+}
+
+@keyframes eqBounce {
+  0% { height: 3px; }
+  100% { height: 11px; }
+}
+
+/* ===================================================
+   3D REALISTIC BOOK FLIP VIEWPORT & STAGE
+   =================================================== */
+.mag-stage {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 2500px;
+  perspective-origin: 50% 50%;
+  padding: calc(var(--sat) + 44px) 14px calc(var(--sab) + 14px) 14px;
+  z-index: 100;
+  touch-action: none;
+}
+
+/* 3D Magazine Book Container with Authentic Bound Spine & Paper Thickness Stack */
+.mag-book {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  height: 100%;
+  max-height: 720px;
+  transform-style: preserve-3d;
+  perspective: 2500px;
+  perspective-origin: center center;
+  border-radius: 4px 8px 8px 4px;
+  touch-action: none;
+  /* Realistic 3D book thickness and stacked paper edge lines */
+  box-shadow:
+    -4px 0 10px rgba(0, 0, 0, 0.5), /* Hard spine shadow */
+    1px 1px 0 #E2DDD3,
+    2px 2px 0 #D5CFC3,
+    3px 3px 0 #CCC5B7,
+    4px 4px 0 #BFB7A7,
+    0 14px 35px rgba(0, 0, 0, 0.45),
+    0 30px 70px rgba(0, 0, 0, 0.65);
+}
+
+/* Left Book Spine Edge Trim */
+.mag-book::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -6px;
+  width: 10px;
+  background: linear-gradient(90deg, #181614 0%, #332F2A 50%, #24201C 100%);
+  border-radius: 4px 0 0 4px;
+  z-index: 500;
+  box-shadow: inset 1px 0 2px rgba(255, 255, 255, 0.12), 0 4px 10px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+/* ===================================================
+   3D BOOK PAGES (纯正左侧垂直书脊 3D 立体装订，双面透视)
+   =================================================== */
+.mag-page {
+  position: absolute;
+  inset: 0;
+  --mag-flip-wave: 0;
+  --mag-flip-progress: 0;
+  background: var(--mag-bg-paper);
+  border-radius: 2px 6px 6px 2px;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  overflow: visible;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  box-sizing: border-box;
+  touch-action: none;
+  isolation: isolate;
+  /* NO will-change on base — prevents mobile Safari from pre-rendering
+     GPU compositor layers for hidden pages, which causes ghosting overlay */
+}
+
+.mag-page.active,
+.mag-page.dragging,
+.mag-page.animating {
+  display: flex !important;
+  will-change: transform;
+}
+
+.mag-page.flipped,
+.mag-page.stack-below {
+  display: none !important;
+  will-change: auto;
+}
+
+.mag-page.under-next {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: none !important;
+  z-index: 80 !important;
+  will-change: auto;
+}
+
+/* Page Backside (Backface at 180deg for Double-Sided Rendering) */
+.mag-page-back {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0%, transparent 16%, rgba(255, 255, 255, 0.72) 46%, rgba(0, 0, 0, 0.04) 100%),
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.018) 0 1px, transparent 1px 7px),
+    var(--mag-bg-paper);
+  transform: rotateY(180deg) translate3d(0, 0, 1px);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 6px 2px 2px 6px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.04);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.mag-page-back::after {
+  content: 'VOWS';
+  font-family: var(--font-mag-serif);
+  font-size: 3.2rem;
+  letter-spacing: 12px;
+  color: rgba(0, 0, 0, 0.035);
+  font-weight: 700;
+}
+
+/* Dynamic Traveling Light & Curl Wave Overlay */
+.mag-paper-curl-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.08) 22%,
+    rgba(255, 255, 255, 0.5) 47%,
+    rgba(255, 255, 255, 0.18) 55%,
+    rgba(0, 0, 0, 0.2) 78%,
+    rgba(0, 0, 0, 0.36) 100%
+  );
+  background-size: 200% 100%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 85;
+  transform: translateZ(3px);
+  mix-blend-mode: multiply;
+}
+
+/* Free page edge glint and paper thickness during the turn */
+.mag-page-edge-highlight {
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  right: -3px;
+  width: 12px;
+  border-radius: 0 7px 7px 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.82) 34%, rgba(120, 96, 50, 0.3) 58%, rgba(0, 0, 0, 0.38) 100%);
+  box-shadow:
+    -2px 0 5px rgba(255, 255, 255, 0.28),
+    4px 0 12px rgba(0, 0, 0, 0.32);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 90;
+  transform: translateZ(5px);
+}
+
+/* Drop Shadow on Page Underneath */
+.mag-page-drop-shadow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 0% 50%, rgba(0, 0, 0, 0.38) 0%, rgba(0, 0, 0, 0.18) 28%, transparent 68%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.48) 0%, rgba(0, 0, 0, 0.18) 26%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 85;
+}
+
+/* Left Spine Crease Groove */
+.mag-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 32px;
+  background: linear-gradient(90deg, 
+    rgba(0, 0, 0, 0.32) 0%, 
+    rgba(0, 0, 0, 0.14) 8px, 
+    rgba(0, 0, 0, 0.04) 20px, 
+    transparent 100%
+  );
+  z-index: 80;
+  pointer-events: none;
+}
+
+/* Right Edge Page Trim */
+.mag-page::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.08) 0%, transparent 100%);
+  z-index: 80;
+  pointer-events: none;
+}
+
+/* Page States — display:none fully removes element from mobile compositor */
+.mag-page.active,
+.mag-page.dragging,
+.mag-page.animating {
+  display: flex !important;
+  transform: rotateY(0deg) translate3d(0, 0, 0);
+  opacity: 1 !important;
+  visibility: visible !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  pointer-events: auto !important;
+  z-index: 100 !important;
+  will-change: transform;
+}
+
+.mag-page.flipped,
+.mag-page.stack-below {
+  display: none !important;
+  will-change: auto;
+}
+
+.mag-page.dragging,
+.mag-page.animating {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 160 !important;
+  will-change: transform;
+}
+
+/* Scrollable Inner Page Content */
+.mag-page-inner {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 20px 18px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transform: translate3d(0, 0, 1px);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  scrollbar-width: thin;
+  scrollbar-color: var(--mag-gold) transparent;
+}
+
+.mag-page-inner::-webkit-scrollbar {
+  width: 3px;
+}
+.mag-page-inner::-webkit-scrollbar-thumb {
+  background-color: var(--mag-gold);
+  border-radius: 3px;
+}
+
+/* Corner Page Curl Hint */
+.mag-page-curl-hint {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mag-sans);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--mag-gold-dark);
+  text-transform: uppercase;
+  z-index: 85;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px 6px;
+  border-radius: 2px;
+  pointer-events: none;
+  animation: curlPulse 2s infinite ease-in-out;
+}
+
+@keyframes curlPulse {
+  0%, 100% { transform: translateX(0); opacity: 0.8; }
+  50% { transform: translateX(3px); opacity: 1; }
+}
+
+/* Universal Page Header & Tags */
+.mag-page-header {
+  border-bottom: 1.5px solid var(--mag-text-primary);
+  padding-bottom: 6px;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.mag-page-tag {
+  font-family: var(--font-mag-sans);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--mag-gold-dark);
+  text-transform: uppercase;
+}
+
+.mag-page-num-top {
+  font-family: var(--font-mag-sans);
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--mag-text-muted);
+}
+
+.mag-page-title {
+  font-family: var(--font-mag-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--mag-text-primary);
+  line-height: 1.25;
+  margin: 4px 0 2px 0;
+}
+
+/* ===================================================
+   PAGE 00: MAGAZINE COVER (封面特辑)
+   =================================================== */
+.mag-page-cover {
+  background: #FFFFFF;
+  padding: 18px 16px 14px 20px;
+  justify-content: space-between;
+}
+
+.mag-cover-top-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px solid var(--mag-text-primary);
+  padding-bottom: 4px;
+}
+
+.mag-cover-edition-tag {
+  font-family: var(--font-mag-sans);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--mag-text-primary);
+}
+
+.mag-cover-price-tag {
+  font-family: var(--font-mag-sans);
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: var(--mag-gold-dark);
+}
+
+.mag-masthead-title {
+  font-family: var(--font-mag-masthead);
+  font-size: clamp(3rem, 13vw, 4.2rem);
+  font-weight: 900;
+  letter-spacing: clamp(6px, 2.5vw, 10px);
+  text-align: center;
+  line-height: 0.95;
+  color: var(--mag-text-primary);
+  margin: 6px 0 4px 0;
+  text-transform: uppercase;
+}
+
+.mag-masthead-subtitle {
+  font-family: var(--font-mag-sans);
+  font-size: 0.56rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--mag-text-muted);
+  border-top: 1px solid var(--mag-border);
+  border-bottom: 1px solid var(--mag-border);
+  padding: 2px 0;
+  margin-bottom: 8px;
+}
+
+.mag-cover-hero-box {
+  position: relative;
+  flex: 1;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-photo);
+}
+
+.mag-cover-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+}
+
+.mag-cover-hero-grad {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.mag-cover-headline-wrap {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  right: 12px;
+  color: #FFFFFF;
+}
+
+.mag-cover-headline-main {
+  font-family: var(--font-mag-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #FFFFFF;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.mag-cover-footer-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.mag-barcode-strip {
+  height: 20px;
+  width: 72px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    #121212 0px,
+    #121212 2px,
+    transparent 2px,
+    transparent 4px,
+    #121212 4px,
+    #121212 5px,
+    transparent 5px,
+    transparent 8px,
+    #121212 8px,
+    #121212 10px
+  );
+}
+
+.btn-mag-cover-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 14px;
+  background: var(--mag-text-primary);
+  border: 1px solid var(--mag-gold);
+  border-radius: 2px;
+  color: var(--mag-gold-light);
+  font-family: var(--font-mag-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  animation: magPulse 2s infinite ease-in-out;
+}
+
+@keyframes magPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(194, 165, 102, 0.45); }
+  50% { box-shadow: 0 0 0 7px rgba(194, 165, 102, 0); }
+}
+
+/* ===================================================
+   PAGE 01: EDITOR'S LETTER (卷首特稿)
+   =================================================== */
+.mag-drop-cap-paragraph {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--mag-text-secondary);
+  text-align: justify;
+  margin-bottom: 10px;
+}
+
+.mag-big-drop-cap {
+  float: left;
+  font-family: var(--font-mag-masthead);
+  font-size: 3.2rem;
+  line-height: 0.8;
+  padding-top: 4px;
+  padding-right: 8px;
+  color: var(--mag-gold-dark);
+  font-weight: 900;
+}
+
+.mag-editorial-quote-card {
+  margin-top: 14px;
+  padding: 14px;
+  background: var(--mag-bg-subtle);
+  border-left: 3px solid var(--mag-gold);
+  border-radius: 0 3px 3px 0;
+}
+
+.mag-editorial-quote-text {
+  font-family: var(--font-mag-serif);
+  font-size: 0.92rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--mag-text-primary);
+  line-height: 1.55;
+}
+
+.mag-editorial-author {
+  font-family: var(--font-mag-sans);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--mag-text-muted);
+  margin-top: 6px;
+  display: block;
+}
+
+/* ===================================================
+   PAGE 02: TIME & METRICS (倒计时与档案)
+   =================================================== */
+.mag-countdown-grid-box {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin: 12px 0 16px 0;
+}
+
+.mag-countdown-cell {
+  background: var(--mag-bg-dark);
+  border: 1px solid var(--mag-border-dark);
+  border-radius: 3px;
+  padding: 10px 2px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mag-countdown-val {
+  font-family: var(--font-mag-sans);
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--mag-gold-light);
+  font-variant-numeric: tabular-nums;
+}
+
+.mag-countdown-lbl {
+  font-family: var(--font-mag-sans);
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--mag-text-muted);
+  margin-top: 3px;
+}
+
+.mag-metrics-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  border-top: 1px solid var(--mag-border);
+  padding-top: 12px;
+  margin-bottom: 14px;
+}
+
+.mag-metrics-item {
+  text-align: center;
+}
+
+.mag-metrics-item-lbl {
+  font-family: var(--font-mag-sans);
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--mag-text-muted);
+  display: block;
+}
+
+.mag-metrics-item-val {
+  font-family: var(--font-mag-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--mag-gold-dark);
+}
+
+.mag-metrics-story-box {
+  background: var(--mag-bg-subtle);
+  border-radius: 3px;
+  padding: 12px;
+  font-size: 0.82rem;
+  color: var(--mag-text-secondary);
+  line-height: 1.65;
+  border: 1px solid var(--mag-border);
+}
+
+/* ===================================================
+   PAGES 03, 04, 05: LOOKBOOK SPREADS (画报大片)
+   =================================================== */
+.mag-spread-img-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 4.8;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: var(--shadow-photo);
+  background-color: var(--mag-bg-subtle);
+  cursor: pointer;
+}
+
+.mag-spread-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease, transform 0.6s ease;
+}
+
+.mag-spread-dots-strip {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.mag-spread-dot {
+  width: 20px;
+  height: 3px;
+  background: var(--mag-border);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mag-spread-dot.active {
+  background: var(--mag-gold-dark);
+  width: 32px;
+}
+
+.mag-spread-caption-quote {
+  font-size: 0.84rem;
+  color: var(--mag-text-secondary);
+  line-height: 1.65;
+  text-align: center;
+  margin-top: 10px;
+  padding: 0 4px;
+}
+
+.mag-spread-tap-hint {
+  font-family: var(--font-mag-sans);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: var(--mag-text-muted);
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* ===================================================
+   PAGE 06: RUNWAY SCHEDULE (秀场时刻表)
+   =================================================== */
+.mag-runway-timeline {
+  position: relative;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.mag-runway-timeline::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 5px;
+  width: 1.5px;
+  background: linear-gradient(180deg, var(--mag-gold) 0%, var(--mag-border) 100%);
+}
+
+.mag-runway-step {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.mag-runway-step:last-child {
+  margin-bottom: 0;
+}
+
+.mag-runway-step::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: -20px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--mag-bg-paper);
+  border: 2.5px solid var(--mag-gold);
+}
+
+.mag-runway-step-time {
+  font-family: var(--font-mag-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--mag-gold-dark);
+}
+
+.mag-runway-step-title {
+  font-family: var(--font-mag-serif);
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--mag-text-primary);
+  margin: 1px 0;
+}
+
+.mag-runway-step-desc {
+  font-size: 0.78rem;
+  color: var(--mag-text-secondary);
+  line-height: 1.5;
+}
+
+/* ===================================================
+   PAGE 07: VIP ACCESS PASS (贵宾票根与地图)
+   =================================================== */
+.mag-vip-ticket-frame {
+  background: #FFFFFF;
+  border-radius: 4px;
+  border: 1px solid var(--mag-border);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+.mag-vip-ticket-head {
+  background: var(--mag-bg-dark);
+  color: #FFFFFF;
+  padding: 12px 14px 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mag-vip-pass-label {
+  font-family: var(--font-mag-sans);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--mag-gold-light);
+}
+
+.mag-vip-seat-tag {
+  font-family: var(--font-mag-sans);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: var(--mag-gold);
+  color: #121212;
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+.mag-vip-dash-divider {
+  border-top: 1.5px dashed var(--mag-border);
+  margin: 8px 12px;
+}
+
+.mag-vip-ticket-content {
+  padding: 4px 14px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mag-vip-ticket-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.mag-vip-row-label {
+  font-family: var(--font-mag-sans);
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--mag-text-muted);
+  text-transform: uppercase;
+}
+
+.mag-vip-row-val {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--mag-text-primary);
+}
+
+.mag-vip-row-sub {
+  font-size: 0.74rem;
+  color: var(--mag-gold-dark);
+}
+
+.mag-vip-action-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.btn-mag-ticket {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 10px;
+  border-radius: 2px;
+  font-family: var(--font-mag-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.btn-mag-ticket-primary {
+  background: var(--mag-text-primary);
+  color: var(--mag-gold-light);
+  border-color: var(--mag-gold);
+}
+
+.btn-mag-ticket-secondary {
+  background: var(--mag-bg-subtle);
+  color: var(--mag-text-primary);
+  border-color: var(--mag-border);
+}
+
+.btn-mag-ticket:active {
+  transform: scale(0.95);
+}
+
+/* ===================================================
+   PAGE 08: COLOPHON & BACK COVER (封底制作群)
+   =================================================== */
+.mag-colophon-body {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding-bottom: 10px;
+}
+
+.mag-colophon-header-title {
+  font-family: var(--font-mag-masthead);
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: var(--mag-text-primary);
+  text-transform: uppercase;
+}
+
+.mag-colophon-credits {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.76rem;
+  color: var(--mag-text-secondary);
+  margin: 10px 0;
+}
+
+.mag-colophon-blessing {
+  font-size: 0.85rem;
+  color: var(--mag-text-secondary);
+  line-height: 1.65;
+  max-width: 290px;
+  margin: 8px 0;
+}
+
+.mag-colophon-sign {
+  font-family: var(--font-mag-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--mag-gold-dark);
+}
+
+.btn-mag-flip-replay {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 20px;
+  background: transparent;
+  border: 1px solid var(--mag-gold);
+  border-radius: 999px;
+  font-family: var(--font-mag-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--mag-gold-dark);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-top: 10px;
+}
+
+.btn-mag-flip-replay:active {
+  background: var(--mag-gold-light);
+  transform: scale(0.96);
+}
+
+/* Toast Message */
+.mag-toast {
+  position: fixed;
+  bottom: calc(var(--sab) + 24px);
+  left: 50%;
+  transform: translateX(-50%) translateY(50px);
+  background: rgba(20, 20, 20, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--mag-gold);
+  color: var(--mag-gold-light);
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-family: var(--font-mag-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  z-index: 99999;
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+}
+
+.mag-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
