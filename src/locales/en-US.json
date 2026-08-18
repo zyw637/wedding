@@ -86,6 +86,16 @@
     "musicPause": "Pause Music",
     "pageIndicator": "Scene {current} / {total}"
   },
+  "calendar": {
+    "saveDateHeader": "SAVE THE DATE",
+    "year": "ANNO DOMINI · MMXXVI",
+    "weekday": "SATURDAY",
+    "countdownTitle": "COUNTDOWN TO OUR BIG DAY",
+    "days": "DAYS",
+    "hours": "HOURS",
+    "minutes": "MINS",
+    "seconds": "SECS"
+  },
   "nav": {
     "switchFilm": "🎞️ Film Style",
     "switchFrench": "🍾 French Style",

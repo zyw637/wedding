@@ -86,6 +86,16 @@
     "musicPause": "暂停音乐",
     "pageIndicator": "第 {current} / {total} 幕"
   },
+  "calendar": {
+    "saveDateHeader": "SAVE THE DATE · 婚礼吉日",
+    "year": "ANNO DOMINI · MMXXVI",
+    "weekday": "SATURDAY · 星期六",
+    "countdownTitle": "奔赴良辰 · 倒计时",
+    "days": "天",
+    "hours": "时",
+    "minutes": "分",
+    "seconds": "秒"
+  },
   "nav": {
     "switchFilm": "🎞️ 电影风",
     "switchFrench": "🍾 法式风",

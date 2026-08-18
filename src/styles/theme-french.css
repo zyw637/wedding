@@ -298,6 +298,10 @@ body.french-locked {
   pointer-events: none;
 }
 
+.french-nav-spacer {
+  flex: 1;
+}
+
 .french-nav-btn {
   pointer-events: auto;
   display: inline-flex;
@@ -439,8 +443,241 @@ body.french-locked {
    02. VINTAGE FRENCH CALENDAR & COUNTDOWN (手撕日历与倒计时)
    =================================================== */
 .calendar-card {
+  padding: 30px 18px 28px;
+  background: radial-gradient(circle at 50% 0%, #FFFFFF 0%, #FAF6EE 100%);
+  border: 1px solid var(--french-border);
+  box-shadow: 0 16px 45px rgba(60, 45, 30, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 4 Rococo Corner Embellishments */
+.rococo-corner-accent {
+  position: absolute;
+  color: var(--french-gold);
+  font-size: 1rem;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.rococo-corner-accent.top-left { top: 10px; left: 12px; }
+.rococo-corner-accent.top-right { top: 10px; right: 12px; }
+.rococo-corner-accent.bottom-left { bottom: 10px; left: 12px; }
+.rococo-corner-accent.bottom-right { bottom: 10px; right: 12px; }
+
+/* Chateau Arch Masterpiece Window */
+.chateau-arch-masterpiece {
+  width: 100%;
+  max-width: 330px;
+  margin: 0 auto 18px;
+  position: relative;
+}
+
+.arch-top-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.arch-top-badge::before,
+.arch-top-badge::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(182, 141, 76, 0.6));
+}
+
+.arch-top-badge::after {
+  background: linear-gradient(90deg, rgba(182, 141, 76, 0.6), transparent);
+}
+
+.badge-title {
+  font-family: var(--font-serif-title);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: var(--french-gold-dark);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.arch-window-body {
+  background: #FFFDF9;
+  border: 1px solid rgba(182, 141, 76, 0.42);
+  border-radius: 6px;
+  padding: 20px 14px 18px;
+  box-shadow: 0 8px 25px rgba(60, 45, 30, 0.06), inset 0 0 0 1px rgba(255, 255, 255, 0.95);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.arch-window-body::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(182, 141, 76, 0.16);
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.arch-roman-epoch {
+  font-family: var(--font-serif-title);
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  color: var(--french-gold-dark);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.arch-hero-date {
+  font-family: var(--font-serif-title);
+  font-size: clamp(2.25rem, 8vw, 2.9rem);
+  font-weight: 600;
+  color: var(--french-text-main);
+  line-height: 1.05;
+  letter-spacing: 0.05em;
+  margin: 3px 0 7px;
+  text-shadow: 0 1px 2px rgba(60, 45, 30, 0.08);
+}
+
+.arch-meta-subrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  letter-spacing: 0.12em;
+  color: var(--french-text-secondary);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.arch-sub-dot {
+  color: var(--french-gold);
+  font-size: 0.65rem;
+}
+
+/* Champagne Silk Ribbon for Lunar Date */
+.arch-lunar-ribbon {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(244, 231, 227, 0.58);
+  border: 0;
+  border-radius: 2px;
+  padding: 5px 12px;
+}
+
+.ribbon-text {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  color: var(--french-text-secondary);
+  font-weight: 600;
+}
+
+/* Countdown Section Divider */
+.french-countdown-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 19px 0 12px;
+}
+
+.divider-branch {
+  flex: 1;
+  max-width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(182, 141, 76, 0.4));
+}
+
+.divider-branch:last-child {
+  background: linear-gradient(90deg, rgba(182, 141, 76, 0.4), transparent);
+}
+
+.divider-title {
+  font-family: var(--font-serif-cn);
+  font-size: 0.85rem;
+  letter-spacing: 0.22em;
+  color: #8e5f65;
+  font-weight: 600;
+}
+
+.french-countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: 100%;
+  padding: 15px 4px 13px;
+  background: rgba(255, 253, 249, 0.76);
+  border-top: 1px solid rgba(182, 141, 76, 0.34);
+  border-bottom: 1px solid rgba(182, 141, 76, 0.34);
+}
+
+.french-countdown-box {
+  min-width: 0;
+  padding: 2px 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.french-countdown-box:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: 0;
+  bottom: 5px;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(182, 141, 76, 0.4), transparent);
+}
+
+.french-countdown-num {
+  font-family: var(--font-serif-title);
+  font-size: clamp(1.7rem, 6vw, 2.1rem);
+  font-weight: 500;
+  color: #4f403a;
+  line-height: 1.1;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.french-countdown-unit-badge {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.2;
+}
+
+.unit-text {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: #8e5f65;
+  font-weight: 600;
+}
+
+.unit-sub {
+  font-family: var(--font-serif-title);
+  font-size: 0.52rem;
+  letter-spacing: 0.12em;
+  color: #aa9b92;
+  font-weight: 600;
+}
+
+.countdown-box-active {
+  color: inherit;
+}
+
+/* Original calendar and countdown presentation */
+.calendar-card {
   padding: 32px 18px;
   background: linear-gradient(180deg, #FFFFFF 0%, #FAF7F0 100%);
+  border: 1px solid var(--french-border);
+  box-shadow: var(--shadow-card);
+  overflow: visible;
 }
 
 .calendar-arch-window {
@@ -486,14 +723,19 @@ body.french-locked {
   color: var(--french-text-secondary);
 }
 
-/* 4 Countdown Blocks */
 .french-countdown-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+  width: auto;
+  padding: 0;
+  background: transparent;
+  border: 0;
 }
 
 .french-countdown-box {
+  min-width: 0;
+  position: static;
   background: #FFF;
   border: 1px solid var(--french-border);
   border-radius: 6px;
@@ -502,6 +744,10 @@ body.french-locked {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.french-countdown-box:not(:last-child)::after {
+  content: none;
 }
 
 .french-countdown-num {
@@ -609,6 +855,7 @@ body.french-locked {
   color: var(--french-text-secondary);
   line-height: 1.8;
   padding: 4px 10px;
+  white-space: pre-line;
 }
 
 .showcase-swipe-hint {
