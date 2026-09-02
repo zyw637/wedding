@@ -454,8 +454,8 @@
     constructor() {
       this.isPlaying = false;
       this.synthContext = null;
-      this.timerId = null;
-      this.noteIndex = 0;
+      this.audioUrl = './src/assets/森系阳光.mp3';
+      this.audioEl = null;
 
       this.musicBtn = document.getElementById('magMusicBtn');
       if (this.musicBtn) {
@@ -472,6 +472,12 @@
       if (this.synthContext.state === 'suspended') {
         this.synthContext.resume();
       }
+      if (!this.audioEl) {
+        this.audioEl = new Audio();
+        this.audioEl.src = this.audioUrl;
+        this.audioEl.loop = true;
+        this.audioEl.preload = 'auto';
+      }
     }
 
     toggle() {
@@ -484,78 +490,22 @@
 
     play() {
       this.initAudio();
-      if (!this.synthContext) return;
+      if (!this.audioEl) return;
       this.isPlaying = true;
       if (this.musicBtn) {
         this.musicBtn.classList.add('playing');
       }
-      this.startMelodyLoop();
+      this.audioEl.play().catch(() => {});
     }
 
     stop() {
       this.isPlaying = false;
-      if (this.timerId) {
-        clearInterval(this.timerId);
-        this.timerId = null;
+      if (this.audioEl) {
+        this.audioEl.pause();
       }
       if (this.musicBtn) {
         this.musicBtn.classList.remove('playing');
       }
-    }
-
-    startMelodyLoop() {
-      const chords = [
-        [349.23, 440.00, 523.25, 659.25], // Fmaj7
-        [392.00, 493.88, 587.33, 698.46], // G7
-        [329.63, 392.00, 493.88, 587.33], // Em7
-        [440.00, 523.25, 659.25, 783.99], // Am7
-        [293.66, 349.23, 440.00, 523.25], // Dm7
-        [392.00, 493.88, 587.33, 698.46], // G7
-        [261.63, 329.63, 392.00, 493.88], // Cmaj7
-        [261.63, 392.00, 523.25, 659.25]  // Cadd9
-      ];
-
-      const playChord = () => {
-        if (!this.isPlaying || !this.synthContext) return;
-        const chord = chords[this.noteIndex % chords.length];
-        this.noteIndex++;
-
-        chord.forEach((freq, idx) => {
-          setTimeout(() => {
-            if (!this.isPlaying) return;
-            this.playTone(freq, 2.2, 0.08);
-          }, idx * 160);
-        });
-      };
-
-      playChord();
-      this.timerId = setInterval(playChord, 2400);
-    }
-
-    playTone(frequency, duration, volume) {
-      if (!this.synthContext) return;
-      const ctx = this.synthContext;
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      const filter = ctx.createBiquadFilter();
-
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(frequency, ctx.currentTime);
-
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(1400, ctx.currentTime);
-      filter.frequency.exponentialRampToValueAtTime(300, ctx.currentTime + duration);
-
-      gain.gain.setValueAtTime(0.001, ctx.currentTime);
-      gain.gain.linearRampToValueAtTime(volume, ctx.currentTime + 0.08);
-      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
-
-      osc.connect(filter);
-      filter.connect(gain);
-      gain.connect(ctx.destination);
-
-      osc.start(ctx.currentTime);
-      osc.stop(ctx.currentTime + duration);
     }
 
     playPageFlipSound() {

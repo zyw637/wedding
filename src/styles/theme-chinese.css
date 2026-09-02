@@ -323,12 +323,26 @@ body.chinese-locked {
 }
 
 .chinese-music-btn .music-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
   color: var(--ch-gold-bright);
-  font-size: 0.9rem;
+  animation: spinMusic 3s linear infinite;
+  animation-play-state: paused;
+}
+
+/* Circular icon-only music toggle */
+.chinese-music-btn {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .chinese-music-btn.playing .music-icon {
-  animation: spinMusic 3s linear infinite;
+  animation-play-state: running;
 }
 
 @keyframes spinMusic {

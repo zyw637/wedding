@@ -218,7 +218,7 @@
   /* --- 3. GUZHENG & PENTATONIC AUDIO SYNTHESIZER --- */
   class ChineseAudioPlayer {
     constructor() {
-      this.audioUrl = 'https://assets.mixkit.co/music/preview/mixkit-chinese-new-year-lantern-festival-117.mp3';
+      this.audioUrl = './src/assets/森系阳光.mp3';
       this.isPlaying = false;
       this.audioEl = null;
       this.synthContext = null;

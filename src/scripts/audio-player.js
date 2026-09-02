@@ -4,7 +4,7 @@
  */
 export class AudioPlayer {
   constructor(options = {}) {
-    this.audioUrl = options.audioUrl || 'https://assets.mixkit.co/music/preview/mixkit-wedding-piano-and-strings-1002.mp3';
+    this.audioUrl = options.audioUrl || './src/assets/森系阳光.mp3';
     this.isPlaying = false;
     this.audioEl = null;
     this.synthContext = null;

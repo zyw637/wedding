@@ -62,20 +62,14 @@
       swipeHint: "← 左右滑动 翻阅多图 →",
     },
     itinerary: {
-      tag: "SCHEDULE",
-      title: "婚礼当日流程",
-      t1Time: "11:00",
-      t1Name: "晨光迎宾 · 香槟冷餐",
-      t1Desc: "签到入场，于庄园迎宾区享用法式香槟与甜品",
-      t2Time: "11:58",
-      t2Name: "神圣典礼 · 誓言礼成",
-      t2Desc: "见山艺术厅内，共同见证浪漫誓约开启",
-      t3Time: "12:30",
-      t3Name: "臻享喜宴 · 举杯共庆",
-      t3Desc: "品味定制婚宴珍馐，传递温情与祝福",
-      t4Time: "14:00",
-      t4Name: "敬茶答谢 · 庄园合影",
-      t4Desc: "与挚爱亲友合影定格永恒记忆",
+      tag: "A DAY TOGETHER",
+      title: "相聚一席",
+      t1Time: "ARRIVE",
+      t1Name: "如约而至 · 入席相聚",
+      t2Time: "CEREMONY",
+      t2Name: "共候礼启 · 见证良缘",
+      t3Time: "CELEBRATE",
+      t3Name: "礼成开席 · 举杯同庆",
     },
     location: {
       tag: "LOCATION & BANQUET",
@@ -104,6 +98,95 @@
   };
 
   /* --- 2. ROMANTIC FRENCH ROSE PETAL PHYSICS ENGINE (真实 3D 玫瑰花瓣) --- */
+  // Six petal silhouettes extracted from src/assets/svg/petal*.svg (iconfont paths)
+  const PETAL_SHAPE_DEFS = [
+    {
+      // petal.svg
+      vw: 1024,
+      vh: 1024,
+      d: "M280.756486 46.639688s-334.406562 635.232549 100.275329 902.944358c300.825987 167.43648 377.315075 0 377.315075 0s157.642145 33.580575 90.947391-234.131233S548.468294 447.741004 448.192965 247.190346C371.703877 94.678566 347.917636-87.216216 280.756486 46.639688z",
+    },
+    {
+      // petal2.svg
+      vw: 1436,
+      vh: 1024,
+      d: "M1.630573 18.47983s-38.046709 229.367304 267.414013 420.144374c-38.046709 114.683652 152.730361 267.414013 344.050955 305.460722 169.036093 33.698514 697.88535 97.834395 790.284501 270.675159 8.152866 14.675159 29.350318 10.326964 30.980892-6.522293C1474.038217 601.681529 787.566879-124.467091 1.630573 18.47983z",
+    },
+    {
+      // petal3.svg
+      vw: 1024,
+      vh: 1024,
+      d: "M311.600954 0s0 59.337748 214.463576 133.086093 509.033113 459.019868 227.602649 784.529801S112.819497 740.450331 158.594331 459.019868 298.461881 162.754967 311.600954 0z",
+    },
+    {
+      // petal4.svg
+      vw: 1295,
+      vh: 1024,
+      d: "M1295.918625 828.786383S418.328837-339.880851 126.379901 98.478298-20.030311 1413.555745 1295.918625 828.786383z",
+    },
+    {
+      // petal5.svg
+      vw: 1323,
+      vh: 1024,
+      d: "M476.013031 268.077231s243.764738-364.687403 486.889673-243.124935 730.65441 852.216878-121.562468 974.419148S-132.439109 755.606706 110.685826 633.404436C354.450563 511.841969 476.013031 268.077231 476.013031 268.077231z",
+    },
+    {
+      // petal6.svg
+      vw: 1375,
+      vh: 1024,
+      d: "M0.416794 1024s-33.747954-809.950901 506.219313-978.690672 978.690672 168.739771 843.698855 438.723405c-438.723405-101.243863-1046.18658 67.495908-1349.918168 539.967267z",
+    },
+  ];
+
+  // Five French garden rose color themes (shared by all petal shapes)
+  const PETAL_PALETTES = [
+    {
+      // Damask Rose Velvet
+      base: "rgba(255, 235, 240, ",
+      core: "rgba(215, 60, 85, ",
+      mid: "rgba(240, 110, 130, ",
+      tip: "rgba(255, 225, 232, ",
+      shadow: "rgba(165, 35, 55, 0.28)",
+      highlight: "rgba(255, 240, 245, 0.65)",
+    },
+    {
+      // French Blush Pink
+      base: "rgba(255, 242, 245, ",
+      core: "rgba(230, 95, 120, ",
+      mid: "rgba(248, 155, 175, ",
+      tip: "rgba(255, 238, 242, ",
+      shadow: "rgba(185, 65, 85, 0.25)",
+      highlight: "rgba(255, 245, 248, 0.6)",
+    },
+    {
+      // Champagne Coral Rose
+      base: "rgba(255, 246, 238, ",
+      core: "rgba(235, 115, 100, ",
+      mid: "rgba(252, 170, 160, ",
+      tip: "rgba(255, 238, 232, ",
+      shadow: "rgba(180, 75, 65, 0.25)",
+      highlight: "rgba(255, 248, 242, 0.65)",
+    },
+    {
+      // Provence Crimson Velvet
+      base: "rgba(250, 220, 228, ",
+      core: "rgba(178, 38, 62, ",
+      mid: "rgba(215, 75, 100, ",
+      tip: "rgba(248, 195, 208, ",
+      shadow: "rgba(140, 25, 45, 0.32)",
+      highlight: "rgba(255, 235, 242, 0.7)",
+    },
+    {
+      // Ivory Peony Rose with blush glow
+      base: "rgba(255, 255, 255, ",
+      core: "rgba(245, 185, 198, ",
+      mid: "rgba(255, 228, 234, ",
+      tip: "rgba(255, 255, 255, ",
+      shadow: "rgba(195, 125, 140, 0.2)",
+      highlight: "rgba(255, 255, 255, 0.75)",
+    },
+  ];
+
   class PetalPhysicsEngine {
     constructor() {
       this.canvas = document.getElementById("petalCanvas");
@@ -112,6 +195,12 @@
       this.petals = [];
       this.width = window.innerWidth;
       this.height = window.innerHeight;
+      this.petalShapes = PETAL_SHAPE_DEFS.map((def) => ({
+        path: new Path2D(def.d),
+        vw: def.vw,
+        vh: def.vh,
+      }));
+      this.buildSpriteCache();
 
       this.resize();
       window.addEventListener("resize", () => this.resize());
@@ -123,9 +212,57 @@
     resize() {
       this.width = window.innerWidth;
       this.height = window.innerHeight;
-      this.canvas.width = this.width * window.devicePixelRatio;
-      this.canvas.height = this.height * window.devicePixelRatio;
-      this.ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      // Cap DPR at 2 and use setTransform to avoid compounding scale on resize
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      this.canvas.width = this.width * dpr;
+      this.canvas.height = this.height * dpr;
+      this.canvas.style.width = this.width + "px";
+      this.canvas.style.height = this.height + "px";
+      this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    // Pre-render every shape × palette combo once (gradient, rim & soft shadow
+    // baked in) so the animation loop only does cheap drawImage calls.
+    buildSpriteCache() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const maxPx = 52; // largest petal display size
+      this.spriteCache = this.petalShapes.map((shape) =>
+        PETAL_PALETTES.map((palette) => {
+          const s = (maxPx * dpr) / shape.vh;
+          const cv = document.createElement("canvas");
+          cv.width = Math.ceil(shape.vw * s);
+          cv.height = Math.ceil(shape.vh * s);
+          const c = cv.getContext("2d");
+          const inv = 1 / s;
+
+          const grad = c.createRadialGradient(
+            shape.vw * 0.5,
+            shape.vh * 0.55,
+            shape.vh * 0.06,
+            shape.vw * 0.5,
+            shape.vh * 0.5,
+            Math.max(shape.vw, shape.vh) * 0.62,
+          );
+          grad.addColorStop(0, palette.core + "0.96)");
+          grad.addColorStop(0.5, palette.mid + "0.9)");
+          grad.addColorStop(0.88, palette.tip + "0.85)");
+          grad.addColorStop(1, palette.tip + "0.35)");
+
+          c.scale(s, s);
+          c.shadowColor = palette.shadow;
+          c.shadowBlur = 5 * inv;
+          c.shadowOffsetY = 2 * inv;
+          c.fillStyle = grad;
+          c.fill(shape.path);
+
+          c.shadowColor = "transparent";
+          c.strokeStyle = palette.highlight;
+          c.lineWidth = 0.8 * inv;
+          c.stroke(shape.path);
+
+          return cv;
+        }),
+      );
     }
 
     initAmbientPetals() {
@@ -142,57 +279,8 @@
     }
 
     createPetal(x, y, ambient = false) {
-      // Natural French garden rose color themes
-      const palettes = [
-        {
-          // Damask Rose Velvet
-          base: "rgba(255, 235, 240, ",
-          core: "rgba(215, 60, 85, ",
-          mid: "rgba(240, 110, 130, ",
-          tip: "rgba(255, 225, 232, ",
-          shadow: "rgba(165, 35, 55, 0.28)",
-          highlight: "rgba(255, 240, 245, 0.65)",
-        },
-        {
-          // French Blush Pink
-          base: "rgba(255, 242, 245, ",
-          core: "rgba(230, 95, 120, ",
-          mid: "rgba(248, 155, 175, ",
-          tip: "rgba(255, 238, 242, ",
-          shadow: "rgba(185, 65, 85, 0.25)",
-          highlight: "rgba(255, 245, 248, 0.6)",
-        },
-        {
-          // Champagne Coral Rose
-          base: "rgba(255, 246, 238, ",
-          core: "rgba(235, 115, 100, ",
-          mid: "rgba(252, 170, 160, ",
-          tip: "rgba(255, 238, 232, ",
-          shadow: "rgba(180, 75, 65, 0.25)",
-          highlight: "rgba(255, 248, 242, 0.65)",
-        },
-        {
-          // Provence Crimson Velvet
-          base: "rgba(250, 220, 228, ",
-          core: "rgba(178, 38, 62, ",
-          mid: "rgba(215, 75, 100, ",
-          tip: "rgba(248, 195, 208, ",
-          shadow: "rgba(140, 25, 45, 0.32)",
-          highlight: "rgba(255, 235, 242, 0.7)",
-        },
-        {
-          // Ivory Peony Rose with blush glow
-          base: "rgba(255, 255, 255, ",
-          core: "rgba(245, 185, 198, ",
-          mid: "rgba(255, 228, 234, ",
-          tip: "rgba(255, 255, 255, ",
-          shadow: "rgba(195, 125, 140, 0.2)",
-          highlight: "rgba(255, 255, 255, 0.75)",
-        },
-      ];
-
-      const palette = palettes[Math.floor(Math.random() * palettes.length)];
-      const type = Math.floor(Math.random() * 2); // Two naturally asymmetric rose-petal silhouettes
+      const paletteIndex = Math.floor(Math.random() * PETAL_PALETTES.length);
+      const type = Math.floor(Math.random() * PETAL_SHAPE_DEFS.length); // Six SVG petal silhouettes, uniformly random
       const size = ambient
         ? Math.random() * 8 + 10
         : Math.random() * 10 + 13;
@@ -205,7 +293,7 @@
         size: size,
         type: type,
         aspectRatio: Math.random() * 0.14 + 0.88,
-        palette: palette,
+        paletteIndex: paletteIndex,
 
         // 3D rotations
         rotation: Math.random() * Math.PI * 2,
@@ -227,6 +315,8 @@
     }
 
     spawnTouchPetals(x, y, count = 8) {
+      // Hard cap to keep the animation loop cheap on long gestures
+      if (this.petals.length > 80) return;
       for (let i = 0; i < count; i++) {
         const p = this.createPetal(
           x + (Math.random() - 0.5) * 36,
@@ -257,8 +347,9 @@
     }
 
     drawRosePetal(p) {
-      const w = p.size * 0.56 * p.aspectRatio;
-      const h = p.size * 1.08;
+      const shape = this.petalShapes[p.type];
+      const sprite = this.spriteCache[p.type][p.paletteIndex];
+      const scale = p.size / shape.vh; // fit petal height to p.size
 
       // 3D projections: roll (width flip) & pitch (height tilt)
       const scaleX = Math.cos(p.rollAngle);
@@ -266,91 +357,20 @@
       const effScaleX =
         Math.abs(scaleX) < 0.08 ? 0.08 * Math.sign(scaleX || 1) : scaleX;
 
-      this.ctx.save();
-      this.ctx.globalAlpha = Math.max(0, p.alpha);
-      this.ctx.translate(p.x, p.y);
-      this.ctx.rotate(p.rotation);
-      this.ctx.scale(effScaleX, scaleY);
-
-      // Natural multi-tone radial velvet gradient centered near the cup
-      const grad = this.ctx.createRadialGradient(
-        0,
-        h * 0.15,
-        p.size * 0.08,
-        0,
-        0,
-        p.size * 1.3,
+      const ctx = this.ctx;
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, p.alpha);
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation);
+      ctx.scale(effScaleX * p.aspectRatio, scaleY);
+      ctx.drawImage(
+        sprite,
+        (-shape.vw * scale) / 2,
+        (-shape.vh * scale) / 2,
+        shape.vw * scale,
+        shape.vh * scale,
       );
-      grad.addColorStop(0, p.palette.core + "0.96)");
-      grad.addColorStop(0.5, p.palette.mid + "0.9)");
-      grad.addColorStop(0.88, p.palette.tip + "0.85)");
-      grad.addColorStop(1, p.palette.tip + "0.35)");
-
-      // Soft shadow underneath petal
-      this.ctx.shadowColor = p.palette.shadow;
-      this.ctx.shadowBlur = 5;
-      this.ctx.shadowOffsetY = 2;
-
-      this.ctx.beginPath();
-
-      if (p.type === 0) {
-        // Heart-notched crown and tapered base form a recognizable rose petal.
-        this.ctx.moveTo(0, h * 0.58);
-        this.ctx.bezierCurveTo(
-          -w * 0.25, h * 0.43, -w * 0.92, h * 0.14, -w, -h * 0.2,
-        );
-        this.ctx.bezierCurveTo(
-          -w * 1.06, -h * 0.48, -w * 0.58, -h * 0.68, -w * 0.18, -h * 0.52,
-        );
-        this.ctx.quadraticCurveTo(0, -h * 0.34, w * 0.18, -h * 0.52);
-        this.ctx.bezierCurveTo(
-          w * 0.58, -h * 0.68, w * 1.06, -h * 0.48, w, -h * 0.2,
-        );
-        this.ctx.bezierCurveTo(
-          w * 0.92, h * 0.14, w * 0.25, h * 0.43, 0, h * 0.58,
-        );
-      } else if (p.type === 1) {
-        // A slightly curled, asymmetric rose petal keeps the fall organic.
-        this.ctx.moveTo(0, h * 0.6);
-        this.ctx.bezierCurveTo(
-          -w * 0.4, h * 0.36, -w * 1.05, h * 0.06, -w * 0.92, -h * 0.32,
-        );
-        this.ctx.bezierCurveTo(
-          -w * 0.82, -h * 0.62, -w * 0.38, -h * 0.66, -w * 0.12, -h * 0.48,
-        );
-        this.ctx.quadraticCurveTo(0, -h * 0.32, w * 0.2, -h * 0.53);
-        this.ctx.bezierCurveTo(
-          w * 0.52, -h * 0.68, w * 0.98, -h * 0.46, w, -h * 0.12,
-        );
-        this.ctx.bezierCurveTo(
-          w * 0.98, h * 0.2, w * 0.38, h * 0.45, 0, h * 0.6,
-        );
-      }
-
-      this.ctx.closePath();
-      this.ctx.fillStyle = grad;
-      this.ctx.fill();
-
-      // Subtle translucent edge highlight rim
-      this.ctx.shadowColor = "transparent";
-      this.ctx.strokeStyle = p.palette.highlight;
-      this.ctx.lineWidth = 0.8;
-      this.ctx.stroke();
-
-      // Subtle inner cupped vein fold
-      this.ctx.beginPath();
-      this.ctx.moveTo(0, h * 0.48);
-      this.ctx.quadraticCurveTo(
-        -w * 0.16,
-        h * 0.02,
-        0,
-        -h * 0.28,
-      );
-      this.ctx.strokeStyle = p.palette.tip + "0.45)";
-      this.ctx.lineWidth = 1.0;
-      this.ctx.stroke();
-
-      this.ctx.restore();
+      ctx.restore();
     }
 
     loop() {
@@ -390,8 +410,7 @@
   /* --- 3. AUDIO ENGINE --- */
   class FrenchAudioPlayer {
     constructor() {
-      this.audioUrl =
-        "https://assets.mixkit.co/music/preview/mixkit-romantic-moment-violin-piano-1011.mp3";
+      this.audioUrl = "./src/assets/森系阳光.mp3";
       this.isPlaying = false;
       this.audioEl = null;
       this.synthContext = null;

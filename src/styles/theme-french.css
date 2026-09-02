@@ -330,17 +330,34 @@ body.french-locked {
 }
 
 .french-nav-btn .music-note {
+  width: 22px;
+  height: 22px;
+  display: block;
   color: var(--french-gold-dark);
-  font-size: 0.9rem;
 }
 
-.french-nav-btn.playing .music-note {
-  animation: noteRotate 2.5s infinite ease-in-out;
+/* Circular icon-only music toggle */
+#frenchMusicBtn {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
-@keyframes noteRotate {
-  0%, 100% { transform: scale(1) rotate(0deg); }
-  50% { transform: scale(1.2) rotate(15deg); }
+#frenchMusicBtn .music-note {
+  animation: noteSpin 4s linear infinite;
+  animation-play-state: paused;
+}
+
+#frenchMusicBtn.playing .music-note {
+  animation-play-state: running;
+}
+
+@keyframes noteSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* ===================================================
@@ -871,6 +888,27 @@ body.french-locked {
    =================================================== */
 .itinerary-card {
   text-align: center;
+}
+
+/* Give the key invitation chapters more breathing room than the photo cards. */
+.hero-card,
+.calendar-card,
+.itinerary-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-card {
+  min-height: clamp(390px, 52vh, 500px);
+}
+
+.calendar-card {
+  min-height: clamp(380px, 50vh, 480px);
+}
+
+.itinerary-card {
+  min-height: clamp(340px, 42vh, 420px);
 }
 
 .itinerary-track {
