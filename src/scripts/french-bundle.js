@@ -20,11 +20,11 @@
       lunarDate: "岁在丙午 农历八月廿三 宜嫁娶",
       time: "11:58",
       timeFormatted: "上午 11:58 启幕",
-      venueName: "云境庄园 · 见山艺术厅",
-      address: "北京市朝阳区芳草地艺术中心8号",
-      addressDetail: "北京市朝阳区东大桥路9号 芳草地艺术中心",
-      latitude: 39.9199,
-      longitude: 116.4475,
+      venueName: "万达花园小区",
+      address: "昌东镇艾溪湖一路999号 赛福威汽车饰件模具有限公司对面",
+      addressDetail: "江西省南昌市青山湖区昌东镇艾溪湖一路999号 赛福威汽车饰件模具有限公司对面",
+      latitude: 28.679281,
+      longitude: 116.010453,
     },
     gate: {
       script: "Wedding Invitation",
@@ -50,15 +50,12 @@
       seconds: "秒",
     },
     gallery: {
-      act1Tag: "CHAPTER I · FLUTTER",
-      act1Title: "心动 · 初见倾心",
-      act1Quote: "只缘初见那一瞥，\n从此心动皆是你。",
-      act2Tag: "CHAPTER II · DEVOTION",
-      act2Title: "相爱 · 琴瑟和鸣",
-      act2Quote: "琴瑟和鸣共此生，\n一弦一柱皆深情。",
-      act3Tag: "CHAPTER III · ETERNITY",
-      act3Title: "相守 · 朝暮相依",
-      act3Quote: "朝朝暮暮与君老，\n岁岁年年共白头。",
+      act1Tag: "CHAPTER I · DEVOTION",
+      act1Title: "相爱 · 琴瑟和鸣",
+      act1Quote: "琴瑟和鸣共此生，\n一弦一柱皆深情。",
+      act2Tag: "CHAPTER II · ETERNITY",
+      act2Title: "相守 · 朝暮相依",
+      act2Quote: "朝朝暮暮与君老，\n岁岁年年共白头。",
       swipeHint: "← 左右滑动 翻阅多图 →",
     },
     itinerary: {
@@ -662,12 +659,24 @@
     }
 
     startAutoCycle() {
-      Object.keys(this.showcases).forEach((scId) => {
+      // Per-chapter intervals: longer dwell time, and deliberately different
+      // per card so the two carousels never auto-flip at the same moment.
+      const AUTO_INTERVALS = {
+        showcase1: 4500, // 相爱 · 琴瑟和鸣
+        showcase2: 6500, // 相守 · 朝暮相依
+      };
+
+      Object.keys(this.showcases).forEach((scId, i) => {
         const sc = this.showcases[scId];
         if (sc && sc.photos.length > 1) {
-          sc.timer = setInterval(() => {
-            this.next(scId);
-          }, 2000);
+          const interval = AUTO_INTERVALS[scId] || 5000;
+          // Stagger the start so timers are out of phase from the beginning
+          const initialDelay = (i * interval) / 3;
+          sc.timer = setTimeout(() => {
+            sc.timer = setInterval(() => {
+              this.next(scId);
+            }, interval);
+          }, initialDelay);
         }
       });
     }
