@@ -20,7 +20,7 @@
       lunarDate: "岁在丙午 农历八月廿三 宜嫁娶",
       time: "11:58",
       timeFormatted: "上午 11:58 启幕",
-      venueName: "万达花园小区",
+      venueName: "南昌万达拆迁安置小区",
       latitude: 28.679281,
       longitude: 116.010453,
     },
@@ -89,6 +89,10 @@
       switchChinese: "🎋 中式风",
       switchMagazine: "📰 杂志风",
       music: "MUSIQUE",
+      sheetTitle: "选择导航应用",
+      optAmap: "高德地图",
+      optBaidu: "百度地图",
+      optCancel: "取消",
     },
   };
 
@@ -773,7 +777,7 @@
       const buildMap = () => {
         const map = new AMap.Map("chateauMap", {
           viewMode: "2D",
-          zoom: 16,
+          zoom: 15, // 默认视野更开阔
           center: position,
           mapStyle: "amap://styles/light",
           resizeEnable: true,
@@ -784,28 +788,13 @@
           scrollWheel: false, // 桌面端禁用滚轮, 避免劫持页面滚动
         });
 
-        // Gold Chateau Marker
+        // Gold Chateau Marker (小巧精致)
         const marker = new AMap.Marker({
           position,
           content: '<div class="chateau-map-marker"><span>囍</span></div>',
-          offset: new AMap.Pixel(-17, -36),
+          offset: new AMap.Pixel(-10, -24),
         });
         marker.setMap(map);
-
-        // Ivory InfoWindow, always open
-        const info = new AMap.InfoWindow({
-          isCustom: true,
-          autoMove: true,
-          offset: new AMap.Pixel(0, -40),
-          content:
-            '<div class="chateau-map-info">' +
-            "<b>" + meta.venueName + "</b>" +
-            "</div>",
-        });
-        info.open(map, position);
-
-        // Tap marker to toggle info
-        marker.on("click", () => info.open(map, position));
       };
 
       const boot = () => loadSdk().then(buildMap).catch(hideFrame);
@@ -876,20 +865,33 @@
         });
       }
 
-      // Map Navigation Button
+      // Map Navigation Button → 弹出“高德 / 百度”选择菜单
       const btnFrenchNav = document.getElementById("btnFrenchNav");
-      if (btnFrenchNav) {
-        btnFrenchNav.addEventListener("click", () => {
-          const lat = this.translations.meta.latitude;
-          const lng = this.translations.meta.longitude;
-          const title = encodeURIComponent(this.translations.meta.venueName);
-          const isIOS =
-            /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-          if (isIOS) {
-            window.location.href = `http://maps.apple.com/?daddr=${lat},${lng}&q=${title}`;
-          } else {
-            window.location.href = `https://uri.amap.com/marker?position=${lng},${lat}&name=${title}&src=wedding`;
-          }
+      const navSheet = document.getElementById("navSheetOverlay");
+      const navOptAmap = document.getElementById("navOptAmap");
+      const navOptBaidu = document.getElementById("navOptBaidu");
+      const navOptCancel = document.getElementById("navOptCancel");
+      if (btnFrenchNav && navSheet) {
+        const openSheet = () => navSheet.classList.add("open");
+        const closeSheet = () => navSheet.classList.remove("open");
+
+        btnFrenchNav.addEventListener("click", openSheet);
+        navOptCancel?.addEventListener("click", closeSheet);
+        navSheet.addEventListener("click", (e) => {
+          if (e.target === navSheet) closeSheet(); // 点暗色背景关闭
+        });
+
+        const lat = this.translations.meta.latitude;
+        const lng = this.translations.meta.longitude;
+        const title = encodeURIComponent(this.translations.meta.venueName);
+
+        navOptAmap?.addEventListener("click", () => {
+          window.location.href = `https://uri.amap.com/marker?position=${lng},${lat}&name=${title}&src=wedding&callnative=1`;
+          closeSheet();
+        });
+        navOptBaidu?.addEventListener("click", () => {
+          window.location.href = `https://api.map.baidu.com/marker?location=${lat},${lng}&title=${title}&coord_type=gcj02&output=html&src=wedding`;
+          closeSheet();
         });
       }
 

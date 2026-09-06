@@ -191,10 +191,6 @@
           <span class="location-value" data-i18n="meta.timeFormatted"></span>
         </div>
 
-        <div class="location-row">
-          <span class="location-label" data-i18n="location.venueLabel"></span>
-          <span class="location-value" data-i18n="meta.venueName"></span>
-        </div>
       </div>
 
       <!-- Embedded AMap Chateau Map -->
@@ -219,6 +215,16 @@
     </footer>
 
   </main>
+
+  <!-- Map Navigation Action Sheet (导航应用选择) -->
+  <div class="nav-sheet-overlay" id="navSheetOverlay">
+    <div class="nav-sheet" role="dialog" aria-modal="true">
+      <div class="nav-sheet-title" data-i18n="nav.sheetTitle"></div>
+      <button class="nav-sheet-option" id="navOptAmap" data-i18n="nav.optAmap"></button>
+      <button class="nav-sheet-option" id="navOptBaidu" data-i18n="nav.optBaidu"></button>
+      <button class="nav-sheet-cancel" id="navOptCancel" data-i18n="nav.optCancel"></button>
+    </div>
+  </div>
 
   <!-- Self-contained French Provence JavaScript Bundle -->
   <script src="./src/scripts/french-bundle.js"></script>
