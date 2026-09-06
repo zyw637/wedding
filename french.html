@@ -12,6 +12,11 @@
   <link rel="preload" as="image" href="./相爱/1.jpg">
   <link rel="preload" as="image" href="./相守/1.jpg">
 
+  <!-- AMap Security Config (密钥必须配置在 JS API 加载之前) -->
+  <script>
+    window._AMapSecurityConfig = { securityJsCode: "4c24a838766deb5f8fa157772c26a7fc" };
+  </script>
+
   <!-- French Provence Chateau Stylesheet -->
   <link rel="stylesheet" href="./src/styles/theme-french.css">
 </head>
@@ -187,9 +192,15 @@
         </div>
 
         <div class="location-row">
-          <span class="location-label" data-i18n="location.addressLabel"></span>
-          <span class="location-value" data-i18n="meta.address"></span>
+          <span class="location-label" data-i18n="location.venueLabel"></span>
+          <span class="location-value" data-i18n="meta.venueName"></span>
         </div>
+      </div>
+
+      <!-- Embedded AMap Chateau Map -->
+      <div class="chateau-map-frame" id="chateauMapFrame">
+        <div id="chateauMap" class="chateau-map-canvas" role="img" aria-label="Venue Location Map"></div>
+        <div class="chateau-map-caption" data-i18n="location.mapCaption"></div>
       </div>
 
       <div class="location-btn-group">

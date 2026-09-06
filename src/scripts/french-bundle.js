@@ -21,8 +21,6 @@
       time: "11:58",
       timeFormatted: "上午 11:58 启幕",
       venueName: "万达花园小区",
-      address: "昌东镇艾溪湖一路999号 赛福威汽车饰件模具有限公司对面",
-      addressDetail: "江西省南昌市青山湖区昌东镇艾溪湖一路999号 赛福威汽车饰件模具有限公司对面",
       latitude: 28.679281,
       longitude: 116.010453,
     },
@@ -74,10 +72,10 @@
       dateLabel: "盛宴吉日",
       timeLabel: "启幕吉时",
       venueLabel: "举办场地",
-      addressLabel: "详细地址",
       navBtn: "一键地图导航",
-      copyBtn: "复制场地地址",
-      copySuccess: "✨ 场地地址已复制到剪贴板",
+      copyBtn: "复制场地名称",
+      mapCaption: "— CHÂTEAU MAP · 席设地图 —",
+      copySuccess: "✨ 场地名称已复制到剪贴板",
       tip: "现场备有专属地下停车场，凭请帖享免费停车",
     },
     footer: {
@@ -744,6 +742,92 @@
 
       // 5. Bind User Interactions
       this.bindInteractions();
+
+      // 6. Lazily Init Embedded AMap
+      this.initChateauMap();
+    }
+
+    /* --- EMBEDDED AMAP (懒加载高德地图, 滚动到地点卡片时才拉起 SDK) --- */
+    initChateauMap() {
+      const mapEl = document.getElementById("chateauMap");
+      const frameEl = document.getElementById("chateauMapFrame");
+      if (!mapEl || !frameEl) return;
+
+      const meta = this.translations.meta;
+      const position = [meta.longitude, meta.latitude];
+      const AMAP_KEY = "58881674711b8daba0509d63afdd9215";
+      const hideFrame = () => {
+        frameEl.style.display = "none";
+      };
+
+      const loadSdk = () =>
+        new Promise((resolve, reject) => {
+          if (window.AMap) return resolve();
+          const script = document.createElement("script");
+          script.src = `https://webapi.amap.com/maps?v=2.0&key=${AMAP_KEY}`;
+          script.onload = () => resolve();
+          script.onerror = () => reject(new Error("AMap SDK load failed"));
+          document.head.appendChild(script);
+        });
+
+      const buildMap = () => {
+        const map = new AMap.Map("chateauMap", {
+          viewMode: "2D",
+          zoom: 16,
+          center: position,
+          mapStyle: "amap://styles/light",
+          resizeEnable: true,
+          dragEnable: true,
+          zoomEnable: true, // 允许缩放
+          pinchEnable: true, // 移动端双指捏合
+          doubleClickZoom: true, // 双击放大
+          scrollWheel: false, // 桌面端禁用滚轮, 避免劫持页面滚动
+        });
+
+        // Gold Chateau Marker
+        const marker = new AMap.Marker({
+          position,
+          content: '<div class="chateau-map-marker"><span>囍</span></div>',
+          offset: new AMap.Pixel(-17, -36),
+        });
+        marker.setMap(map);
+
+        // Ivory InfoWindow, always open
+        const info = new AMap.InfoWindow({
+          isCustom: true,
+          autoMove: true,
+          offset: new AMap.Pixel(0, -40),
+          content:
+            '<div class="chateau-map-info">' +
+            "<b>" + meta.venueName + "</b>" +
+            "</div>",
+        });
+        info.open(map, position);
+
+        // Tap marker to toggle info
+        marker.on("click", () => info.open(map, position));
+      };
+
+      const boot = () => loadSdk().then(buildMap).catch(hideFrame);
+
+      // Lazy: only fetch SDK when the location section approaches viewport
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                io.disconnect();
+                boot();
+                break;
+              }
+            }
+          },
+          { rootMargin: "300px" }
+        );
+        io.observe(mapEl);
+      } else {
+        boot();
+      }
     }
 
     applyI18n() {
@@ -813,9 +897,7 @@
       const btnFrenchCopy = document.getElementById("btnFrenchCopy");
       if (btnFrenchCopy) {
         btnFrenchCopy.addEventListener("click", () => {
-          const address =
-            this.translations.meta.addressDetail ||
-            this.translations.meta.address;
+          const address = this.translations.meta.venueName;
           if (navigator.clipboard && window.isSecureContext) {
             navigator.clipboard
               .writeText(address)
