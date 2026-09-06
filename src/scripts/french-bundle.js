@@ -613,6 +613,7 @@
           if (frame) {
             frame.addEventListener("click", () => {
               this.next(scId);
+              this.resetAutoCycle(scId);
             });
 
             frame.addEventListener(
@@ -642,6 +643,7 @@
                   } else {
                     this.prev(scId);
                   }
+                  this.resetAutoCycle(scId);
                 }
               },
               { passive: true },
@@ -652,6 +654,7 @@
             dot.addEventListener("click", (e) => {
               e.stopPropagation();
               this.setPhoto(scId, idx);
+              this.resetAutoCycle(scId);
             });
           });
         }
@@ -671,18 +674,34 @@
       Object.keys(this.showcases).forEach((scId, i) => {
         const sc = this.showcases[scId];
         if (sc && sc.photos.length > 1) {
-          const interval = AUTO_INTERVALS[scId] || 5000;
+          sc.interval = AUTO_INTERVALS[scId] ||5000;
           // Stagger the start so timers are out of phase from the beginning
-          const initialDelay = (i * interval) / 3;
-          sc.timer = setTimeout(() => {
-            sc.timer = setInterval(() => {
-              this.next(scId);
-            }, interval);
-          }, initialDelay);
+          this.armTimer(scId, (i * sc.interval)/3);
+
         }
       });
     }
 
+
+    // Arm the next auto-flip for a carousel via a setTimeout chain so any user
+    // action can re-arm the dwell countdown back to zero.
+    armTimer(scId,m) {
+      const sc = this.showcases[scId];
+      if (!sc) return;
+
+      if (sc.timer) clearTimeout(sc.timer);
+      const dwell = sc.interval ||5000;
+      sc.timer = setTimeout(() => {
+        this.next(scId);
+        this.armTimer(scId);
+      }, dwell + m);
+    }
+
+    // User clicks/swipes/dot-taps restart the dwell countdown
+    // from zero.
+    resetAutoCycle(scId) {
+      this.armTimer(scId);
+    }
     next(scId) {
       const sc = this.showcases[scId];
       if (!sc) return;
