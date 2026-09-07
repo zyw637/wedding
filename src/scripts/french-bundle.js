@@ -598,24 +598,17 @@
         if (!el) return;
 
         const photos = Array.from(el.querySelectorAll(".showcase-photo"));
-        const dots = Array.from(el.querySelectorAll(".showcase-dot"));
         const frame = el.querySelector(".showcase-photo-frame");
 
         if (photos.length > 0) {
           this.showcases[scId] = {
             photos,
-            dots,
             currentIndex: 0,
             touchStartX: 0,
             touchStartY: 0,
           };
 
           if (frame) {
-            frame.addEventListener("click", () => {
-              this.next(scId);
-              this.resetAutoCycle(scId);
-            });
-
             frame.addEventListener(
               "touchstart",
               (e) => {
@@ -650,13 +643,6 @@
             );
           }
 
-          dots.forEach((dot, idx) => {
-            dot.addEventListener("click", (e) => {
-              e.stopPropagation();
-              this.setPhoto(scId, idx);
-              this.resetAutoCycle(scId);
-            });
-          });
         }
       });
 
@@ -664,41 +650,37 @@
     }
 
     startAutoCycle() {
-      // Per-chapter intervals: longer dwell time, and deliberately different
-      // per card so the two carousels never auto-flip at the same moment.
-      const AUTO_INTERVALS = {
-        showcase1: 4500, // 相爱 · 琴瑟和鸣
-        showcase2: 6500, // 相守 · 朝暮相依
-      };
+      // 两张画廊各自独立随机 4-6s 自动切图，自然错峰。
 
       Object.keys(this.showcases).forEach((scId, i) => {
         const sc = this.showcases[scId];
         if (sc && sc.photos.length > 1) {
-          sc.interval = AUTO_INTERVALS[scId] ||5000;
-          // Stagger the start so timers are out of phase from the beginning
-          this.armTimer(scId, (i * sc.interval)/3);
-
+          this.armTimer(scId);
         }
       });
     }
 
 
-    // Arm the next auto-flip for a carousel via a setTimeout chain so any user
-    // action can re-arm the dwell countdown back to zero.
-    armTimer(scId,m) {
+    // 给某张画廊上膛下一次自动翻页：先清掉旧定时器（只保留一个），
+    // 再以全新的 4-6s 随机倒计时，手动切图后从 0 重新计。
+    armTimer(scId) {
       const sc = this.showcases[scId];
       if (!sc) return;
 
-      if (sc.timer) clearTimeout(sc.timer);
-      const dwell = sc.interval ||5000;
+      if (sc.timer) {
+        clearTimeout(sc.timer);
+        sc.timer = null;
+      }
+      // 随机 4-6 秒（4000-6000ms（
+      const dwell=4000+Math.floor(Math.random()*2001);
       sc.timer = setTimeout(() => {
+        sc.timer = null;
         this.next(scId);
         this.armTimer(scId);
-      }, dwell + m);
+      }, dwell);
     }
 
-    // User clicks/swipes/dot-taps restart the dwell countdown
-    // from zero.
+    // 用户滑动切图后：旧倒计时作废，重新从 0 随机计 4-6s。
     resetAutoCycle(scId) {
       this.armTimer(scId);
     }
@@ -732,9 +714,6 @@
         }
       });
 
-      sc.dots.forEach((dot, idx) => {
-        dot.classList.toggle("active", idx === index);
-      });
     }
   }
 

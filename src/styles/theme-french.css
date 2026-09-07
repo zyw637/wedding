@@ -844,7 +844,7 @@ body.french-locked {
   transition: opacity 0.8s ease, transform 6s ease;
 }
 
-.showcase-dots {
+.showcase-dots { display: none;
   display: flex;
   justify-content: center;
   gap: 8px;
