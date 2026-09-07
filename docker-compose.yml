@@ -1,0 +1,10 @@
+# 一键部署：docker compose up -d --build
+# 访问：http://localhost:8099/index.html （french.html 是法式版）
+services:
+  wedding:
+    build: .
+    image: wedding-invitation:latest
+    container_name: wedding-invitation
+    ports:
+      - "8099:80"        # 宿主 8099 → 容器 nginx 80
+    restart: unless-stopped
