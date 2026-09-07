@@ -10,8 +10,8 @@
     "dateFormatted": "Sunday, October 18, 2026",
     "dateEn": "OCTOBER 18, 2026",
     "lunarDate": "An auspicious autumn day of love",
-    "time": "11:58",
-    "timeFormatted": "11:58 AM Reception & Ceremony",
+    "time": "12:00",
+    "timeFormatted": "12:00 AM Reception & Ceremony",
     "venueName": "The Grand Cloud Estate · Mountain View Art Hall",
     "venueEn": "The Grand Cloud Estate",
     "address": "No. 8 Fangcaodi Art Center, Chaoyang District, Beijing",
@@ -151,7 +151,7 @@
       "stat2Label": "ISSUE DATE",
       "stat2Val": "OCT 18",
       "stat3Label": "CEREMONY",
-      "stat3Val": "11:58"
+      "stat3Val": "12:00"
     },
     "lookbook": {
       "tag": "EDITORIAL SPREAD · LOOKBOOK",
@@ -174,7 +174,7 @@
       "t1Time": "11:00",
       "t1Name": "PRE-SHOW · Welcome Reception",
       "t1Desc": "Guest arrival, signature drinks, and champagne cocktails at the reception lounge",
-      "t2Time": "11:58",
+      "t2Time": "12:00",
       "t2Name": "MAIN CEREMONY · Exchange of Vows",
       "t2Desc": "Witness the couple's procession and sacred vows inside Mountain View Art Hall",
       "t3Time": "12:30",

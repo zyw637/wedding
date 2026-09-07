@@ -18,8 +18,8 @@
       dateFormatted: "2026年10月3日",
       dateEn: "OCTOBER 3, 2026",
       lunarDate: "岁在丙午 农历八月廿三 宜嫁娶",
-      time: "11:58",
-      timeFormatted: "上午 11:58 启幕",
+      time: "12:00",
+      timeFormatted: "上午 12:00 启幕",
       venueName: "南昌万达拆迁安置小区",
       latitude: 28.679281,
       longitude: 116.010453,
@@ -75,6 +75,7 @@
       navBtn: "一键地图导航",
       copyBtn: "复制场地名称",
       mapCaption: "— CHÂTEAU MAP · 席设地图 —",
+      mapReset: "回到定位点",
       copySuccess: "✨ 场地名称已复制到剪贴板",
       tip: "现场备有专属地下停车场，凭请帖享免费停车",
     },
@@ -739,7 +740,7 @@
 
       // 4. Initialize Audio, Countdown & Showcases
       this.audioPlayer = new FrenchAudioPlayer();
-      this.countdown = new CalendarCountdown("2026-10-03T11:58:00");
+      this.countdown = new CalendarCountdown("2026-10-03T12:00:00");
       this.showcaseController = new ShowcaseController();
 
       // 5. Bind User Interactions
@@ -793,6 +794,15 @@
           offset: new AMap.Pixel(-10, -24),
         });
         marker.setMap(map);
+
+        // 用户滑动地图后可一键回到定位点（重新居中+复位缩放）
+        const btnReset = document.getElementById("btnChateauReset");
+        if (btnReset) {
+          btnReset.addEventListener("click", () => {
+            map.setZoom(15);
+            map.setCenter(position);
+          });
+        }
       };
 
       const boot = () => loadSdk().then(buildMap).catch(hideFrame);

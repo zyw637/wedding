@@ -18,8 +18,8 @@
       dateFormatted: "2026年10月18日",
       dateEn: "OCTOBER 18, 2026",
       lunarDate: "岁在丙午 农历九月初九 宜嫁娶 宜纳吉",
-      time: "11:58",
-      timeFormatted: "午初吉时 11:58 华堂启幕",
+      time: "12:00",
+      timeFormatted: "午初吉时 12:00 华堂启幕",
       venueName: "云境庄园 · 见山艺术厅",
       address: "北京市朝阳区芳草地艺术中心8号",
       addressDetail: "北京市朝阳区东大桥路9号 芳草地艺术中心",
@@ -66,7 +66,7 @@
       t1Time: "巳正初刻 · 11:00",
       t1Name: "喜迎宾朋 · 奉茶纳吉",
       t1Desc: "亲友签到入席，于华堂迎宾区享用茶点与喜酒",
-      t2Time: "午初吉时 · 11:58",
+      t2Time: "午初吉时 · 12:00",
       t2Name: "华堂吉礼 · 誓缔良缘",
       t2Desc: "见山艺术厅内，共同见证喜结连理、誓言永固",
       t3Time: "午正二刻 · 12:30",
@@ -409,7 +409,7 @@
 
       // 4. Initialize Audio & Compass Countdown
       this.audioPlayer = new ChineseAudioPlayer();
-      this.countdown = new CompassCountdown('2026-10-18T11:58:00');
+      this.countdown = new CompassCountdown('2026-10-18T12:00:00');
 
       // 5. Bind User Interactions
       this.bindInteractions();

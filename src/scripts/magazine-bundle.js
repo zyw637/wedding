@@ -63,7 +63,7 @@
         stat2Label: "ISSUE DATE",
         stat2Val: "OCT 18",
         stat3Label: "CEREMONY",
-        stat3Val: "11:58",
+        stat3Val: "12:00",
         story: "自相遇的那一刻起，每一个寻常日子都因你而熠熠生辉。静候金秋十月，与您一同开启人生崭新盛典。"
       },
       lookbook: {
@@ -86,7 +86,7 @@
         t1Time: "11:00",
         t1Name: "PRE-SHOW · 香槟迎宾",
         t1Desc: "签到入场，于迎宾区享用法式冷餐与香槟特调",
-        t2Time: "11:58",
+        t2Time: "12:00",
         t2Name: "MAIN CEREMONY · 神圣典礼",
         t2Desc: "见山艺术厅内，新郎新娘步入华堂，誓言礼成",
         t3Time: "12:30",
@@ -105,7 +105,7 @@
         dateVal: "2026年10月18日",
         lunarVal: "岁在丙午 农历九月初九 宜嫁娶",
         timeLabel: "RECEPTION TIME",
-        timeVal: "上午 11:58 启幕",
+        timeVal: "上午 12:00 启幕",
         venueLabel: "FASHION VENUE",
         venueVal: "云境庄园 · 见山艺术厅",
         addressLabel: "OFFICIAL ADDRESS",
@@ -211,7 +211,7 @@
         stat2Label: "ISSUE DATE",
         stat2Val: "OCT 18",
         stat3Label: "CEREMONY",
-        stat3Val: "11:58",
+        stat3Val: "12:00",
         story: "Every moment since we met has been made radiant by your presence. We look forward to celebrating this brand-new chapter with you."
       },
       lookbook: {
@@ -234,7 +234,7 @@
         t1Time: "11:00",
         t1Name: "PRE-SHOW · Welcome Reception",
         t1Desc: "Guest arrival, signature drinks, and champagne cocktails at the reception lounge",
-        t2Time: "11:58",
+        t2Time: "12:00",
         t2Name: "MAIN CEREMONY · Exchange of Vows",
         t2Desc: "Witness the couple's procession and sacred vows inside Mountain View Art Hall",
         t3Time: "12:30",
@@ -253,7 +253,7 @@
         dateVal: "Sunday, October 18, 2026",
         lunarVal: "An auspicious autumn day of love",
         timeLabel: "RECEPTION TIME",
-        timeVal: "11:58 AM Reception & Ceremony",
+        timeVal: "12:00 AM Reception & Ceremony",
         venueLabel: "FASHION VENUE",
         venueVal: "The Grand Cloud Estate · Mountain View Art Hall",
         addressLabel: "OFFICIAL ADDRESS",
@@ -1234,8 +1234,8 @@
     new LookbookPhotoSwitcher('spreadBox2');
     new LookbookPhotoSwitcher('spreadBox3');
 
-    // 6. Countdown (2026-10-18 11:58:00)
-    new MagazineCountdown('2026-10-18T11:58:00');
+    // 6. Countdown (2026-10-18 12:00:00)
+    new MagazineCountdown('2026-10-18T12:00:00');
 
     // 7. Navigation & Address Actions
     const btnNav = document.getElementById('btnMagNav');
