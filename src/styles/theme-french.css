@@ -267,6 +267,50 @@ body.french-locked {
   border: 1px dashed rgba(255, 255, 255, 0.45);
 }
 
+/* Golden Loader Orbit around Wax Seal */
+.wax-seal-loader {
+  position: absolute;
+  inset: -9px;
+  border-radius: 50%;
+  border: 2.5px solid transparent;
+  border-top-color: var(--french-gold);
+  border-right-color: var(--french-gold-light);
+  box-shadow: 0 0 16px rgba(182, 141, 76, 0.45);
+  animation: sealLoaderSpin 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  pointer-events: none;
+  z-index: 12;
+}
+
+@keyframes sealLoaderSpin {
+  0% {
+    transform: rotate(0deg) scale(0.92);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(182, 141, 76, 0.75);
+  }
+  100% {
+    transform: rotate(540deg) scale(1.08);
+    opacity: 1;
+    border-color: var(--french-gold);
+    box-shadow: 0 0 26px rgba(182, 141, 76, 0.95);
+  }
+}
+
+.wax-seal-char {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  line-height: 1;
+}
+
+.chateau-gate-frame.opening .wax-seal-loader {
+  opacity: 0;
+  transform: rotate(540deg) scale(1.3);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
 .chateau-gate-hint {
   margin-top: 34px;
   font-size: 0.88rem;
@@ -276,6 +320,38 @@ body.french-locked {
   align-items: center;
   gap: 8px;
   animation: floatHint 2.4s infinite ease-in-out;
+  transition: opacity 0.4s ease;
+}
+
+/* Loading Progress Bar below the doors */
+.gate-loading-progress {
+  width: 140px;
+  height: 2px;
+  background: rgba(182, 141, 76, 0.2);
+  border-radius: 2px;
+  margin-top: 14px;
+  overflow: hidden;
+  position: relative;
+  transition: opacity 0.4s ease;
+}
+
+.gate-loading-bar {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--french-gold), var(--french-gold-light));
+  transform-origin: left;
+  animation: gateBarFill 1.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes gateBarFill {
+  0% { transform: scaleX(0); }
+  60% { transform: scaleX(0.7); }
+  100% { transform: scaleX(1); }
+}
+
+.chateau-gate-overlay.opening-gate .gate-loading-progress,
+.chateau-gate-overlay.opening-gate .chateau-gate-hint {
+  opacity: 0;
 }
 
 @keyframes floatHint {
@@ -1058,14 +1134,17 @@ body.french-locked {
   box-shadow:
     0 10px 26px rgba(140, 101, 41, 0.12),
     inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+  cursor: pointer;
 }
 
 .chateau-map-canvas {
   width: 100%;
-  aspect-ratio: 4 / 5; /* 竖版长方形：高 > 宽, 任何屏幕下成立 */
+  aspect-ratio: 16 / 9; /* 横版长方形：宽 > 高 */
+  max-height: 220px;
   border-radius: 11px;
   overflow: hidden;
   background: var(--french-bg-accent);
+  pointer-events: none; /* 禁用拖动拦截，保障页面纵向滚动顺畅 */
 }
 
 .chateau-map-caption {
@@ -1255,29 +1334,3 @@ body.french-locked {
   transform: translate(-50%, -50%) scale(1);
 }
 
-/* 地图"回到定位点"按钮（可随手势归位） */
-.chateau-map-frame {
-  position: relative;
-}
-.chateau-map-reset {
-  position: absolute;
-  top:  12px;
-  right:  12px;
-  z-index:  ​10;
-  pointer-events: auto;
-  cursor: pointer;
-  border:  1px solid var(--french-gold-light);
-  background: rgba(255, 252, 246,  ​0.92);
-  color:var(--french-gold-dark);
-  font-size:  0.78rem;
-  letter-spacing:  0.1em;
-  padding:  6px  12px;
-  border-radius:999px;
-  box-shadow:  0  4px  14px rgba(140, 101, 41, ​0.28);
-  font-family:  var(--font-serif-cn);
-  transition: background  0.2s ease, transform  0.2s ease;
-}
-.chateau-map-reset:active {
-  transform: scale(0.94);
-  background: rgba(255, 252, 246, ​1);
-}

@@ -19,6 +19,26 @@
     "latitude": 39.9199,
     "longitude": 116.4475
   },
+  "gate": {
+    "script": "Wedding Invitation",
+    "names": "Zhuoyang & Jiamin",
+    "sealText": "囍",
+    "hint": "✦ Touch Wax Seal to Enter ✦",
+    "loadingHint": "✦ Unfolding Our Love Story... ✦"
+  },
+  "location": {
+    "tag": "LOCATION & BANQUET",
+    "title": "Location & Banquet",
+    "dateLabel": "Ceremony Date",
+    "timeLabel": "Reception Time",
+    "venueLabel": "Wedding Venue",
+    "navBtn": "Open Map Navigation",
+    "copyBtn": "Copy Venue Name",
+    "mapCaption": "— CHÂTEAU MAP —",
+    "mapReset": "Reset Pin",
+    "copySuccess": "✨ Venue name copied to clipboard",
+    "tip": "Complimentary parking available at the venue"
+  },
   "curtain": {
     "filmPresents": "A LOVE STORY PRODUCTION",
     "titlePrefix": "CORDIALLY INVITES YOU",

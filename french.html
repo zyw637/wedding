@@ -52,11 +52,17 @@
       <div class="gate-door-left"></div>
       <div class="gate-door-right"></div>
 
-      <!-- 3D Wax Seal Stamp in Center -->
-      <div class="chateau-wax-seal" data-i18n="gate.sealText">囍</div>
+      <!-- 3D Wax Seal Stamp in Center with Golden Loader Ring -->
+      <div class="chateau-wax-seal" id="chateauWaxSeal">
+        <div class="wax-seal-loader" id="waxSealLoader" aria-hidden="true"></div>
+        <span class="wax-seal-char" data-i18n="gate.sealText">囍</span>
+      </div>
     </div>
 
-    <div class="chateau-gate-hint" data-i18n="gate.hint"></div>
+    <div class="chateau-gate-hint" id="chateauGateHint" data-i18n="gate.loadingHint"></div>
+    <div class="gate-loading-progress" id="gateLoadingProgress" aria-hidden="true">
+      <div class="gate-loading-bar"></div>
+    </div>
   </div>
 
   <!-- MAIN SCROLLABLE CONTENT (法式晨曦白金画卷) -->
@@ -191,12 +197,15 @@
           <span class="location-value" data-i18n="meta.timeFormatted"></span>
         </div>
 
+        <div class="location-row">
+          <span class="location-label" data-i18n="location.venueLabel"></span>
+          <span class="location-value" data-i18n="meta.venueName"></span>
+        </div>
       </div>
 
       <!-- Embedded AMap Chateau Map -->
       <div class="chateau-map-frame" id="chateauMapFrame">
         <div id="chateauMap" class="chateau-map-canvas" role="img" aria-label="Venue Location Map"></div>
-        <button class="chateau-map-reset" id="btnChateauReset" type="button" aria-label="回到定位点">⌖ 回到定位点</button>
         <div class="chateau-map-caption" data-i18n="location.mapCaption"></div>
       </div>
 

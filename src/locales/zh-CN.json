@@ -19,6 +19,26 @@
     "latitude": 39.9199,
     "longitude": 116.4475
   },
+  "gate": {
+    "script": "Wedding Invitation",
+    "names": "万卓洋 ＆ 张佳敏",
+    "sealText": "囍",
+    "hint": "✦ 轻触火漆 · 推门即是我们的明天 ✦",
+    "loadingHint": "✦ 静候佳期 · 盛宴即将启幕 ✦"
+  },
+  "location": {
+    "tag": "LOCATION & BANQUET",
+    "title": "盛宴席设",
+    "dateLabel": "盛宴吉日",
+    "timeLabel": "启幕吉时",
+    "venueLabel": "举办场地",
+    "navBtn": "一键地图导航",
+    "copyBtn": "复制场地名称",
+    "mapCaption": "— CHÂTEAU MAP · 席设地图 —",
+    "mapReset": "回到定位点",
+    "copySuccess": "✨ 场地名称已复制到剪贴板",
+    "tip": "现场备有专属地下停车场，凭请帖享免费停车"
+  },
   "curtain": {
     "filmPresents": "A LOVE STORY PRODUCTION",
     "titlePrefix": "特此敬邀",

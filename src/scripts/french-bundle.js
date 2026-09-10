@@ -20,7 +20,7 @@
       lunarDate: "岁在丙午 农历八月廿三 宜嫁娶",
       time: "12:00",
       timeFormatted: "上午 12:00 启幕",
-      venueName: "南昌万达拆迁安置小区",
+      venueName: "南昌高新区万达拆迁安置小区",
       latitude: 28.679281,
       longitude: 116.010453,
     },
@@ -29,6 +29,7 @@
       names: "万卓洋 ＆ 张佳敏",
       sealText: "囍",
       hint: "✦ 轻触火漆 · 推门即是我们的明天 ✦",
+      loadingHint: "✦ 静候佳期 · 盛宴即将启幕 ✦",
     },
     hero: {
       script: "Save the Date",
@@ -456,6 +457,41 @@
         this.isPlaying = true;
         this.updateUI(true);
       } catch (e) {
+        // Handle browser autoplay policy gracefully without reverting to synth mode
+        if (e.name === "NotAllowedError" || e.name === "AbortError") {
+          const tryPlayOnGesture = () => {
+            this.audioEl.play().then(() => {
+              this.isPlaying = true;
+              this.updateUI(true);
+            }).catch(() => {});
+            window.removeEventListener("touchstart", tryPlayOnGesture);
+            window.removeEventListener("click", tryPlayOnGesture);
+            window.removeEventListener("scroll", tryPlayOnGesture);
+          };
+          window.addEventListener("touchstart", tryPlayOnGesture, { passive: true, once: true });
+          window.addEventListener("click", tryPlayOnGesture, { once: true });
+          window.addEventListener("scroll", tryPlayOnGesture, { passive: true, once: true });
+
+          // WeChat JSBridge support
+          if (typeof WeixinJSBridge !== "undefined") {
+            WeixinJSBridge.invoke("getNetworkType", {}, () => {
+              this.audioEl.play().then(() => {
+                this.isPlaying = true;
+                this.updateUI(true);
+              }).catch(() => {});
+            });
+          } else {
+            document.addEventListener("WeixinJSBridgeReady", () => {
+              this.audioEl.play().then(() => {
+                this.isPlaying = true;
+                this.updateUI(true);
+              }).catch(() => {});
+            }, { once: true });
+          }
+          return;
+        }
+
+        // Actual media error fallback
         this.isSynthMode = true;
         this.startSynth();
         this.isPlaying = true;
@@ -776,15 +812,17 @@
       const buildMap = () => {
         const map = new AMap.Map("chateauMap", {
           viewMode: "2D",
-          zoom: 15, // 默认视野更开阔
+          zoom: 15,
           center: position,
           mapStyle: "amap://styles/light",
           resizeEnable: true,
-          dragEnable: true,
-          zoomEnable: true, // 允许缩放
-          pinchEnable: true, // 移动端双指捏合
-          doubleClickZoom: true, // 双击放大
-          scrollWheel: false, // 桌面端禁用滚轮, 避免劫持页面滚动
+          dragEnable: false, // 禁止拖拽移动
+          zoomEnable: false, // 禁止手势/按钮缩放
+          pinchEnable: false, // 禁止双指缩放
+          doubleClickZoom: false, // 禁止双击放大
+          keyboardEnable: false, // 禁用键盘
+          scrollWheel: false, // 禁用滚轮
+          touchZoom: false, // 禁用触摸缩放
         });
 
         // Gold Chateau Marker (小巧精致)
@@ -794,15 +832,6 @@
           offset: new AMap.Pixel(-10, -24),
         });
         marker.setMap(map);
-
-        // 用户滑动地图后可一键回到定位点（重新居中+复位缩放）
-        const btnReset = document.getElementById("btnChateauReset");
-        if (btnReset) {
-          btnReset.addEventListener("click", () => {
-            map.setZoom(15);
-            map.setCenter(position);
-          });
-        }
       };
 
       const boot = () => loadSdk().then(buildMap).catch(hideFrame);
@@ -846,20 +875,26 @@
     }
 
     bindInteractions() {
-      // 3D Double Gate Opening Click
+      // 3D Double Gate Auto-Open with 1.8s Loading Delay & Click Override
       const gateFrame = document.getElementById("chateauGateFrame");
       const gateOverlay = document.getElementById("chateauGateOverlay");
 
       if (gateFrame && gateOverlay) {
-        gateFrame.addEventListener("click", (e) => {
+        let isOpened = false;
+
+        const openGate = (isManualClick = false) => {
+          if (isOpened) return;
+          isOpened = true;
+
+          gateOverlay.classList.add("opening-gate");
           gateFrame.classList.add("opening");
 
-          // Spawn celebration petals
+          // Spawn celebration petals from center of gate
           const rect = gateFrame.getBoundingClientRect();
           const centerX = rect.left + rect.width / 2;
           const centerY = rect.top + rect.height / 2;
           if (this.petalEngine) {
-            this.petalEngine.spawnTouchPetals(centerX, centerY, 20);
+            this.petalEngine.spawnTouchPetals(centerX, centerY, 28);
           }
 
           // Start Audio
@@ -870,7 +905,21 @@
             gateOverlay.classList.add("opened");
             document.body.classList.remove("french-locked");
           }, 850);
+        };
+
+        // 1. Manual click/tap to open immediately (skip delay)
+        gateFrame.addEventListener("click", () => openGate(true));
+        gateOverlay.addEventListener("click", (e) => {
+          // If user taps outside the frame on overlay, also open
+          if (!isOpened) openGate(true);
         });
+
+        // 2. Auto-trigger after 1.8s loading animation delay
+        setTimeout(() => {
+          if (!isOpened) {
+            openGate(false);
+          }
+        }, 1800);
       }
 
       // Map Navigation Button → 弹出“高德 / 百度”选择菜单
@@ -884,6 +933,8 @@
         const closeSheet = () => navSheet.classList.remove("open");
 
         btnFrenchNav.addEventListener("click", openSheet);
+        const mapFrame = document.getElementById("chateauMapFrame");
+        mapFrame?.addEventListener("click", openSheet);
         navOptCancel?.addEventListener("click", closeSheet);
         navSheet.addEventListener("click", (e) => {
           if (e.target === navSheet) closeSheet(); // 点暗色背景关闭
