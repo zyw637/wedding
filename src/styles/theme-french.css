@@ -280,7 +280,7 @@ body.french-locked {
   bottom: 0;
   width: 50%;
   background-color: var(--french-bg-subtle);
-  background-image: url("../assets/images/french/gate-invitation-base.jpg");
+  background-image: url("../assets/images/french/gate-invitation-base-optimized.jpg");
   background-repeat: no-repeat;
   /* The source artwork includes studio margin; zoom it into the cover surface. */
   /* Crop the outer margin/shadow so the current cover fills each door leaf. */

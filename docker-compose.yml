@@ -6,5 +6,5 @@ services:
     image: wedding-invitation:latest
     container_name: wedding-invitation
     ports:
-      - "8010:80"        # 宿主 8010 → 容器 nginx 80
+      - "8020:80" # 宿主 8010 → 容器 nginx 80
     restart: unless-stopped
