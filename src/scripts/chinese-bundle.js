@@ -625,7 +625,10 @@
 
         // Open automatically one second after the page loads; tapping still opens it immediately.
         scrollWrapper.addEventListener('click', () => openScroll(true));
-        setTimeout(() => openScroll(false), 1000);
+        setTimeout(() => {
+          const pageReady = window.__pageReady || Promise.resolve();
+          pageReady.then(() => openScroll(false));
+        }, 1000);
       }
 
       // Map Navigation Button

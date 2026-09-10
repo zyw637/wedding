@@ -19,8 +19,65 @@
   <script>
     window._AMapSecurityConfig = { securityJsCode: "4c24a838766deb5f8fa157772c26a7fc" };
   </script>
+
+  <!-- Inline so the loading layer appears before theme assets finish loading. -->
+  <style>
+    #pageLoader {
+      position: fixed;
+      inset: 0;
+      z-index: 30000;
+      display: grid;
+      place-items: center;
+      background: #1a0a0c;
+      color: #e6c27a;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.28s ease, visibility 0.28s ease;
+    }
+
+    #pageLoader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    #pageLoader .page-loader-inner {
+      display: grid;
+      justify-items: center;
+      gap: 14px;
+      font-family: serif;
+      letter-spacing: 0.22em;
+      font-size: 0.68rem;
+    }
+
+    #pageLoader .page-loader-ring {
+      width: 42px;
+      height: 42px;
+      border: 2px solid rgba(230, 194, 122, 0.22);
+      border-top-color: currentColor;
+      border-radius: 50%;
+      animation: pageLoaderSpin 0.9s linear infinite;
+    }
+
+    @keyframes pageLoaderSpin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body class="chinese-theme chinese-locked">
+
+  <div
+    id="pageLoader"
+    role="status"
+    aria-live="polite"
+    aria-label="正在加载请帖"
+    data-critical="./src/assets/images/相爱/1.jpg,./src/assets/images/相守/1.jpg"
+  >
+    <div class="page-loader-inner">
+      <div class="page-loader-ring" aria-hidden="true"></div>
+      <span>正在展开请帖 · PLEASE WAIT</span>
+    </div>
+  </div>
 
   <!-- Fullscreen "天降吉囍" Falling Character Physics Canvas -->
   <canvas id="xiCanvas" style="position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999;" aria-hidden="true"></canvas>
@@ -221,6 +278,7 @@
   </main>
 
   <!-- Lightweight Neo-Chinese JavaScript Bundle -->
+  <script src="./src/scripts/page-loader.js"></script>
   <script src="./src/scripts/chinese-bundle.js"></script>
 </body>
 </html>

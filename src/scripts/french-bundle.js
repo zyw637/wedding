@@ -931,9 +931,12 @@
 
         // 2. Auto-trigger after the cover has had time to be seen.
         setTimeout(() => {
-          if (!isOpened) {
-            openGate(false);
-          }
+          const pageReady = window.__pageReady || Promise.resolve();
+          pageReady.then(() => {
+            if (!isOpened) {
+              openGate(false);
+            }
+          });
         }, 2400);
       } else if (this.showcaseController) {
         // Fallback for pages without the cover overlay.

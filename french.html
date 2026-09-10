@@ -20,8 +20,65 @@
 
   <!-- French Provence Chateau Stylesheet -->
   <link rel="stylesheet" href="./src/styles/theme-french.css">
+
+  <!-- Inline so the loading layer appears before theme assets finish loading. -->
+  <style>
+    #pageLoader {
+      position: fixed;
+      inset: 0;
+      z-index: 30000;
+      display: grid;
+      place-items: center;
+      background: #f8f5ee;
+      color: #b68d4c;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.28s ease, visibility 0.28s ease;
+    }
+
+    #pageLoader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    #pageLoader .page-loader-inner {
+      display: grid;
+      justify-items: center;
+      gap: 14px;
+      font-family: Georgia, serif;
+      letter-spacing: 0.24em;
+      font-size: 0.68rem;
+    }
+
+    #pageLoader .page-loader-ring {
+      width: 42px;
+      height: 42px;
+      border: 2px solid rgba(182, 141, 76, 0.22);
+      border-top-color: currentColor;
+      border-radius: 50%;
+      animation: pageLoaderSpin 0.9s linear infinite;
+    }
+
+    @keyframes pageLoaderSpin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body class="french-chateau-theme french-locked">
+
+  <div
+    id="pageLoader"
+    role="status"
+    aria-live="polite"
+    aria-label="正在加载请帖"
+    data-critical="./src/assets/images/french/gate-invitation-base-optimized.jpg,./src/assets/images/相爱/1.jpg,./src/assets/images/相守/1.jpg"
+  >
+    <div class="page-loader-inner">
+      <div class="page-loader-ring" aria-hidden="true"></div>
+      <span>PLEASE WAIT · 正在打开请帖</span>
+    </div>
+  </div>
 
   <!-- Interactive Canvas for Rose Petal Physics -->
   <canvas id="petalCanvas" aria-hidden="true"></canvas>
@@ -242,6 +299,7 @@
   </div>
 
   <!-- Self-contained French Provence JavaScript Bundle -->
+  <script src="./src/scripts/page-loader.js"></script>
   <script src="./src/scripts/french-bundle.js"></script>
 </body>
 </html>
