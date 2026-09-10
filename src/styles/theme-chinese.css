@@ -1,4 +1,4 @@
-/* Neo-Chinese Creative Palace & Fan Exhibition Theme - 故宫折扇·月洞门·金石画境 */
+/* Neo-Chinese Creative Palace & Vertical Gallery Theme - 金石画境 */
 @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;600;700;900&family=ZCOOL+XiaoWei&display=swap');
 
 :root {
@@ -289,13 +289,13 @@ body.chinese-locked {
   left: 14px;
   right: 14px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   z-index: 100;
   pointer-events: none;
 }
 
-.chinese-nav-pill, .chinese-music-btn {
+.chinese-music-btn {
   pointer-events: auto;
   display: inline-flex;
   align-items: center;
@@ -317,7 +317,7 @@ body.chinese-locked {
   cursor: pointer;
 }
 
-.chinese-nav-pill:active, .chinese-music-btn:active {
+.chinese-music-btn:active {
   transform: scale(0.96);
   background: rgba(80, 20, 26, 0.95);
 }
@@ -601,285 +601,121 @@ body.chinese-locked {
 }
 
 /* ===================================================
-   03. CREATIVE ORIENTAL PHOTO EXHIBITION (4套顶级创意形制)
+   03. VERTICAL PHOTO SHOWCASES (相爱与相守)
    =================================================== */
 .palace-gallery-flow {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 32px;
 }
 
-.gallery-section-header {
+.chateau-showcase-card {
+  position: relative;
+  background: linear-gradient(135deg, #7A1A20 0%, #591216 100%);
+  border-radius: 8px;
+  border: 1px solid var(--ch-border-gold);
+  padding: 16px 14px 22px;
+  box-shadow: var(--shadow-decree);
+}
+
+.chateau-showcase-header {
   text-align: center;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 
-.gallery-section-tag {
+.showcase-tag {
   font-family: var(--font-xiaowei);
-  font-size: 0.8rem;
-  letter-spacing: 0.35em;
-  color: var(--ch-gold-pure);
+  font-size: 0.74rem;
+  letter-spacing: 0.3em;
+  color: var(--ch-gold-bright);
   font-weight: 600;
 }
 
-.gallery-section-title {
+.showcase-title {
   font-family: var(--font-calligraphy);
-  font-size: 1.9rem;
+  font-size: 1.55rem;
   letter-spacing: 0.15em;
-  color: var(--ch-gold-bright);
+  color: var(--ch-text-ivory);
   text-shadow: 0 0 18px var(--ch-gold-glow);
   margin-top: 2px;
 }
 
-.gallery-section-quote {
-  font-family: var(--font-xiaowei);
-  font-size: 0.92rem;
-  letter-spacing: 0.15em;
-  color: var(--ch-text-muted);
-  line-height: 1.8;
-  margin-top: 6px;
-  padding: 0 12px;
-}
-
-/* --- 创意形制 1：故宫三交六椀菱花金窗主画 --- */
-.lattice-window-frame {
+/* Vertical photo frame, matching the French showcase layout. */
+.showcase-photo-frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 4/5;
+  aspect-ratio: 3 / 4;
   border-radius: 6px;
   overflow: hidden;
-  border: 3px solid var(--ch-gold-pure);
-  box-shadow: var(--shadow-art), inset 0 0 25px rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--ch-gold-pure);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
   background: #3A0C10;
+  cursor: pointer;
+  touch-action: pan-y;
+  user-select: none;
 }
 
-.lattice-window-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.lattice-overlay-fret {
+.showcase-photo-frame::after {
+  content: "";
   position: absolute;
-  inset: 8px;
-  border: 1px dashed var(--ch-gold-pure);
+  inset: 7px;
+  border: 1px solid rgba(252, 232, 190, 0.65);
+  border-radius: 4px;
   pointer-events: none;
 }
 
-/* --- 创意形制 2：宋代泥金折扇画 (Song Dynasty Folding Fan) --- */
-.fan-exhibition-wrapper {
-  position: relative;
-  width: 100%;
-  padding: 16px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.fan-frame-arch {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/10;
-  border-radius: 180px 180px 30px 30px;
-  overflow: hidden;
-  border: 2.5px solid var(--ch-gold-pure);
-  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.7);
-  background: #3A0C10;
-}
-
-.fan-frame-img {
+.showcase-photo {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: opacity 0.8s ease, transform 6s ease;
   display: block;
 }
 
-.fan-tassel-hanger {
-  margin-top: 10px;
+.showcase-dots {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 14px 0 10px;
 }
 
-.fan-tassel-bead {
-  width: 12px;
-  height: 12px;
+.showcase-dot {
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: var(--ch-cinnabar);
-  border: 1.5px solid var(--ch-gold-bright);
+  background: var(--ch-border-gold-subtle);
+  border: 1px solid var(--ch-gold-pure);
+  transition: all 0.3s ease;
 }
 
-.fan-tassel-line {
-  width: 2px;
-  height: 16px;
-  background: var(--ch-gold-pure);
+.showcase-dot.active {
+  background: var(--ch-gold-bright);
+  transform: scale(1.3);
 }
 
-/* --- 创意形制 3：江南园林 · 海棠景窗与圆月洞门对景 --- */
-.garden-duo-gates {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-/* 圆月洞门 (Moon Gate) */
-.moon-gate-card {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid var(--ch-gold-pure);
-  box-shadow: var(--shadow-art);
-  background: #3A0C10;
-}
-
-.moon-gate-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* 八角海棠景窗 (Begonia Gate) */
-.begonia-gate-card {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1/1;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 2px solid var(--ch-gold-pure);
-  box-shadow: var(--shadow-art);
-  background: #3A0C10;
-  transform: rotate(45deg);
-  margin: 10px 0;
-}
-
-.begonia-gate-inner {
-  width: 140%;
-  height: 140%;
-  position: absolute;
-  top: -20%;
-  left: -20%;
-  transform: rotate(-45deg);
-}
-
-.begonia-gate-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* --- 创意形制 4：岁岁长情 · 龙凤呈祥双联立轴挂卷 (Twin Silk Brocades) --- */
-.twin-scrolls-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-.twin-scroll-item {
-  position: relative;
-  background: linear-gradient(135deg, #7A1A20 0%, #541115 100%);
-  border: 1.5px solid var(--ch-gold-pure);
-  border-radius: 4px;
-  padding: 10px 8px 16px;
-  box-shadow: var(--shadow-art);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.twin-scroll-photo-box {
-  width: 100%;
-  aspect-ratio: 3/4;
-  border-radius: 3px;
-  overflow: hidden;
-  border: 1px solid var(--ch-border-gold);
-}
-
-.twin-scroll-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.twin-scroll-caption {
+.showcase-quote {
+  text-align: center;
   font-family: var(--font-xiaowei);
-  font-size: 0.8rem;
-  letter-spacing: 0.2em;
-  color: var(--ch-text-gold);
-  margin-top: 8px;
-  white-space: nowrap;
-}
-
-/* ===================================================
-   04. CEREMONY TIMETABLE (华堂六礼 · 古时辰时序)
-   =================================================== */
-.ancient-hour-track {
-  display: flex;
-  flex-direction: column;
-  gap: 26px;
-  margin-top: 28px;
-  position: relative;
-  padding-left: 28px;
-  text-align: left;
-}
-
-.ancient-hour-track::before {
-  content: "";
-  position: absolute;
-  top: 10px;
-  bottom: 10px;
-  left: 8px;
-  width: 1.5px;
-  background: linear-gradient(180deg, var(--ch-gold-bright), var(--ch-gold-deep), var(--ch-border-gold-subtle));
-}
-
-.ancient-hour-node {
-  position: relative;
-}
-
-.ancient-hour-node::before {
-  content: "囍";
-  position: absolute;
-  left: -28px;
-  top: 2px;
-  width: 18px;
-  height: 18px;
-  color: var(--ch-gold-bright);
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-shadow: 0 0 8px var(--ch-gold-bright);
-}
-
-.ancient-hour-time {
-  font-family: var(--font-xiaowei);
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--ch-gold-bright);
-  letter-spacing: 0.1em;
-}
-
-.ancient-hour-name {
-  font-size: 1.02rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  color: var(--ch-text-ivory);
-  margin-top: 2px;
-}
-
-.ancient-hour-desc {
-  font-size: 0.82rem;
+  font-size: 0.92rem;
+  letter-spacing: 0.12em;
   color: var(--ch-text-muted);
-  margin-top: 2px;
-  line-height: 1.6;
+  line-height: 1.8;
+  padding: 4px 10px;
+  white-space: pre-line;
+}
+
+.showcase-swipe-hint {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: var(--ch-text-subtle);
+  text-align: center;
+  margin-top: 4px;
 }
 
 /* ===================================================
-   05. BANQUET DETAILS (盛筵席设与引路)
+   04. LOCATION & BANQUET (盛宴席设与地图)
    =================================================== */
 .banquet-info-grid {
   display: flex;
@@ -912,6 +748,58 @@ body.chinese-locked {
 .banquet-info-sub {
   font-size: 0.82rem;
   color: var(--ch-text-muted);
+}
+
+/* Embedded AMap venue frame, styled for the Chinese palette. */
+.chateau-map-frame {
+  margin: 0 0 28px;
+  padding: 6px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(250, 246, 239, 0.12), rgba(230, 194, 122, 0.16));
+  border: 1px solid var(--ch-border-gold);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 249, 240, 0.18);
+  cursor: pointer;
+}
+
+.chateau-map-canvas {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 220px;
+  border-radius: 11px;
+  overflow: hidden;
+  background: rgba(245, 237, 224, 0.18);
+  pointer-events: none;
+}
+
+.chateau-map-caption {
+  padding: 8px 4px 4px;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: var(--ch-gold-bright);
+  font-family: var(--font-serif-cn);
+}
+
+.chateau-map-marker {
+  width: 20px;
+  height: 20px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: radial-gradient(circle at 32% 30%, var(--ch-gold-bright), var(--ch-gold-deep));
+  border: 2px solid #fff;
+  box-shadow: 0 4px 12px rgba(181, 136, 60, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chateau-map-marker span {
+  transform: rotate(45deg);
+  color: var(--ch-cinnabar);
+  font-size: 0.6rem;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .banquet-btn-row {

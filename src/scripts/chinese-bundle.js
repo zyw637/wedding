@@ -14,89 +14,68 @@
       bride: "张佳敏",
       groomEn: "Zhuoyang Wan",
       brideEn: "Jiamin Zhang",
-      date: "2026.10.18",
-      dateFormatted: "2026年10月18日",
-      dateEn: "OCTOBER 18, 2026",
-      lunarDate: "岁在丙午 农历九月初九 宜嫁娶 宜纳吉",
+      date: "2026.10.03",
+      dateFormatted: "2026年10月3日",
+      dateEn: "OCTOBER 3, 2026",
+      lunarDate: "岁在丙午 农历八月廿三 宜嫁娶",
       time: "12:00",
-      timeFormatted: "午初吉时 12:00 华堂启幕",
-      venueName: "云境庄园 · 见山艺术厅",
-      address: "北京市朝阳区芳草地艺术中心8号",
-      addressDetail: "北京市朝阳区东大桥路9号 芳草地艺术中心",
-      latitude: 39.9199,
-      longitude: 116.4475
+      timeFormatted: "午时 12:00 · 礼启",
+      venueName: "南昌高新区万达拆迁安置小区",
+      latitude: 28.679281,
+      longitude: 116.010453
     },
     scroll: {
       calligraphyTitle: "良缘永结",
-      subtitle: "两姓联姻 · 一堂缔约",
+      subtitle: "两姓联姻，一堂缔约",
       sealText: "囍",
-      poemLine: "两姓联姻 一堂缔约",
-      poemSub: "良缘永结 · 匹配同称",
-      hint: "✦ 轻触朱砂印章 · 启阅良缘长卷 ✦"
+      poemLine: "此生相约 · 共赴佳期",
+      poemSub: "一纸请帖 · 邀君相见",
+      hint: "✦ 轻触朱砂印章 · 展开请帖 ✦"
     },
     decree: {
-      leadTitle: "谨定于公历二〇二六年十月十八日",
+      leadTitle: "谨定于公历二〇二六年十月三日",
       names: "万卓洋 ＆ 张佳敏",
       namesEn: "ZHUOYANG WAN & JIAMIN ZHANG",
-      vow: "两姓联姻，一堂缔约，良缘永结，匹配同称。\n看此日桃花灼灼，宜室宜家；\n卜他年瓜瓞绵绵，尔昌尔炽。\n特此敬邀 诸位尊长亲朋 莅临华堂。"
+      vow: "敬邀诸位亲朋，共赴良辰。\n薄设喜筵，恭候莅临，\n同证此生相守。"
     },
     compass: {
-      tag: "LUNAR ALMANAC",
-      title: "十二时辰吉时乾坤罗盘",
-      solarDate: "公历 2026.10.18",
-      lunarDate: "农历九月初九 · 宜嫁娶",
+      tag: "吉日已定",
+      title: "良辰已定 · 十月三日",
+      solarDate: "公历 2026.10.03",
+      lunarDate: "农历八月廿三 · 宜嫁娶",
       days: "天",
       hours: "时",
       minutes: "分",
       seconds: "秒"
     },
     gallery: {
-      sec1Tag: "殿堂大赏 · 菱花金窗",
-      sec1Title: "三交六椀 · 晨光初见",
-      sec1Quote: "遇一人白首，择一城终老。在静谧光影里，定格初见惊鸿。",
-      sec2Tag: "江南园林 · 景窗对影",
-      sec2Title: "海棠景窗 · 圆月洞门",
-      sec2Quote: "清风徐来，水波不兴。执子之手，与子偕行于天地广袤之间。",
-      sec3Tag: "宋韵雅集 · 泥金折扇",
-      sec3Title: "泥金折扇 · 庭阁长情",
-      sec3Quote: "雕梁画栋，水榭亭台。一诺相许，朝暮并肩共赴余生长情。"
-    },
-    ceremony: {
-      title: "华堂六礼 · 吉时时序",
-      t1Time: "巳正初刻 · 11:00",
-      t1Name: "喜迎宾朋 · 奉茶纳吉",
-      t1Desc: "亲友签到入席，于华堂迎宾区享用茶点与喜酒",
-      t2Time: "午初吉时 · 12:00",
-      t2Name: "华堂吉礼 · 誓缔良缘",
-      t2Desc: "见山艺术厅内，共同见证喜结连理、誓言永固",
-      t3Time: "午正二刻 · 12:30",
-      t3Name: "喜筵盛席 · 举杯同庆",
-      t3Desc: "华堂大宴，佳肴满席，把酒言欢叙深情",
-      t4Time: "未初正刻 · 14:00",
-      t4Name: "礼成谢恩 · 喜结同心",
-      t4Desc: "与挚爱亲朋合影留念，定格良辰吉日"
+      sec1Tag: "其一 · 相爱",
+      sec1Title: "相爱 · 初见成诗",
+      sec1Quote: "一见倾心，执手相携，愿朝朝暮暮，皆共此生。",
+      sec2Tag: "其二 · 相守",
+      sec2Title: "相守 · 朝暮同途",
+      sec2Quote: "共历晴雨，愿岁岁年年，长相厮守。",
+      swipeHint: "← 左右滑动 · 细览画卷 →"
     },
     banquet: {
-      title: "盛筵席设",
+      tag: "喜筵席设",
+      title: "设席迎宾",
       dateLabel: "良辰吉日",
-      timeLabel: "启幕吉时",
-      venueLabel: "举办华堂",
-      addressLabel: "详细地址",
-      navBtn: "一键地图导航",
-      copyBtn: "复制华堂地址",
-      copySuccess: "✨ 华堂地址已复制到剪贴板",
-      tip: "现场备有专属地下停车位，凭请帖免费停车"
+      timeLabel: "吉时礼启",
+      venueLabel: "席设所在",
+      navBtn: "地图引路",
+      copyBtn: "复制席设",
+      mapCaption: "— 席设地图 —",
+      copySuccess: "✨ 席设名称已复制",
+      tip: "席设专属停车位，凭帖可泊"
     },
     footer: {
       dragonPhoenix: "龙凤呈祥",
-      blessing: "谨以此卷，诚邀诸位长辈亲朋拨冗光临。",
+      blessing: "敬候亲朋莅临，同贺嘉礼圆满。",
       sign: "万卓洋 ＆ 张佳敏 敬邀",
-      scrollTop: "✦ 返回卷首 ✦"
+      scrollTop: "✦ 重返卷首 ✦"
     },
     nav: {
-      switchFrench: "🍾 法式风",
-      switchFilm: "🎞️ 电影风",
-      switchMagazine: "📰 杂志风",
       music: "古韵雅乐"
     }
   };
@@ -388,13 +367,133 @@
     }
   }
 
-  /* --- 5. MAIN APPLICATION BOOTSTRAP --- */
+  /* --- 5. CIRCULAR PHOTO SHOWCASES CONTROLLER --- */
+  class ShowcaseController {
+    constructor() {
+      this.showcases = {};
+      this.autoCycleStarted = false;
+      this.init();
+    }
+
+    init() {
+      ['showcase1', 'showcase2'].forEach((showcaseId) => {
+        const showcase = document.getElementById(showcaseId);
+        if (!showcase) return;
+
+        const photos = Array.from(showcase.querySelectorAll('.showcase-photo'));
+        const frame = showcase.querySelector('.showcase-photo-frame');
+        const dots = Array.from(showcase.querySelectorAll('.showcase-dot'));
+
+        if (photos.length === 0) return;
+
+        this.showcases[showcaseId] = {
+          photos,
+          dots,
+          currentIndex: 0,
+          touchStartX: 0,
+          touchStartY: 0,
+          timer: null
+        };
+
+        this.setPhoto(showcaseId, 0);
+
+        if (frame) {
+          frame.addEventListener('touchstart', (event) => {
+            this.showcases[showcaseId].touchStartX = event.touches[0].clientX;
+            this.showcases[showcaseId].touchStartY = event.touches[0].clientY;
+          }, { passive: true });
+
+          frame.addEventListener('touchend', (event) => {
+            const state = this.showcases[showcaseId];
+            const deltaX = state.touchStartX - event.changedTouches[0].clientX;
+            const deltaY = state.touchStartY - event.changedTouches[0].clientY;
+
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 30) {
+              if (deltaX > 0) {
+                this.next(showcaseId);
+              } else {
+                this.prev(showcaseId);
+              }
+              this.resetAutoCycle(showcaseId);
+            }
+          }, { passive: true });
+        }
+
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            this.setPhoto(showcaseId, index);
+            this.resetAutoCycle(showcaseId);
+          });
+        });
+      });
+    }
+
+    startAutoCycle() {
+      if (this.autoCycleStarted) return;
+      this.autoCycleStarted = true;
+
+      Object.keys(this.showcases).forEach((showcaseId) => {
+        const showcase = this.showcases[showcaseId];
+        if (showcase && showcase.photos.length > 1) {
+          this.armTimer(showcaseId);
+        }
+      });
+    }
+
+    armTimer(showcaseId) {
+      const showcase = this.showcases[showcaseId];
+      if (!showcase) return;
+
+      if (showcase.timer) clearTimeout(showcase.timer);
+
+      const dwell = 4000 + Math.floor(Math.random() * 2001);
+      showcase.timer = setTimeout(() => {
+        showcase.timer = null;
+        this.next(showcaseId);
+        this.armTimer(showcaseId);
+      }, dwell);
+    }
+
+    resetAutoCycle(showcaseId) {
+      if (this.autoCycleStarted) this.armTimer(showcaseId);
+    }
+
+    next(showcaseId) {
+      const showcase = this.showcases[showcaseId];
+      if (!showcase) return;
+      this.setPhoto(showcaseId, (showcase.currentIndex + 1) % showcase.photos.length);
+    }
+
+    prev(showcaseId) {
+      const showcase = this.showcases[showcaseId];
+      if (!showcase) return;
+      this.setPhoto(showcaseId, (showcase.currentIndex - 1 + showcase.photos.length) % showcase.photos.length);
+    }
+
+    setPhoto(showcaseId, index) {
+      const showcase = this.showcases[showcaseId];
+      if (!showcase) return;
+
+      showcase.currentIndex = index;
+      showcase.photos.forEach((photo, photoIndex) => {
+        const active = photoIndex === index;
+        photo.style.display = active ? 'block' : 'none';
+        photo.style.opacity = active ? '1' : '0';
+      });
+      showcase.dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle('active', dotIndex === index);
+      });
+    }
+  }
+
+  /* --- 6. MAIN APPLICATION BOOTSTRAP --- */
   class ChineseWeddingApp {
     constructor() {
       this.translations = CHINESE_SCROLL_BUNDLE;
       this.xiParticles = null;
       this.audioPlayer = null;
       this.countdown = null;
+      this.showcaseController = null;
     }
 
     init() {
@@ -409,10 +508,78 @@
 
       // 4. Initialize Audio & Compass Countdown
       this.audioPlayer = new ChineseAudioPlayer();
-      this.countdown = new CompassCountdown('2026-10-18T12:00:00');
+      this.countdown = new CompassCountdown('2026-10-03T12:00:00');
+      this.showcaseController = new ShowcaseController();
 
       // 5. Bind User Interactions
       this.bindInteractions();
+
+      // 6. Lazily Initialize Embedded AMap
+      this.initChineseMap();
+    }
+
+    /* --- EMBEDDED AMAP (懒加载高德地图, 滚动到地址卡片时才拉起 SDK) --- */
+    initChineseMap() {
+      const mapEl = document.getElementById('chineseMap');
+      const frameEl = document.getElementById('chineseMapFrame');
+      if (!mapEl || !frameEl) return;
+
+      const meta = this.translations.meta;
+      const position = [meta.longitude, meta.latitude];
+      const AMAP_KEY = '58881674711b8daba0509d63afdd9215';
+      const hideFrame = () => {
+        frameEl.style.display = 'none';
+      };
+
+      const loadSdk = () => new Promise((resolve, reject) => {
+        if (window.AMap) return resolve();
+        const script = document.createElement('script');
+        script.src = `https://webapi.amap.com/maps?v=2.0&key=${AMAP_KEY}`;
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error('AMap SDK load failed'));
+        document.head.appendChild(script);
+      });
+
+      const buildMap = () => {
+        const map = new AMap.Map('chineseMap', {
+          viewMode: '2D',
+          zoom: 15,
+          center: position,
+          mapStyle: 'amap://styles/light',
+          resizeEnable: true,
+          dragEnable: false,
+          zoomEnable: false,
+          pinchEnable: false,
+          doubleClickZoom: false,
+          keyboardEnable: false,
+          scrollWheel: false,
+          touchZoom: false
+        });
+
+        const marker = new AMap.Marker({
+          position,
+          content: '<div class="chateau-map-marker"><span>囍</span></div>',
+          offset: new AMap.Pixel(-10, -24)
+        });
+        marker.setMap(map);
+      };
+
+      const boot = () => loadSdk().then(buildMap).catch(hideFrame);
+
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              io.disconnect();
+              boot();
+              break;
+            }
+          }
+        }, { rootMargin: '300px' });
+        io.observe(mapEl);
+      } else {
+        boot();
+      }
     }
 
     applyI18n() {
@@ -439,18 +606,26 @@
       const scrollOverlay = document.getElementById('scrollOverlay');
 
       if (scrollWrapper && scrollOverlay) {
-        scrollWrapper.addEventListener('click', () => {
+        let isOpening = false;
+        const openScroll = (playAudio = true) => {
+          if (isOpening) return;
+          isOpening = true;
           scrollWrapper.classList.add('opening');
 
-          // Start Audio
-          this.audioPlayer.play();
+          // Audio starts only after a user gesture; autoplay policies may block it.
+          if (playAudio) this.audioPlayer.play();
 
           // Smoothly dissolve overlay and unlock scrolling
           setTimeout(() => {
             scrollOverlay.classList.add('opened');
             document.body.classList.remove('chinese-locked');
+            if (this.showcaseController) this.showcaseController.startAutoCycle();
           }, 950);
-        });
+        };
+
+        // Open automatically one second after the page loads; tapping still opens it immediately.
+        scrollWrapper.addEventListener('click', () => openScroll(true));
+        setTimeout(() => openScroll(false), 1000);
       }
 
       // Map Navigation Button
@@ -473,7 +648,7 @@
       const btnChineseCopy = document.getElementById('btnChineseCopy');
       if (btnChineseCopy) {
         btnChineseCopy.addEventListener('click', () => {
-          const address = this.translations.meta.addressDetail || this.translations.meta.address;
+          const address = this.translations.meta.venueName;
           if (navigator.clipboard && window.isSecureContext) {
             navigator.clipboard.writeText(address).then(() => {
               this.showToast(this.translations.banquet.copySuccess);

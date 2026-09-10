@@ -9,8 +9,9 @@
   <title data-i18n="meta.title">婚礼邀请函 · 万卓洋 ＆ 张佳敏</title>
 
   <!-- Preload Essential Hero Images -->
-  <link rel="preload" as="image" href="./相爱/1.jpg">
-  <link rel="preload" as="image" href="./相守/1.jpg">
+  <link rel="preload" as="image" href="./src/assets/images/相爱/1.jpg">
+  <link rel="preload" as="image" href="./src/assets/images/相守/1.jpg">
+  <link rel="preload" as="image" href="./src/assets/images/french/gate-invitation-base.jpg">
 
   <!-- AMap Security Config (密钥必须配置在 JS API 加载之前) -->
   <script>
@@ -33,32 +34,36 @@
     </button>
   </nav>
 
-  <!-- 00. 3D FRENCH CHATEAU DOUBLE DOORS (法式双开大门启幕) -->
+  <!-- 00. INVITATION COVER DOUBLE DOORS (参考请帖图重设计启幕) -->
   <div class="chateau-gate-overlay" id="chateauGateOverlay">
     <header class="chateau-gate-header">
+      <div class="gate-eyebrow">A NOTE SEALED WITH LOVE</div>
       <div class="gate-script-title" data-i18n="gate.script"></div>
     </header>
 
-    <!-- 3D Double French Doors Frame -->
-    <div class="chateau-gate-frame" id="chateauGateFrame" role="button" aria-label="Touch Wax Seal to Open Chateau Gate">
-      <!-- Interior Invitation Preview behind the doors -->
+    <!-- The reference invitation becomes the two animated cover leaves. -->
+    <div class="chateau-gate-frame" id="chateauGateFrame" role="button" tabindex="0" aria-label="Touch the wax seal to open the invitation">
+      <!-- Inner page revealed behind the cover leaves -->
       <div class="chateau-gate-interior">
-        <div class="interior-script" data-i18n="gate.script"></div>
+        <div class="interior-eyebrow">OUR NEXT CHAPTER</div>
+        <div class="interior-script" data-i18n="hero.script"></div>
         <div class="interior-names" data-i18n="gate.names"></div>
         <div class="interior-date" data-i18n="meta.dateEn"></div>
+        <div class="interior-ornament">✦</div>
       </div>
 
-      <!-- Left & Right 3D French Doors -->
-      <div class="gate-door-left"></div>
-      <div class="gate-door-right"></div>
+      <!-- Left & Right cover leaves use the generated reference-based artwork. -->
+      <div class="gate-door gate-door-left" aria-hidden="true"></div>
+      <div class="gate-door gate-door-right" aria-hidden="true"></div>
 
-      <!-- 3D Wax Seal Stamp in Center with Golden Loader Ring -->
+      <!-- Live seal stays crisp above the artwork while the cover opens. -->
       <div class="chateau-wax-seal" id="chateauWaxSeal">
         <div class="wax-seal-loader" id="waxSealLoader" aria-hidden="true"></div>
         <span class="wax-seal-char" data-i18n="gate.sealText">囍</span>
       </div>
     </div>
 
+    <div class="gate-opening-rule" aria-hidden="true"><span></span><i>✦</i><span></span></div>
     <div class="chateau-gate-hint" id="chateauGateHint" data-i18n="gate.loadingHint"></div>
     <div class="gate-loading-progress" id="gateLoadingProgress" aria-hidden="true">
       <div class="gate-loading-bar"></div>
@@ -121,8 +126,8 @@
         </header>
 
         <div class="showcase-photo-frame">
-          <img class="showcase-photo" src="./相爱/1.jpg" alt="Love Photo 1" />
-          <img class="showcase-photo" src="./相爱/2.jpg" alt="Love Photo 2" style="display: none;" />
+          <img class="showcase-photo" src="./src/assets/images/相爱/1.jpg" alt="Love Photo 1" />
+          <img class="showcase-photo" src="./src/assets/images/相爱/2.jpg" alt="Love Photo 2" style="display: none;" />
         </div>
 
         <div class="showcase-dots">
@@ -142,8 +147,8 @@
         </header>
 
         <div class="showcase-photo-frame">
-          <img class="showcase-photo" src="./相守/1.jpg" alt="Eternity Photo 1" />
-          <img class="showcase-photo" src="./相守/2.jpg" alt="Eternity Photo 2" style="display: none;" />
+          <img class="showcase-photo" src="./src/assets/images/相守/1.jpg" alt="Eternity Photo 1" />
+          <img class="showcase-photo" src="./src/assets/images/相守/2.jpg" alt="Eternity Photo 2" style="display: none;" />
         </div>
 
         <div class="showcase-dots">

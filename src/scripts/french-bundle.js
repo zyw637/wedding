@@ -625,6 +625,7 @@
   class ShowcaseController {
     constructor() {
       this.showcases = {};
+      this.autoCycleStarted = false;
       this.init();
     }
 
@@ -682,11 +683,12 @@
 
         }
       });
-
-      this.startAutoCycle();
     }
 
     startAutoCycle() {
+      if (this.autoCycleStarted) return;
+      this.autoCycleStarted = true;
+
       // 两张画廊各自独立随机 4-6s 自动切图，自然错峰。
 
       Object.keys(this.showcases).forEach((scId, i) => {
@@ -875,12 +877,14 @@
     }
 
     bindInteractions() {
-      // 3D Double Gate Auto-Open with 1.8s Loading Delay & Click Override
+      // Invitation cover auto-opens after the short loading moment; tapping skips the wait.
       const gateFrame = document.getElementById("chateauGateFrame");
       const gateOverlay = document.getElementById("chateauGateOverlay");
 
       if (gateFrame && gateOverlay) {
         let isOpened = false;
+        const GATE_OPEN_DURATION_MS = 1100;
+        const GATE_HANDOFF_MS = GATE_OPEN_DURATION_MS;
 
         const openGate = (isManualClick = false) => {
           if (isOpened) return;
@@ -900,26 +904,40 @@
           // Start Audio
           this.audioPlayer.play();
 
-          // Smoothly dissolve overlay and unlock scrolling
+          // Switch as soon as the leaves reach the visible side-panel pose; do not continue
+          // rotating them toward disappearance.
           setTimeout(() => {
             gateOverlay.classList.add("opened");
             document.body.classList.remove("french-locked");
-          }, 850);
+            // Start carousel timing only after the cover has opened and the page is revealed.
+            if (this.showcaseController) {
+              this.showcaseController.startAutoCycle();
+            }
+          }, GATE_HANDOFF_MS);
         };
 
         // 1. Manual click/tap to open immediately (skip delay)
         gateFrame.addEventListener("click", () => openGate(true));
+        gateFrame.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openGate(true);
+          }
+        });
         gateOverlay.addEventListener("click", (e) => {
           // If user taps outside the frame on overlay, also open
           if (!isOpened) openGate(true);
         });
 
-        // 2. Auto-trigger after 1.8s loading animation delay
+        // 2. Auto-trigger after the cover has had time to be seen.
         setTimeout(() => {
           if (!isOpened) {
             openGate(false);
           }
-        }, 1800);
+        }, 2400);
+      } else if (this.showcaseController) {
+        // Fallback for pages without the cover overlay.
+        this.showcaseController.startAutoCycle();
       }
 
       // Map Navigation Button → 弹出“高德 / 百度”选择菜单

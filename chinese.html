@@ -8,14 +8,17 @@
   <meta name="format-detection" content="telephone=no">
   <title data-i18n="meta.title">婚礼邀请函 · 万卓洋 ＆ 张佳敏</title>
 
-  <!-- Preload Essential Hero Images -->
-  <link rel="preload" as="image" href="./src/assets/images/indoor/1.png">
-  <link rel="preload" as="image" href="./src/assets/images/golf/1.png">
-  <link rel="preload" as="image" href="./src/assets/images/golf/2.png">
-  <link rel="preload" as="image" href="./src/assets/images/pavilion/2.png">
+  <!-- Preload Essential Gallery Images -->
+  <link rel="preload" as="image" href="./src/assets/images/相爱/1.jpg">
+  <link rel="preload" as="image" href="./src/assets/images/相守/1.jpg">
 
-  <!-- Neo-Chinese Creative Palace & Fan Stylesheet -->
+  <!-- Neo-Chinese Palace & Vertical Gallery Stylesheet -->
   <link rel="stylesheet" href="./src/styles/theme-chinese.css">
+
+  <!-- AMap Security Config (密钥必须配置在 JS API 加载之前) -->
+  <script>
+    window._AMapSecurityConfig = { securityJsCode: "4c24a838766deb5f8fa157772c26a7fc" };
+  </script>
 </head>
 <body class="chinese-theme chinese-locked">
 
@@ -24,11 +27,6 @@
 
   <!-- Top Floating Nav Controls -->
   <nav class="chinese-nav-bar" aria-label="Quick Controls">
-    <div style="display: flex; gap: 6px;">
-      <a href="./french.html" class="chinese-nav-pill" data-i18n="nav.switchFrench">🍾 法式风</a>
-      <a href="./index.html" class="chinese-nav-pill" data-i18n="nav.switchFilm">🎞️ 电影风</a>
-      <a href="./magazine.html" class="chinese-nav-pill" data-i18n="nav.switchMagazine">📰 杂志风</a>
-    </div>
     <button class="chinese-music-btn" id="chineseMusicBtn" aria-label="Music Toggle">
       <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
     </button>
@@ -121,119 +119,61 @@
       </div>
     </section>
 
-    <!-- 03. CREATIVE ORIENTAL PHOTO EXHIBITION (3 大精选殿堂级画境) -->
+    <!-- 03. VERTICAL PHOTO SHOWCASES (相爱与相守) -->
     <section class="palace-gallery-flow">
 
-      <!-- 01. 故宫三交六椀菱花金窗主画 -->
-      <article class="palace-card" style="padding: 24px 14px 28px;">
-        <div class="fret-corner fret-tl"></div>
-        <div class="fret-corner fret-tr"></div>
-
-        <header class="gallery-section-header">
-          <div class="gallery-section-tag" data-i18n="gallery.sec1Tag"></div>
-          <h2 class="gallery-section-title" data-i18n="gallery.sec1Title"></h2>
-          <p class="gallery-section-quote" data-i18n="gallery.sec1Quote"></p>
+      <!-- Showcase 1: 相爱 · 初见成诗 -->
+      <article class="chateau-showcase-card" id="showcase1">
+        <header class="chateau-showcase-header">
+          <span class="showcase-tag" data-i18n="gallery.sec1Tag"></span>
+          <h2 class="showcase-title" data-i18n="gallery.sec1Title"></h2>
         </header>
 
-        <div class="lattice-window-frame">
-          <img class="lattice-window-img" src="./src/assets/images/indoor/1.png" alt="Grand Palace Lattice" loading="lazy" />
-          <div class="lattice-overlay-fret"></div>
+        <div class="showcase-photo-frame" role="group" aria-label="相爱照片轮播">
+          <img class="showcase-photo" src="./src/assets/images/相爱/1.jpg" alt="相爱照片 1" />
+          <img class="showcase-photo" src="./src/assets/images/相爱/2.jpg" alt="相爱照片 2" style="display: none;" />
         </div>
+
+        <div class="showcase-dots" aria-hidden="true">
+          <span class="showcase-dot active"></span>
+          <span class="showcase-dot"></span>
+        </div>
+
+        <div class="showcase-quote" data-i18n="gallery.sec1Quote"></div>
+        <div class="showcase-swipe-hint" data-i18n="gallery.swipeHint"></div>
       </article>
 
-      <!-- 02. 江南园林 · 海棠景窗与圆月洞门对景 (同风格绿茵外景) -->
-      <article class="palace-card" style="padding: 24px 14px 28px;">
-        <div class="fret-corner fret-tl"></div>
-        <div class="fret-corner fret-tr"></div>
-
-        <header class="gallery-section-header">
-          <div class="gallery-section-tag" data-i18n="gallery.sec2Tag"></div>
-          <h2 class="gallery-section-title" data-i18n="gallery.sec2Title"></h2>
-          <p class="gallery-section-quote" data-i18n="gallery.sec2Quote"></p>
+      <!-- Showcase 2: 相守 · 朝暮同途 -->
+      <article class="chateau-showcase-card" id="showcase2">
+        <header class="chateau-showcase-header">
+          <span class="showcase-tag" data-i18n="gallery.sec2Tag"></span>
+          <h2 class="showcase-title" data-i18n="gallery.sec2Title"></h2>
         </header>
 
-        <div class="garden-duo-gates">
-          <!-- 圆月洞门 (Lawn Series 1) -->
-          <div class="moon-gate-card">
-            <img class="moon-gate-img" src="./src/assets/images/golf/1.png" alt="Moon Gate Garden View 1" loading="lazy" />
-          </div>
-
-          <!-- 八角海棠门 (Lawn Series 2) -->
-          <div class="begonia-gate-card">
-            <div class="begonia-gate-inner">
-              <img class="begonia-gate-img" src="./src/assets/images/golf/2.png" alt="Begonia Gate Garden View 2" loading="lazy" />
-            </div>
-          </div>
+        <div class="showcase-photo-frame" role="group" aria-label="相守照片轮播">
+          <img class="showcase-photo" src="./src/assets/images/相守/1.jpg" alt="相守照片 1" />
+          <img class="showcase-photo" src="./src/assets/images/相守/2.jpg" alt="相守照片 2" style="display: none;" />
         </div>
-      </article>
 
-      <!-- 03. 宋代泥金折扇画 (水榭亭台大片) -->
-      <article class="palace-card" style="padding: 24px 14px 28px;">
-        <div class="fret-corner fret-tl"></div>
-        <div class="fret-corner fret-tr"></div>
-
-        <header class="gallery-section-header">
-          <div class="gallery-section-tag" data-i18n="gallery.sec3Tag"></div>
-          <h2 class="gallery-section-title" data-i18n="gallery.sec3Title"></h2>
-          <p class="gallery-section-quote" data-i18n="gallery.sec3Quote"></p>
-        </header>
-
-        <div class="fan-exhibition-wrapper">
-          <div class="fan-frame-arch">
-            <img class="fan-frame-img" src="./src/assets/images/pavilion/2.png" alt="Song Dynasty Fan Pavilion" style="object-position: center 76%; transform: scale(1.12);" loading="lazy" />
-          </div>
-          <div class="fan-tassel-hanger">
-            <div class="fan-tassel-bead"></div>
-            <div class="fan-tassel-line"></div>
-          </div>
+        <div class="showcase-dots" aria-hidden="true">
+          <span class="showcase-dot active"></span>
+          <span class="showcase-dot"></span>
         </div>
+
+        <div class="showcase-quote" data-i18n="gallery.sec2Quote"></div>
+        <div class="showcase-swipe-hint" data-i18n="gallery.swipeHint"></div>
       </article>
 
     </section>
 
-    <!-- 04. CEREMONY TIMETABLE (华堂六礼 · 古时辰时序) -->
-    <section class="palace-card">
+    <!-- 04. LOCATION & BANQUET (盛宴席设与地图) -->
+    <section class="palace-card location-card">
       <div class="fret-corner fret-tl"></div>
       <div class="fret-corner fret-tr"></div>
       <div class="fret-corner fret-bl"></div>
       <div class="fret-corner fret-br"></div>
 
-      <h2 class="compass-title" style="margin-bottom: 0;" data-i18n="ceremony.title"></h2>
-
-      <div class="ancient-hour-track">
-        <div class="ancient-hour-node">
-          <div class="ancient-hour-time" data-i18n="ceremony.t1Time"></div>
-          <div class="ancient-hour-name" data-i18n="ceremony.t1Name"></div>
-          <div class="ancient-hour-desc" data-i18n="ceremony.t1Desc"></div>
-        </div>
-
-        <div class="ancient-hour-node">
-          <div class="ancient-hour-time" data-i18n="ceremony.t2Time"></div>
-          <div class="ancient-hour-name" data-i18n="ceremony.t2Name"></div>
-          <div class="ancient-hour-desc" data-i18n="ceremony.t2Desc"></div>
-        </div>
-
-        <div class="ancient-hour-node">
-          <div class="ancient-hour-time" data-i18n="ceremony.t3Time"></div>
-          <div class="ancient-hour-name" data-i18n="ceremony.t3Name"></div>
-          <div class="ancient-hour-desc" data-i18n="ceremony.t3Desc"></div>
-        </div>
-
-        <div class="ancient-hour-node">
-          <div class="ancient-hour-time" data-i18n="ceremony.t4Time"></div>
-          <div class="ancient-hour-name" data-i18n="ceremony.t4Name"></div>
-          <div class="ancient-hour-desc" data-i18n="ceremony.t4Desc"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 05. BANQUET LOCATION DETAILS (盛筵席设与引路) -->
-    <section class="palace-card">
-      <div class="fret-corner fret-tl"></div>
-      <div class="fret-corner fret-tr"></div>
-      <div class="fret-corner fret-bl"></div>
-      <div class="fret-corner fret-br"></div>
-
+      <div class="compass-tag" data-i18n="banquet.tag"></div>
       <h2 class="compass-title" style="font-size: 1.6rem;" data-i18n="banquet.title"></h2>
 
       <div class="banquet-info-grid">
@@ -253,10 +193,12 @@
           <span class="banquet-info-value" data-i18n="meta.venueName"></span>
         </div>
 
-        <div class="banquet-info-row">
-          <span class="banquet-info-label" data-i18n="banquet.addressLabel"></span>
-          <span class="banquet-info-value" data-i18n="meta.address"></span>
-        </div>
+      </div>
+
+      <!-- Embedded AMap Venue Map -->
+      <div class="chateau-map-frame" id="chineseMapFrame">
+        <div id="chineseMap" class="chateau-map-canvas" role="img" aria-label="婚礼场地地图"></div>
+        <div class="chateau-map-caption" data-i18n="banquet.mapCaption"></div>
       </div>
 
       <div class="banquet-btn-row">
@@ -267,7 +209,7 @@
       <div style="font-size: 0.76rem; color: var(--ch-text-subtle); margin-top: 16px;" data-i18n="banquet.tip"></div>
     </section>
 
-    <!-- 06. CLOSING & WISHES (尾声与回顶) -->
+    <!-- 05. CLOSING & WISHES (尾声与回顶) -->
     <footer class="palace-closing-footer">
       <div class="footer-dragon-phoenix" data-i18n="footer.dragonPhoenix"></div>
       <p class="footer-auspicious-wish" data-i18n="footer.blessing"></p>
