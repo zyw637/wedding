@@ -213,6 +213,9 @@
       this.audioEl = new Audio();
       this.audioEl.src = this.audioUrl;
       this.audioEl.loop = true;
+      // Request autoplay where the browser allows audible media on page load.
+      this.audioEl.autoplay = true;
+      this.audioEl.playsInline = true;
       this.audioEl.preload = 'auto';
       this.audioEl.crossOrigin = 'anonymous';
 
@@ -243,6 +246,20 @@
         this.isPlaying = true;
         this.updateUI(true);
       } catch (e) {
+        // Audible autoplay may be blocked until the visitor interacts once.
+        if (e.name === 'NotAllowedError' || e.name === 'AbortError') {
+          const resumeOnGesture = () => {
+            this.audioEl.play().then(() => {
+              this.isPlaying = true;
+              this.updateUI(true);
+            }).catch(() => {});
+          };
+          window.addEventListener('touchstart', resumeOnGesture, { once: true, passive: true });
+          window.addEventListener('click', resumeOnGesture, { once: true });
+          window.addEventListener('scroll', resumeOnGesture, { once: true, passive: true });
+          return;
+        }
+
         this.isSynthMode = true;
         this.startSynth();
         this.isPlaying = true;
@@ -623,11 +640,11 @@
           }, 950);
         };
 
-        // Open automatically one second after the page loads; tapping still opens it immediately.
+        // Open automatically one second after the page loads and attempt autoplay.
         scrollWrapper.addEventListener('click', () => openScroll(true));
         setTimeout(() => {
           const pageReady = window.__pageReady || Promise.resolve();
-          pageReady.then(() => openScroll(false));
+          pageReady.then(() => openScroll(true));
         }, 1000);
       }
 

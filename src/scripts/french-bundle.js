@@ -427,6 +427,9 @@
       this.audioEl = new Audio();
       this.audioEl.src = this.audioUrl;
       this.audioEl.loop = true;
+      // Request autoplay where the browser allows audible media on page load.
+      this.audioEl.autoplay = true;
+      this.audioEl.playsInline = true;
       this.audioEl.preload = "auto";
       this.audioEl.crossOrigin = "anonymous";
 
