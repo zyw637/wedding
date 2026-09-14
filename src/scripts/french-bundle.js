@@ -18,8 +18,8 @@
       dateFormatted: "2026年10月3日",
       dateEn: "OCTOBER 3, 2026",
       lunarDate: "岁在丙午 农历八月廿三 宜嫁娶",
-      time: "12:00",
-      timeFormatted: "上午 12:00 启幕",
+      time: "11:58",
+      timeFormatted: "上午 11:58 启幕",
       venueName: "南昌高新区万达拆迁安置小区",
       latitude: 28.679281,
       longitude: 116.010453,
@@ -83,7 +83,7 @@
     footer: {
       script: "With Love",
       blessing: "盼与您，于良辰里共一室温光，见证长情。",
-      sign: "万卓洋 & 张佳敏 敬邀",
+      sign: "万贻兵 ＆ 胡军兰 敬邀",
       scrollTop: "✦ 返回顶部 ✦",
     },
     nav: {
@@ -781,7 +781,7 @@
 
       // 4. Initialize Audio, Countdown & Showcases
       this.audioPlayer = new FrenchAudioPlayer();
-      this.countdown = new CalendarCountdown("2026-10-03T12:00:00");
+      this.countdown = new CalendarCountdown("2026-10-03T11:58:00");
       this.showcaseController = new ShowcaseController();
 
       // 5. Bind User Interactions
