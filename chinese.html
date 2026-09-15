@@ -13,7 +13,7 @@
   <link rel="preload" as="image" href="./src/assets/images/相守/1.jpg">
 
   <!-- Neo-Chinese Palace & Vertical Gallery Stylesheet -->
-  <link rel="stylesheet" href="./src/styles/theme-chinese.css">
+  <link rel="stylesheet" href="./src/styles/theme-chinese.css?v=5">
 
   <!-- AMap Security Config (密钥必须配置在 JS API 加载之前) -->
   <script>
@@ -277,8 +277,19 @@
 
   </main>
 
+  <!-- Map Navigation Action Sheet (导航应用选择) -->
+  <div class="nav-sheet-overlay" id="navSheetOverlay">
+    <div class="nav-sheet" role="dialog" aria-modal="true" aria-labelledby="navSheetTitle">
+      <div class="nav-sheet-title" id="navSheetTitle" data-i18n="nav.sheetTitle"></div>
+      <button class="nav-sheet-option" id="navOptAmap" data-i18n="nav.optAmap"></button>
+      <button class="nav-sheet-option" id="navOptBaidu" data-i18n="nav.optBaidu"></button>
+      <button class="nav-sheet-option" id="navOptSystem" data-i18n="nav.optSystem"></button>
+      <button class="nav-sheet-cancel" id="navOptCancel" data-i18n="nav.optCancel"></button>
+    </div>
+  </div>
+
   <!-- Lightweight Neo-Chinese JavaScript Bundle -->
   <script src="./src/scripts/page-loader.js"></script>
-  <script src="./src/scripts/chinese-bundle.js"></script>
+  <script src="./src/scripts/chinese-bundle.js?v=6"></script>
 </body>
 </html>

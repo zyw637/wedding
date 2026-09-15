@@ -35,7 +35,7 @@
     decree: {
       leadTitle: "谨定于公历二〇二六年十月三日",
       names: "万卓洋 ＆ 张佳敏",
-      namesEn: "ZHUOYANG WAN & JIAMIN ZHANG",
+      namesEn: "琴瑟和鸣 · 岁月静好",
       vow: "敬邀诸位亲朋，共赴良辰。\n薄设喜筵，恭候莅临，\n同证此生相守。",
     },
     compass: {
@@ -77,6 +77,11 @@
     },
     nav: {
       music: "古韵雅乐",
+      sheetTitle: "选择导航应用",
+      optAmap: "高德地图",
+      optBaidu: "百度地图",
+      optSystem: "系统地图",
+      optCancel: "取消",
     },
   };
 
@@ -687,19 +692,55 @@
         }, 1000);
       }
 
-      // Map Navigation Button
+      // Map Navigation Button → 弹出“高德 / 百度 / 系统默认”选择菜单
       const btnChineseNav = document.getElementById("btnChineseNav");
-      if (btnChineseNav) {
-        btnChineseNav.addEventListener("click", () => {
-          const lat = this.translations.meta.latitude;
-          const lng = this.translations.meta.longitude;
-          const title = encodeURIComponent(this.translations.meta.venueName);
+      const navSheet = document.getElementById("navSheetOverlay");
+      const navOptAmap = document.getElementById("navOptAmap");
+      const navOptBaidu = document.getElementById("navOptBaidu");
+      const navOptSystem = document.getElementById("navOptSystem");
+      const navOptCancel = document.getElementById("navOptCancel");
+      if (btnChineseNav && navSheet) {
+        const openSheet = () => navSheet.classList.add("open");
+        const closeSheet = () => navSheet.classList.remove("open");
+
+        btnChineseNav.addEventListener("click", openSheet);
+        const mapFrame = document.getElementById("chineseMapFrame");
+        mapFrame?.addEventListener("click", openSheet);
+        navOptCancel?.addEventListener("click", closeSheet);
+        navSheet.addEventListener("click", (e) => {
+          if (e.target === navSheet) closeSheet();
+        });
+
+        const lat = this.translations.meta.latitude;
+        const lng = this.translations.meta.longitude;
+        const title = encodeURIComponent(this.translations.meta.venueName);
+
+        navOptAmap?.addEventListener("click", () => {
+          closeSheet();
+          window.location.href = `https://uri.amap.com/marker?position=${lng},${lat}&name=${title}&src=wedding&callnative=1`;
+        });
+        navOptBaidu?.addEventListener("click", () => {
+          closeSheet();
+          window.location.href = `https://api.map.baidu.com/marker?location=${lat},${lng}&title=${title}&coord_type=gcj02&output=html&src=wedding`;
+        });
+        navOptSystem?.addEventListener("click", () => {
+          closeSheet();
+          const userAgent = navigator.userAgent || "";
           const isIOS =
-            /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            /iPad|iPhone|iPod/.test(userAgent) ||
+            (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+          const isAndroid = /Android/.test(userAgent);
+
           if (isIOS) {
-            window.location.href = `http://maps.apple.com/?daddr=${lat},${lng}&q=${title}`;
+            // Apple Maps is the native map app on iPhone/iPad/Mac.
+            window.location.href = `https://maps.apple.com/?daddr=${lat},${lng}&q=${title}`;
+          } else if (isAndroid) {
+            // geo: lets Android hand the location to the user's default map app.
+            const geoQuery = encodeURIComponent(`${lat},${lng}(${this.translations.meta.venueName})`);
+            window.location.href = `geo:${lat},${lng}?q=${geoQuery}`;
           } else {
-            window.location.href = `https://uri.amap.com/marker?position=${lng},${lat}&name=${title}&src=wedding`;
+            // Browsers without a native map scheme get a universally available fallback.
+            window.location.href = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
           }
         });
       }
